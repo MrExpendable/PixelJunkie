@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="166bca5d7dfc4197ab7dbd566ccee98e" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="ImageHolderModel.Comment" Width="1.5" PointX="1.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImageHolderModel.Image" Width="1.5" PointX="5.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImageHolderModel.ImageOwner" Width="1.5" PointX="1.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImageHolderModel.Member" Width="1.875" PointX="3.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImageHolderModel.Flag" Width="1.5" PointX="7.625" PointY="0.5" />
+        <EntityTypeShape EntityType="ImageHolderModel.ImageTag" Width="1.5" PointX="7" PointY="3.875" />
+        <AssociationConnector Association="ImageHolderModel.FK_CommentstoImageOwners" />
+        <AssociationConnector Association="ImageHolderModel.FK_CommentToImage" />
+        <AssociationConnector Association="ImageHolderModel.FK_CommentToOwner" />
+        <AssociationConnector Association="ImageHolderModel.FK_CommentToPoster" />
+        <AssociationConnector Association="ImageHolderModel.FK_ImageOwnerstoImage" />
+        <AssociationConnector Association="ImageHolderModel.FK_ImageTagsToImages" />
+        <AssociationConnector Association="ImageHolderModel.FK_ImageOwnerstoOwner" />
+        <AssociationConnector Association="ImageHolderModel.FK_FlagsToImage" />
+        <EntityTypeShape EntityType="ImageHolderModel.User" Width="1.5" PointX="14.625" PointY="0.75" />
+        <EntityTypeShape EntityType="ImageHolderModel.webpages_Membership" Width="1.5" PointX="11.25" PointY="0.625" />
+        <EntityTypeShape EntityType="ImageHolderModel.webpages_OAuthMembership" Width="1.5" PointX="11.25" PointY="4.25" />
+        <EntityTypeShape EntityType="ImageHolderModel.webpages_Roles" Width="1.5" PointX="14.625" PointY="3" />
+        <AssociationConnector Association="ImageHolderModel.webpages_UsersInRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,291 @@
+html{
+    background-image:url(Images/backdrop2.jpg);
+    background-repeat:no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    /*font-family: 'Varela Round', sans-serif;*/
+    font-family: 'Istok Web', sans-serif;
+    /*font-family: 'Montserrat', sans-serif;*/
+    font-size:62.4%;
+}
+
+body{
+    display:inline-flex;
+    margin:0 auto;
+}
+
+h1{
+    padding-top:30px;
+    font-size:36px;
+    text-align:center;
+}
+
+/*Nav and body*/
+nav{
+    width: 400px;
+    text-align:center;
+    background: #333;
+    -webkit-box-shadow: inset 0 0 5px 5px #222;
+    -moz-box-shadow: inset 0 0 5px 5px #222;
+    box-shadow: inset 0 0 5px 5px #222;
+}
+
+nav a{
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    text-decoration:none;
+    color:aliceblue;
+    font-size:18px;
+}
+
+nav ul
+{
+    list-style:none;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #4d4d4d;
+}
+
+nav ul li
+{
+    line-height: 3.5;
+    border-top: 1px solid #4d4d4d;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+nav ul li:hover, nav ul li.active, nav ul linav-class-active
+{
+    border-top: none;
+    line-height: 3.5;
+}
+
+nav ul li:hover > a, nav ul li:hover > span, nav ul li.active > a, nav ul li.active > span, nav ul linav-class-active > a, nav ul linav-class-active > span
+{
+    -webkit-box-shadow: inset 0 0 15px 3px #222;
+    -moz-box-shadow: inset 0 0 15px 3px #222;
+    box-shadow: inset 0 0 15px 3px #222;
+}
+
+.mainContent{
+    width:1000px;
+    height:100%;
+    font-size:1.8em;
+}
+
+
+/*Index and constant elements*/
+header{
+    width:900px;
+    height:300px;
+    margin:0 auto;
+}
+
+#container {
+    background-color:#9AFF85;
+    border:8px solid #333;
+    -webkit-box-shadow: inset 0 0 5px 5px #222;
+    -moz-box-shadow: inset 0 0 5px 5px #222;
+    box-shadow: inset 0 0 5px 5px #222;
+}
+
+.welcome{
+    height:100px;
+    width:900px;
+    margin:0 auto;
+    margin-top:30px;
+}
+
+.welcome img{
+    width:100%;
+    height:100%;
+}
+
+.bodyImages, .portfolio{
+    width:900px;
+    margin:0 auto;
+    margin-top:20px;
+}
+
+.bodyImages div, .portfolio div{
+    width:200px;
+    margin-left:10.5px;
+    margin-right:10.5px;
+    margin-top:10px;
+    display:inline-block;
+}
+
+.bodyImages img, .portfolio img{
+    width:200px;
+    height:150px;
+}
+
+.bodyImages ul, .portfolio ul{
+    text-align:center;
+    line-height:1.5;
+    font-size:16px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.stretch{
+    width:100%;
+    display:inline-block;
+    border-bottom:1px solid black;
+}
+
+
+/*Profile Page*/
+.bio{
+    float:left;
+    width:500px;
+    padding-top:15px;
+    padding-bottom:15px;
+    background-color: #C6150F;
+    border: 6px solid #333;
+    border-radius: 20px;
+    color: white;
+}
+
+.bio h3{
+    font-size:24px;
+    text-align:center;
+}
+
+.bio p{
+    line-height:1.75;
+}
+.avatar{
+    width:300px;
+    height:250px;
+    float:right;
+    margin-right:20px;
+    padding-top:30px;
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+}
+
+
+/*Login/SignUp*/
+form{
+    width:900px;
+    padding-top: 20px;
+    text-align: center;
+    margin:0 auto;
+    border-bottom:solid 1px black;
+}
+
+form input{
+    display:block;
+    margin:0 auto;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.signUp{
+    padding-bottom:20px;
+    padding-top:20px;
+}
+
+.login{
+    padding-bottom:20px;
+    padding-top:20px;
+}
+
+/*Upload*/
+select{
+    display:block;
+    margin:0 auto;
+    margin-top:10px;
+    margin-bottom:20px; 
+}
+
+
+/*Tags*/
+.tags{
+    width:800px;
+    margin:0 auto;
+    margin-top:25px;
+    margin-bottom:25px;
+    border-bottom:1px solid black;
+    border-top:1px solid black;
+    text-align:center
+}
+
+.tags ul{
+    list-style:none;
+    color:black;
+    display:block;
+    line-height:2;
+}
+
+
+/*Featured*/
+.welcome p{
+    line-height:1.75;
+}
+
+.imageFilter{
+    text-align:center;
+    margin:0 auto;
+}
+
+/*Image Page*/
+.imageSection{
+    margin:0 auto;
+}
+
+.imageSection ul{
+    list-style:none;
+    text-align:center;
+}
+
+.image{
+    margin: 0 auto;
+    text-align:center;
+}
+
+.imageSection img{
+    margin:0 auto;
+    padding-top:20px;
+    width:600px;
+    max-height:700px;
+}
+
+/*SideBar & Footer*/
+.toggle{
+    border:solid 1px black;
+    background-color:lightgray;
+    color:black;
+    font-size:18px;
+    width:50px;
+    text-align:center;
+    text-decoration:none;
+}
+
+.logo{
+    height:300px;
+    width:300px;
+    margin:22.5px;
+    border:solid 2px black;
+}
+
+footer{
+    width:900px;
+    padding-top:25px;
+    padding-bottom:40px;
+    margin:0 auto;
+    text-align:center;
+}
+
+footer li{
+    display:inline;
+    text-align:center;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+footer li a{
+    color:black;
+}

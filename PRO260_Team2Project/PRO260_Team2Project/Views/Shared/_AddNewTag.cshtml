@@ -1,0 +1,7 @@
+﻿@Html.BeginForm("AddTag", "Image", FormMethod.Post)
+{
+    Add a new tag to this image:
+    <input type="text" name="tag" />
+    <input type="hidden" name="imgOwn" value="@Model" />
+    <input type="submit" value="Add"/>
+}

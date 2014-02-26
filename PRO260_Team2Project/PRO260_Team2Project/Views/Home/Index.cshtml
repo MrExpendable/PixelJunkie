@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Team2Project.ImageOwner>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>Home</h1>
+    </div>
+    <div>
+        @Html.ActionLink("Upload an image", "UploadImage")
+    </div>
+    <div>
+        if(@Model != null)
+        {
+            @foreach (Team2Project.ImageOwner io in @Model)
+            {
+                <div class="portfolio">
+                    <img src="@io.Image" alt="image">
+                    <ul>
+                        <li>Title: @io.Title</li>
+                        <li>Likes: @io.Likes</li>
+                    </ul>
+                </div>
+            }
+        }
+    </div>
+    <div>
+        <b>Account Crap</b><br />
+        <a href="~/Account/Register">Register</a><br />
+        <a href="~/Account/Register">Log In</a>
+    </div>
+
+</body>
+</html>

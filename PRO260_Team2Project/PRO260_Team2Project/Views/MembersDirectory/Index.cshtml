@@ -1,0 +1,24 @@
+﻿@using Team2Project.Models
+@model List<User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Members Directory</h2>
+
+<i>
+The following is a placeholder. There will be a page that maintains the functionality of this page but continues with the style of the rest of the site.
+<br /><br />
+This page is currently populated by static test data. This test data will be replaced to accurately reflect the data in our database once the database is set up.
+<br />
+The links don't work yet. They'll eventually lead to the Member's proifle page.
+<br />
+</i>
+<br />
+
+@foreach (User t in Model)
+{
+    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Views/Home/Index">@t.UserName</a></b><br /> @* <- This is a temporary URL. It should eventually link to the user's profile. *@
+    <b>Points:</b> @t.Points <br /><br />
+}

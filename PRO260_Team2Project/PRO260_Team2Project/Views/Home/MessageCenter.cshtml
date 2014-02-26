@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Team2Project.Comment>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MessageCenter</title>
+</head>
+<body>
+    <div>
+        @foreach (Team2Project.Comment c in Model)
+        {
+            <div class="Message">
+            Posted on @c.ImageID
+                @Html.Partial("~/shared/_Comment.cshtml",c)
+                </Div>
+        }
+    </div>
+</body>
+</html>

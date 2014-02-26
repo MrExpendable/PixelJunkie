@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UploadImage</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("StoreImage", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @:Choose a file to upload:
+            <input type="file" name="file" /> 
+            <input type="submit" value="Upload"/>
+            @:Price: <input type="text" /> 
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("DeleteImageID", "Image", FormMethod.Post))
+        {
+            @:Delete an image:
+            <input type="number" name="imageID" />
+            <input type="submit" value="Delete"/>
+        }
+    </div>
+</body>
+</html>

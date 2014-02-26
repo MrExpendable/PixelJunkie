@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/reset.css"/>
+    <link rel="stylesheet" href="~/Content/Assets/sidr-package-1.2.1/stylesheets/jquery.sidr.dark.css"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Varela+Round|Istok+Web|Montserrat"/>
+    <script src="~/Content/Assets/jquery-2.1.0.min.js"></script>
+    <title>Upload</title>
+</head>
+	<body>
+        <a class="toggle" id="simple-menu" href="#sidr">Main Menu</a>
+        <div class="mainContent">
+            <h1>Upload Image</h1>
+            <form class="upload">
+                Image:<input type="image" name="image"/>
+                Title:<input type="text" name="title"/>
+                Tag:<select name="tagSelect">
+                        <option value="tag1">Tag1</option>
+                        <option value="tag2">Tag2</option>
+                        <option value="tag3">Tag3</option>
+                        <option value="tag4">Tag4</option>
+                        <option value="tag5">Tag5</option>
+                    </select>
+                <input type="submit" value="Upload">
+            </form>
+            
+            <footer>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>|</li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li>|</li>
+                    <li><a href="featured.html">Featured</a></li>
+                    <li>|</li>
+                    <li><a href="#">Upload</a></li>
+                    <li>|</li>
+                    <li><a href="#">Tags</a></li>
+                    <li>|</li>
+                    <li><a href="#">Sign In/Register</a></li>
+                </ul>
+            </footer>
+        </div>
+
+        <div id="sidr">
+            <a href="index.html"><img class="logo" src="~/Content/Assets/Images/.jpg"></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="featured.html">Featured</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="tags.html">Tags</a></li>
+                <li><a href="login.html">Sign In/Register</a></li>
+            </ul>
+        </div>
+        <script src="~/Content/Assets/scripts.js"></script>
+        <script src="~/Content/Assets/sidr-package-1.2.1/jquery.sidr.min.js"></script>
+	</body>
+</html>

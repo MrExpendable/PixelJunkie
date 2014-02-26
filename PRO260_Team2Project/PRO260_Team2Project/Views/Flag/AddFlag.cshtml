@@ -1,0 +1,17 @@
+﻿@model Team2Project.Flag
+
+@{
+    ViewBag.Title = "AddFlag";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Flag image</legend>
+        <div class="Flag Description">
+            @Html.TextAreaFor(Model => Model.Description)
+        </div>
+        <input type="submit" value="Flag Image" />
+    </fieldset>
+
+}
