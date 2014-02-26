@@ -6,29 +6,26 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace Team2Project
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Image
     {
         public Image()
         {
-            this.Comments = new HashSet<Comment>();
             this.ImageOwners = new HashSet<ImageOwner>();
             this.ImageTags = new HashSet<ImageTag>();
             this.Flags = new HashSet<Flag>();
         }
-        [Key]
+
         public int ImageID { get; set; }
         public System.DateTime DateOfUpload { get; set; }
         public int OriginalPosterID { get; set; }
         public byte[] Image1 { get; set; }
-    
-        public virtual ICollection<Comment> Comments { get; set; }
+
         public virtual ICollection<ImageOwner> ImageOwners { get; set; }
         public virtual ICollection<ImageTag> ImageTags { get; set; }
         public virtual ICollection<Flag> Flags { get; set; }

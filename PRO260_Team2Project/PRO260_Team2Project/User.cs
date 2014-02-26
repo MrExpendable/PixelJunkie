@@ -6,24 +6,22 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace Team2Project
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class User
     {
         public User()
         {
             this.webpages_Roles = new HashSet<webpages_Roles>();
         }
-    
-        [Key]
+
         public int Id { get; set; }
         public string UserName { get; set; }
-    
+
         public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
     }
 }

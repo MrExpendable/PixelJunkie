@@ -6,27 +6,28 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Team2Project
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class ImageOwner
     {
-        [Key, Column(Order = 1)]
+        [Key]
+        [Column(Order = 0)]
         public int ImageID { get; set; }
-        [Key, Column(Order = 2)]
+        [Key]
+        [Column(Order = 1)]
         public int OwnerID { get; set; }
         public string Caption { get; set; }
         public string Title { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public Nullable<long> Price { get; set; }
         public int Likes { get; set; }
-    
-        public virtual Comment Comment { get; set; }
+
         public virtual Image Image { get; set; }
         public virtual Member Member { get; set; }
     }

@@ -6,20 +6,22 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Team2Project
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class webpages_OAuthMembership
     {
+        [Key]
+        [Column(Order = 0)]
         public string Provider { get; set; }
-        [Key, Column(Order = 1)]
+        [Key]
+        [Column(Order = 1)]
         public string ProviderUserId { get; set; }
-        [Key, Column(Order = 2)]
         public int UserId { get; set; }
     }
 }
