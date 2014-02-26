@@ -1,2 +1,4 @@
 ok guys, that's enough with the puns.
 git a life
+
+Testing branch merging
