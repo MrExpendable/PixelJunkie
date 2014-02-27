@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
-namespace Team2Project.Models
+namespace PRO260_Team2Project.Models
 {
     public class UserContext : DbContext
     {

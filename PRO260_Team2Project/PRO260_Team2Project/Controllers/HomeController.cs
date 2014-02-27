@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebMatrix.WebData;
+using PRO260_Team2Project;
 
-namespace Team2Project.Controllers
+namespace PRO260_Team2Project.Controllers
 {
     public class HomeController : Controller
     {
@@ -19,7 +20,7 @@ namespace Team2Project.Controllers
             {
                 if (ihc.ImageOwners.ToList().Count > 0)
                 {
-                    var images = ihc.ImageOwners.ToList();
+                    var images = ihc.ImageOwners.Take(15).ToList();
                     imageList = images;
                 }
             }

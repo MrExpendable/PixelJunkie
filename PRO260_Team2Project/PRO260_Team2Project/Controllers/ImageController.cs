@@ -4,8 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PRO260_Team2Project;
 
-namespace Team2Project.Controllers
+namespace PRO260_Team2Project.Controllers
 {
     public class ImageController : Controller
     {

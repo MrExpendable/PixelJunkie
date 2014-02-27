@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
-using Team2Project.Models;
+using PRO260_Team2Project.Models;
 
-namespace Team2Project.Controllers
+namespace PRO260_Team2Project.Controllers
 {
     public class AccountController : Controller
     {

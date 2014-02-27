@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
-namespace Team2Project.Models
+namespace PRO260_Team2Project.Models
 {
     [Table("UserProfile")]
     public class MemberProfile
