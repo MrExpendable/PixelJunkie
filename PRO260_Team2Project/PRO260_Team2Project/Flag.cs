@@ -13,7 +13,6 @@ namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-    using PRO260_Team2Project;
 
     public partial class Flag
     {

@@ -13,9 +13,8 @@ namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-    using PRO260_Team2Project;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Comment
     {
@@ -32,8 +31,5 @@ namespace PRO260_Team2Project
         public int CommentID { get; set; }
 
         public virtual ImageOwner ImageOwner { get; set; }
-        public virtual Image Image { get; set; }
-        public virtual Member Member { get; set; }
-        public virtual Member Member1 { get; set; }
     }
 }

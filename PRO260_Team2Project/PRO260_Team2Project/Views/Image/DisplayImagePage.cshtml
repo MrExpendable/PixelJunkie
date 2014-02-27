@@ -1,4 +1,4 @@
-﻿@model Team2Project.ImageOwner
+﻿@model PRO260_Team2Project.ImageOwner
 
 @{
     Layout = null;
@@ -46,7 +46,7 @@
         </div>
 
         <div class="commentSection">
-            @foreach(Team2Project.Comment c in ViewBag.Comments)
+            @foreach (PRO260_Team2Project.Comment c in ViewBag.Comments)
             {
                 @Html.Partial("~/shared/_Comment.cshtml",c)
             }

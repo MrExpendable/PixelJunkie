@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Team2Project.ImageOwner>
+﻿@model IEnumerable<PRO260_Team2Project.ImageOwner>
 @{
     Layout = null;
 }
@@ -20,7 +20,7 @@
     <div>
         if(@Model != null)
         {
-            @foreach (Team2Project.ImageOwner io in @Model)
+            @foreach (PRO260_Team2Project.ImageOwner io in @Model)
             {
                 <div class="portfolio">
                     <img src="@io.Image" alt="image">
