@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Flag
     {
         public int FlagID { get; set; }
@@ -19,7 +19,7 @@ namespace Team2Project
         public int ImageID { get; set; }
         public System.DateTime TimeOfFlag { get; set; }
         public string Description { get; set; }
-
+    
         public virtual Image Image { get; set; }
     }
 }

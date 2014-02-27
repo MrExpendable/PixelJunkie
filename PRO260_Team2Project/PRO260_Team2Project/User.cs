@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class User
     {
         public User()
         {
             this.webpages_Roles = new HashSet<webpages_Roles>();
         }
-
+    
         public int Id { get; set; }
         public string UserName { get; set; }
-
+    
         public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
     }
 }

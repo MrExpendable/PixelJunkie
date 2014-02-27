@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 
-namespace Team2Project.Models
+namespace PRO260_Team2Project.Models
 {
     public class LoginModel
     {

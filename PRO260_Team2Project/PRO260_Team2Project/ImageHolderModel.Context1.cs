@@ -7,8 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
+    using PRO260_Team2Project;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;

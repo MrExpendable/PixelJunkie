@@ -7,27 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Comment
     {
-        [ForeignKey("ImageOwner")]
-        [Column(Order = 0)]
         public int ImageID { get; set; }
-        [ForeignKey("ImageOwner")]
-        [Column(Order = 1)]
         public int OwnerID { get; set; }
         public int PosterID { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public string Content { get; set; }
-        [Key]
-        public int CommentID { get; set; }
-
+    
         public virtual ImageOwner ImageOwner { get; set; }
+        public virtual Image Image { get; set; }
+        public virtual Member Member { get; set; }
+        public virtual Member Member1 { get; set; }
     }
 }

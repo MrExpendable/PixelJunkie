@@ -7,24 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Member
     {
         public Member()
         {
+            this.Comments = new HashSet<Comment>();
+            this.Comments1 = new HashSet<Comment>();
             this.ImageOwners = new HashSet<ImageOwner>();
         }
-
+    
         public int MemberID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public long AccountBalance { get; set; }
         public bool IsAdmin { get; set; }
-
+    
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments1 { get; set; }
         public virtual ICollection<ImageOwner> ImageOwners { get; set; }
     }
 }

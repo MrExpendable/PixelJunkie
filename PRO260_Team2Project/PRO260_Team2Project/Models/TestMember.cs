@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Team2Project.Models
+namespace PRO260_Team2Project.Models
 {
     /**
      * This class is a substitute for member while the Database's member class

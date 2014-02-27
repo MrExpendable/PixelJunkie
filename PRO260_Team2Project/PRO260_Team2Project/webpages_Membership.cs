@@ -7,15 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class webpages_Membership
     {
-        [Key]
         public int UserId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string ConfirmationToken { get; set; }

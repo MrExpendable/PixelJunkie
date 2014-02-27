@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Team2Project.ImageOwner>
+﻿@using PRO260_Team2Project
+@model IEnumerable<ImageOwner>
 @{
     Layout = null;
 }
@@ -18,9 +19,9 @@
         @Html.ActionLink("Upload an image", "UploadImage")
     </div>
     <div>
-        if(@Model != null)
+        @if(Model != null)
         {
-            @foreach (Team2Project.ImageOwner io in @Model)
+            foreach (ImageOwner io in Model)
             {
                 <div class="portfolio">
                     <img src="@io.Image" alt="image">

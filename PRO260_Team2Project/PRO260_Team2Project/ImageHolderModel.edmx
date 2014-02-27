@@ -17,10 +17,6 @@
           <EntitySet Name="webpages_OAuthMembership" EntityType="ImageHolderModel.Store.webpages_OAuthMembership" store:Type="Tables" />
           <EntitySet Name="webpages_Roles" EntityType="ImageHolderModel.Store.webpages_Roles" store:Type="Tables" />
           <EntitySet Name="webpages_UsersInRoles" EntityType="ImageHolderModel.Store.webpages_UsersInRoles" store:Type="Tables" />
-          <AssociationSet Name="FK_CommentstoImageOwners" Association="ImageHolderModel.Store.FK_CommentstoImageOwners">
-            <End Role="ImageOwners" EntitySet="ImageOwners" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
           <AssociationSet Name="FK_CommentToImage" Association="ImageHolderModel.Store.FK_CommentToImage">
             <End Role="Image" EntitySet="Image" />
             <End Role="Comments" EntitySet="Comments" />
@@ -166,20 +162,6 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_CommentstoImageOwners">
-          <End Role="ImageOwners" Type="ImageHolderModel.Store.ImageOwners" Multiplicity="1" />
-          <End Role="Comments" Type="ImageHolderModel.Store.Comments" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="ImageOwners">
-              <PropertyRef Name="ImageID" />
-              <PropertyRef Name="OwnerID" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="ImageID" />
-              <PropertyRef Name="OwnerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CommentToImage">
           <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="1" />
           <End Role="Comments" Type="ImageHolderModel.Store.Comments" Multiplicity="*" />

@@ -7,20 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team2Project
+namespace PRO260_Team2Project
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class webpages_OAuthMembership
     {
-        [Key]
-        [Column(Order = 0)]
         public string Provider { get; set; }
-        [Key]
-        [Column(Order = 1)]
         public string ProviderUserId { get; set; }
         public int UserId { get; set; }
     }
