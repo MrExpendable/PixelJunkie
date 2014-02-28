@@ -16,9 +16,16 @@
             @:Choose a file to upload:
             <input type="file" name="file" /> 
             <input type="submit" value="Upload"/>
-            @:Price: <input type="text" /> 
+            <br />
+            @:Optional fields:
+            @:Price: <input type="number" name="price" /> 
+            <br />
+            @:Title: <input type="text" name="title" />
+            <br />
+            @:Caption: <input type="text" name="caption" />
         }
     </div>
+    <br />
     <div>
         @using (Html.BeginForm("DeleteImageID", "Image", FormMethod.Post))
         {

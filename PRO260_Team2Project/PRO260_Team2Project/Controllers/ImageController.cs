@@ -13,8 +13,9 @@ namespace PRO260_Team2Project.Controllers
         //
         // GET: /Image/
 
+        [Authorize]
         [HttpPost]
-        public ActionResult StoreImage(HttpPostedFileBase file)
+        public ActionResult StoreImage(HttpPostedFileBase file, int? price, string title, string caption)
         {
             if (file != null)
             {
@@ -32,6 +33,24 @@ namespace PRO260_Team2Project.Controllers
                             //we're entering 1 for testing purposes, we would normally use the current user's imageID
                             newImage.OriginalPosterID = 1;
                             ihc.Images.Add(newImage);
+                            ImageOwner imgOwn = new ImageOwner();
+                            if (price != null)
+                            {
+                                imgOwn.Price = price;
+                            }
+                            if (title != null)
+                            {
+                                imgOwn.Title = title;
+                            }
+                            if (caption != null)
+                            {
+                                imgOwn.Caption = caption;
+                            }
+                            imgOwn.Image = newImage;
+                            imgOwn.ImageID = newImage.ImageID;
+                            imgOwn.Member = ihc.Members.Where(x => x.MemberID == newImage.OriginalPosterID).First();
+                            imgOwn.TimeStamp = newImage.DateOfUpload;
+                            ihc.ImageOwners.Add(imgOwn);
                             ihc.SaveChanges();
                         }
                         ViewBag.message = "Image successfully added";
@@ -41,6 +60,7 @@ namespace PRO260_Team2Project.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult DeleteImageID(int imageID)
         {
@@ -57,6 +77,7 @@ namespace PRO260_Team2Project.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult DeleteImage(Image img)
         {
@@ -76,6 +97,7 @@ namespace PRO260_Team2Project.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public ActionResult AddTag(ImageOwner imgOwn, string tag)
         {
             using (ImageHolderContext ihc = new ImageHolderContext())
