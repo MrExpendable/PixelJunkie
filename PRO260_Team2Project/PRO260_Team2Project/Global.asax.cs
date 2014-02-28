@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebMatrix.WebData;
 
 namespace PRO260_Team2Project
 {
@@ -14,6 +15,7 @@ namespace PRO260_Team2Project
     {
         protected void Application_Start()
         {
+            //WebSecurity.InitializeDatabaseConnection("ImageHolderContext", "Users", "Id", "UserName", true);
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

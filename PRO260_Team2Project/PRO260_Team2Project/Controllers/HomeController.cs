@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+<<<<<<< HEAD
 using WebMatrix.WebData;
 using PRO260_Team2Project;
+=======
+using WebMatrix.WebData;
+using PRO260_Team2Project.Models;
+>>>>>>> origin/master
 
 namespace PRO260_Team2Project.Controllers
 {
