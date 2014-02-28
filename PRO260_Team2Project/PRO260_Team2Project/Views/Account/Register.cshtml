@@ -1,5 +1,4 @@
-﻿@using PRO260_Team2Project.Models
-@model RegisterModel
+﻿@model PRO260_Team2Project.Models.AccountModels.RegisterModel
 @{
     ViewBag.Title = "Register";
 }
@@ -10,6 +9,7 @@
 </hgroup>
 
 @using (Html.BeginForm()) {
+    
     @Html.ValidationSummary()
 
     <fieldset>

@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ImageHolderModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ImageHolderModelStoreContainer">
+    <EntitySet Name="Comments" EntityType="ImageHolderModel.Store.Comments" store:Type="Tables" />
+    <EntitySet Name="Flags" EntityType="ImageHolderModel.Store.Flags" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="ImageHolderModel.Store.Image" store:Type="Tables" />
+    <EntitySet Name="ImageOwners" EntityType="ImageHolderModel.Store.ImageOwners" store:Type="Tables" />
+    <EntitySet Name="ImageTags" EntityType="ImageHolderModel.Store.ImageTags" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="ImageHolderModel.Store.Member" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="ImageHolderModel.Store.Users" store:Type="Tables" />
+    <EntitySet Name="webpages_Membership" EntityType="ImageHolderModel.Store.webpages_Membership" store:Type="Tables" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="ImageHolderModel.Store.webpages_OAuthMembership" store:Type="Tables" />
+    <EntitySet Name="webpages_Roles" EntityType="ImageHolderModel.Store.webpages_Roles" store:Type="Tables" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="ImageHolderModel.Store.webpages_UsersInRoles" store:Type="Tables" />
+    <AssociationSet Name="FK_CommentToImage" Association="ImageHolderModel.Store.FK_CommentToImage">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentToOwner" Association="ImageHolderModel.Store.FK_CommentToOwner">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentToPoster" Association="ImageHolderModel.Store.FK_CommentToPoster">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlagsToImage" Association="ImageHolderModel.Store.FK_FlagsToImage">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="Flags" EntitySet="Flags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageOwnerstoImage" Association="ImageHolderModel.Store.FK_ImageOwnerstoImage">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="ImageOwners" EntitySet="ImageOwners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageOwnerstoOwner" Association="ImageHolderModel.Store.FK_ImageOwnerstoOwner">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ImageOwners" EntitySet="ImageOwners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageTagsToImages" Association="ImageHolderModel.Store.FK_ImageTagsToImages">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="ImageTags" EntitySet="ImageTags" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="ImageHolderModel.Store.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserId" Association="ImageHolderModel.Store.fk_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ImageID" />
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="OwnerID" Type="int" Nullable="false" />
+    <Property Name="PosterID" Type="int" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Flags">
+    <Key>
+      <PropertyRef Name="FlagID" />
+    </Key>
+    <Property Name="FlagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FlaggerID" Type="int" Nullable="false" />
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="TimeOfFlag" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DateOfUpload" Type="datetime" Nullable="false" />
+    <Property Name="OriginalPosterID" Type="int" Nullable="false" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="ImageOwners">
+    <Key>
+      <PropertyRef Name="ImageID" />
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="OwnerID" Type="int" Nullable="false" />
+    <Property Name="Caption" Type="nvarchar" MaxLength="250" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="bigint" />
+    <Property Name="Likes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageTags">
+    <Key>
+      <PropertyRef Name="ImageID" />
+      <PropertyRef Name="Tag" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="AccountBalance" Type="bigint" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CommentToImage">
+    <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="1" />
+    <End Role="Comments" Type="ImageHolderModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentToOwner">
+    <End Role="Member" Type="ImageHolderModel.Store.Member" Multiplicity="1" />
+    <End Role="Comments" Type="ImageHolderModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentToPoster">
+    <End Role="Member" Type="ImageHolderModel.Store.Member" Multiplicity="1" />
+    <End Role="Comments" Type="ImageHolderModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="PosterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlagsToImage">
+    <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="1" />
+    <End Role="Flags" Type="ImageHolderModel.Store.Flags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Flags">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageOwnerstoImage">
+    <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="1" />
+    <End Role="ImageOwners" Type="ImageHolderModel.Store.ImageOwners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="ImageOwners">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageOwnerstoOwner">
+    <End Role="Member" Type="ImageHolderModel.Store.Member" Multiplicity="1" />
+    <End Role="ImageOwners" Type="ImageHolderModel.Store.ImageOwners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="ImageOwners">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageTagsToImages">
+    <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="1" />
+    <End Role="ImageTags" Type="ImageHolderModel.Store.ImageTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="ImageTags">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="ImageHolderModel.Store.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="ImageHolderModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserId">
+    <End Role="Users" Type="ImageHolderModel.Store.Users" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="ImageHolderModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,5 +1,4 @@
-﻿@using PRO260_Team2Project.Models
-@model LoginModel
+﻿@model PRO260_Team2Project.Models.AccountModels.LoginModel
 @{
     ViewBag.Title = "Login";
 }
@@ -38,10 +37,5 @@
         @Html.ActionLink("Register", "Register") if you don't have an account.
     </p>
 }
-</section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 

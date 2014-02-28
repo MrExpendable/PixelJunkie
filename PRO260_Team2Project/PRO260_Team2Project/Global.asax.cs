@@ -15,7 +15,7 @@ namespace PRO260_Team2Project
     {
         protected void Application_Start()
         {
-            //WebSecurity.InitializeDatabaseConnection("ImageHolderContext", "Users", "Id", "UserName", true);
+            WebSecurity.InitializeDatabaseConnection("ImageHolderContext", "Users", "Id", "UserName", true);
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
