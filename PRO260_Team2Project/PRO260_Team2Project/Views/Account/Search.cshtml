@@ -1,0 +1,28 @@
+﻿@using PRO260_Team2Project.Models.AccountModels
+@model List<User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search Results</h2>
+<a href="~/">Home</a><br />        
+<a href="~/Account/">Members Directory</a><br />
+<br />
+
+<div>
+    Searching users with name containing "@ViewBag.SearchQuery". @ViewBag.TotalResults results found.
+    <br />
+    
+    <br /><b>Page: @ViewBag.Page. <br />Results Per Page: @ViewBag.ResultsPerPage.</b><br /><br />
+
+</div>
+
+@foreach (User t in Model)
+{
+    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Views/Home/Index">@t.UserName</a></b><br /> @* <- This is a temporary URL. It should eventually link to the user's profile. *@
+    <b>Points:</b> @:0 <br /><br />
+}
+
+
+<br /><b>Page: @ViewBag.Page. <br />Results Per Page: @ViewBag.ResultsPerPage.</b><br /><br />
