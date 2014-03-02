@@ -22,18 +22,14 @@ namespace PRO260_Team2Project
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //throw new UnintentionalCodeFirstException();
+            throw new UnintentionalCodeFirstException();
         }
     
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Flag> Flags { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<ImageOwner> ImageOwners { get; set; }
-        public DbSet<Member> Members { get; set; }
-        public DbSet<Flag> Flags { get; set; }
         public DbSet<ImageTag> ImageTags { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<webpages_Membership> webpages_Membership { get; set; }
-        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
-        public DbSet<webpages_Roles> webpages_Roles { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }

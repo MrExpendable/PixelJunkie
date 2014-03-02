@@ -39,10 +39,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.0.2\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,10 +76,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -102,19 +116,97 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment.cs">
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FlagController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\MembersDirectoryController.cs" />
+    <Compile Include="Flag.cs">
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageHolderModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageHolderModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageHolderModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageHolderModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageHolderModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ImageOwner.cs">
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageTag.cs">
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Member.cs">
+      <DependentUpon>ImageHolderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels\ExternalLogin.cs" />
+    <Compile Include="Models\AccountModels\LocalPasswordModel.cs" />
+    <Compile Include="Models\AccountModels\LoginModel.cs" />
+    <Compile Include="Models\AccountModels\MembershipContext.cs" />
+    <Compile Include="Models\AccountModels\RegisterModel.cs" />
+    <Compile Include="Models\AccountModels\User.cs" />
+    <Compile Include="Models\MemberProfile.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\ImageHolder.sdf" />
+    <Content Include="App_Data\MembershipDB.sdf" />
+    <Content Include="bin\PRO260_Team2Project.dll" />
+    <Content Include="bin\PRO260_Team2Project.pdb" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\Assets\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Assets\Home.html" />
+    <Content Include="Content\Assets\Images\joker.jpg" />
+    <Content Include="Content\Assets\Images\PlaceholderImage.jpg" />
+    <Content Include="Content\Assets\Images\toArtifact.jpg" />
+    <Content Include="Content\Assets\jquery-1.11.0.js" />
+    <Content Include="Content\Assets\jquery-2.1.0.js" />
+    <Content Include="Content\Assets\jquery-2.1.0.min.js" />
+    <Content Include="Content\Assets\reset.css" />
+    <Content Include="Content\Assets\scripts.js" />
+    <Content Include="Content\Assets\sidr-package-1.2.1\jquery.sidr.min.js" />
+    <Content Include="Content\Assets\sidr-package-1.2.1\stylesheets\jquery.sidr.dark.css" />
+    <Content Include="Content\Assets\sidr-package-1.2.1\stylesheets\jquery.sidr.light.css" />
+    <Content Include="Content\Assets\styles.css" />
+    <Content Include="Content\Assets\useSidr.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -124,14 +216,78 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
+    <Content Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
+    <Content Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
+    <Content Include="_bin_deployableAssemblies\amd64\sqlcecompact40.dll" />
+    <Content Include="_bin_deployableAssemblies\amd64\sqlceer40EN.dll" />
+    <Content Include="_bin_deployableAssemblies\amd64\sqlceme40.dll" />
+    <Content Include="_bin_deployableAssemblies\amd64\sqlceqp40.dll" />
+    <Content Include="_bin_deployableAssemblies\amd64\sqlcese40.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\msvcr90.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\README_ENU.txt" />
+    <Content Include="_bin_deployableAssemblies\x86\sqlceca40.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\sqlcecompact40.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\sqlceer40EN.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
+    <Content Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <EntityDeploy Include="ImageHolderModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ImageHolderModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <Content Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Assets\sidr-package-1.2.1\component.json" />
+    <Content Include="Content\Assets\sidr-package-1.2.1\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Flag\AddFlag.cshtml" />
+    <Content Include="Views\Home\Featured.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\MessageCenter.cshtml" />
+    <Content Include="Views\Home\UploadImage.cshtml" />
+    <Content Include="Views\Image\DisplayImagePage.cshtml" />
+    <Content Include="Views\MembersDirectory\DisplayProfile.cshtml" />
+    <Content Include="Views\MembersDirectory\Index.cshtml" />
+    <Content Include="Views\MembersDirectory\Upload.cshtml" />
+    <Content Include="Views\Shared\_AddNewTag.cshtml" />
+    <Content Include="Views\Shared\_MemberPartialView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ImageHolderModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ImageHolderModel.edmx</DependentUpon>
+      <LastGenOutput>ImageHolderModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ImageHolderModel.edmx.diagram">
+      <DependentUpon>ImageHolderModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="ImageHolderModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ImageHolderModel.edmx</DependentUpon>
+      <LastGenOutput>ImageHolderModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

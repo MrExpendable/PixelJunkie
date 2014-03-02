@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PRO260_Team2Project.Models;
+using PRO260_Team2Project.Models.AccountModels;
 
 namespace PRO260_Team2Project.Controllers
 {

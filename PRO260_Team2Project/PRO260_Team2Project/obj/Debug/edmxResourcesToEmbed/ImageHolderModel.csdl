@@ -2,66 +2,32 @@
 <Schema Namespace="ImageHolderModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="ImageHolderContext" p1:LazyLoadingEnabled="true">
     <EntitySet Name="Comments" EntityType="ImageHolderModel.Comment" />
+    <EntitySet Name="Flags" EntityType="ImageHolderModel.Flag" />
     <EntitySet Name="Images" EntityType="ImageHolderModel.Image" />
     <EntitySet Name="ImageOwners" EntityType="ImageHolderModel.ImageOwner" />
-    <EntitySet Name="Members" EntityType="ImageHolderModel.Member" />
-    <EntitySet Name="Flags" EntityType="ImageHolderModel.Flag" />
     <EntitySet Name="ImageTags" EntityType="ImageHolderModel.ImageTag" />
-    <AssociationSet Name="FK_CommentstoImageOwners" Association="ImageHolderModel.FK_CommentstoImageOwners">
-      <End Role="ImageOwner" EntitySet="ImageOwners" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CommentToImage" Association="ImageHolderModel.FK_CommentToImage">
-      <End Role="Image" EntitySet="Images" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CommentToOwner" Association="ImageHolderModel.FK_CommentToOwner">
-      <End Role="Member" EntitySet="Members" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CommentToPoster" Association="ImageHolderModel.FK_CommentToPoster">
-      <End Role="Member" EntitySet="Members" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ImageOwnerstoImage" Association="ImageHolderModel.FK_ImageOwnerstoImage">
-      <End Role="Image" EntitySet="Images" />
-      <End Role="ImageOwner" EntitySet="ImageOwners" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ImageTagsToImages" Association="ImageHolderModel.FK_ImageTagsToImages">
-      <End Role="Image" EntitySet="Images" />
-      <End Role="ImageTag" EntitySet="ImageTags" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ImageOwnerstoOwner" Association="ImageHolderModel.FK_ImageOwnerstoOwner">
-      <End Role="Member" EntitySet="Members" />
-      <End Role="ImageOwner" EntitySet="ImageOwners" />
-    </AssociationSet>
-    <AssociationSet Name="FK_FlagsToImage" Association="ImageHolderModel.FK_FlagsToImage">
-      <End Role="Image" EntitySet="Images" />
-      <End Role="Flag" EntitySet="Flags" />
-    </AssociationSet>
-    <EntitySet Name="Users" EntityType="ImageHolderModel.User" />
-    <EntitySet Name="webpages_Membership" EntityType="ImageHolderModel.webpages_Membership" />
-    <EntitySet Name="webpages_OAuthMembership" EntityType="ImageHolderModel.webpages_OAuthMembership" />
-    <EntitySet Name="webpages_Roles" EntityType="ImageHolderModel.webpages_Roles" />
-    <AssociationSet Name="webpages_UsersInRoles" Association="ImageHolderModel.webpages_UsersInRoles">
-      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
+    <EntitySet Name="Members" EntityType="ImageHolderModel.Member" />
   </EntityContainer>
   <EntityType Name="Comment">
     <Key>
-      <PropertyRef Name="ImageID" />
-      <PropertyRef Name="OwnerID" />
+      <PropertyRef Name="CommentID" />
     </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
     <Property Name="ImageID" Type="Int32" Nullable="false" />
     <Property Name="OwnerID" Type="Int32" Nullable="false" />
     <Property Name="PosterID" Type="Int32" Nullable="false" />
     <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Content" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-    <NavigationProperty Name="ImageOwner" Relationship="ImageHolderModel.FK_CommentstoImageOwners" FromRole="Comment" ToRole="ImageOwner" />
-    <NavigationProperty Name="Image" Relationship="ImageHolderModel.FK_CommentToImage" FromRole="Comment" ToRole="Image" />
-    <NavigationProperty Name="Member" Relationship="ImageHolderModel.FK_CommentToOwner" FromRole="Comment" ToRole="Member" />
-    <NavigationProperty Name="Member1" Relationship="ImageHolderModel.FK_CommentToPoster" FromRole="Comment" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Flag">
+    <Key>
+      <PropertyRef Name="FlagID" />
+    </Key>
+    <Property Name="FlagID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FlaggerID" Type="Int32" Nullable="false" />
+    <Property Name="ImageID" Type="Int32" />
+    <Property Name="TimeOfFlag" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="Image">
     <Key>
@@ -70,11 +36,7 @@
     <Property Name="ImageID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
     <Property Name="DateOfUpload" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="OriginalPosterID" Type="Int32" Nullable="false" />
-    <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="Comments" Relationship="ImageHolderModel.FK_CommentToImage" FromRole="Image" ToRole="Comment" />
-    <NavigationProperty Name="ImageOwners" Relationship="ImageHolderModel.FK_ImageOwnerstoImage" FromRole="Image" ToRole="ImageOwner" />
-    <NavigationProperty Name="ImageTags" Relationship="ImageHolderModel.FK_ImageTagsToImages" FromRole="Image" ToRole="ImageTag" />
-    <NavigationProperty Name="Flags" Relationship="ImageHolderModel.FK_FlagsToImage" FromRole="Image" ToRole="Flag" />
+    <Property Name="Image1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="ImageOwner">
     <Key>
@@ -84,188 +46,25 @@
     <Property Name="ImageID" Type="Int32" Nullable="false" />
     <Property Name="OwnerID" Type="Int32" Nullable="false" />
     <Property Name="Caption" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Type="Int64" Name="Price" />
-    <NavigationProperty Name="Comment" Relationship="ImageHolderModel.FK_CommentstoImageOwners" FromRole="ImageOwner" ToRole="Comment" />
-    <NavigationProperty Name="Image" Relationship="ImageHolderModel.FK_ImageOwnerstoImage" FromRole="ImageOwner" ToRole="Image" />
-    <NavigationProperty Name="Member" Relationship="ImageHolderModel.FK_ImageOwnerstoOwner" FromRole="ImageOwner" ToRole="Member" />
-    <Property Type="Int32" Name="Likes" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Member">
-    <Key>
-      <PropertyRef Name="MemberID" />
-    </Key>
-    <Property Name="MemberID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-    <Property Name="AccountBalance" Type="Int64" Nullable="false" />
-    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Comments" Relationship="ImageHolderModel.FK_CommentToOwner" FromRole="Member" ToRole="Comment" />
-    <NavigationProperty Name="Comments1" Relationship="ImageHolderModel.FK_CommentToPoster" FromRole="Member" ToRole="Comment" />
-    <NavigationProperty Name="ImageOwners" Relationship="ImageHolderModel.FK_ImageOwnerstoOwner" FromRole="Member" ToRole="ImageOwner" />
-  </EntityType>
-  <EntityType Name="Flag">
-    <Key>
-      <PropertyRef Name="FlagID" />
-    </Key>
-    <Property Type="Int32" Name="FlagID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="FlaggerID" Nullable="false" />
-    <Property Type="Int32" Name="ImageID" Nullable="false" />
-    <Property Type="DateTime" Name="TimeOfFlag" Nullable="false" Precision="3" />
-    <Property Type="String" Name="Description" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Image" Relationship="ImageHolderModel.FK_FlagsToImage" FromRole="Flag" ToRole="Image" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="Likes" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="ImageTag">
     <Key>
       <PropertyRef Name="ImageID" />
       <PropertyRef Name="Tag" />
     </Key>
-    <Property Type="Int32" Name="ImageID" Nullable="false" />
-    <Property Type="String" Name="Tag" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Image" Relationship="ImageHolderModel.FK_ImageTagsToImages" FromRole="ImageTag" ToRole="Image" />
+    <Property Name="ImageID" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
   </EntityType>
-  <Association Name="FK_CommentstoImageOwners">
-    <End Type="ImageHolderModel.ImageOwner" Role="ImageOwner" Multiplicity="1" />
-    <End Type="ImageHolderModel.Comment" Role="Comment" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="ImageOwner">
-        <PropertyRef Name="ImageID" />
-        <PropertyRef Name="OwnerID" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="ImageID" />
-        <PropertyRef Name="OwnerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CommentToImage">
-    <End Type="ImageHolderModel.Image" Role="Image" Multiplicity="1" />
-    <End Type="ImageHolderModel.Comment" Role="Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Image">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CommentToOwner">
-    <End Type="ImageHolderModel.Member" Role="Member" Multiplicity="1" />
-    <End Type="ImageHolderModel.Comment" Role="Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Member">
-        <PropertyRef Name="MemberID" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="OwnerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CommentToPoster">
-    <End Type="ImageHolderModel.Member" Role="Member" Multiplicity="1" />
-    <End Type="ImageHolderModel.Comment" Role="Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Member">
-        <PropertyRef Name="MemberID" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="PosterID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ImageOwnerstoImage">
-    <End Type="ImageHolderModel.Image" Role="Image" Multiplicity="1" />
-    <End Type="ImageHolderModel.ImageOwner" Role="ImageOwner" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Image">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="ImageOwner">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ImageTagsToImages">
-    <End Type="ImageHolderModel.Image" Role="Image" Multiplicity="1" />
-    <End Type="ImageHolderModel.ImageTag" Role="ImageTag" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Image">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="ImageTag">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ImageOwnerstoOwner">
-    <End Type="ImageHolderModel.Member" Role="Member" Multiplicity="1" />
-    <End Type="ImageHolderModel.ImageOwner" Role="ImageOwner" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Member">
-        <PropertyRef Name="MemberID" />
-      </Principal>
-      <Dependent Role="ImageOwner">
-        <PropertyRef Name="OwnerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FlagsToImage">
-    <End Type="ImageHolderModel.Image" Role="Image" Multiplicity="1" />
-    <End Type="ImageHolderModel.Flag" Role="Flag" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Image">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="Flag">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="User">
+  <EntityType Name="Member">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="MemberID" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="webpages_Roles" Relationship="ImageHolderModel.webpages_UsersInRoles" FromRole="User" ToRole="webpages_Roles" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="AccountBalance" Type="Int64" Nullable="false" />
   </EntityType>
-  <EntityType Name="webpages_Membership">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Type="Int32" Name="UserId" Nullable="false" />
-    <Property Type="DateTime" Name="CreateDate" Precision="3" />
-    <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="Boolean" Name="IsConfirmed" />
-    <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
-    <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
-    <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
-    <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
-  </EntityType>
-  <EntityType Name="webpages_OAuthMembership">
-    <Key>
-      <PropertyRef Name="Provider" />
-      <PropertyRef Name="ProviderUserId" />
-    </Key>
-    <Property Type="String" Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="UserId" Nullable="false" />
-  </EntityType>
-  <EntityType Name="webpages_Roles">
-    <Key>
-      <PropertyRef Name="RoleId" />
-    </Key>
-    <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Users" Relationship="ImageHolderModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="User" />
-  </EntityType>
-  <Association Name="webpages_UsersInRoles">
-    <End Type="ImageHolderModel.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
-    <End Type="ImageHolderModel.User" Role="User" Multiplicity="*" />
-  </Association>
 </Schema>

@@ -14,15 +14,11 @@ namespace PRO260_Team2Project
     
     public partial class Comment
     {
+        public int CommentID { get; set; }
         public int ImageID { get; set; }
         public int OwnerID { get; set; }
         public int PosterID { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public string Content { get; set; }
-    
-        public virtual ImageOwner ImageOwner { get; set; }
-        public virtual Image Image { get; set; }
-        public virtual Member Member { get; set; }
-        public virtual Member Member1 { get; set; }
     }
 }

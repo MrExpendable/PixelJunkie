@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace PRO260_Team2Project.Controllers
 {
@@ -31,7 +32,7 @@ namespace PRO260_Team2Project.Controllers
                             newImage.Image1 = imageArray;
                             newImage.DateOfUpload = DateTime.Now;
                             //we're entering 1 for testing purposes, we would normally use the current user's imageID
-                            newImage.OriginalPosterID = 1;
+                            newImage.OriginalPosterID = WebSecurity.CurrentUserId;
                             ihc.Images.Add(newImage);
                             ImageOwner imgOwn = new ImageOwner();
                             if (price != null)

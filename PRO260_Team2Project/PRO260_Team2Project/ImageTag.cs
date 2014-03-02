@@ -16,7 +16,5 @@ namespace PRO260_Team2Project
     {
         public int ImageID { get; set; }
         public string Tag { get; set; }
-    
-        public virtual Image Image { get; set; }
     }
 }

@@ -16,10 +16,8 @@ namespace PRO260_Team2Project
     {
         public int FlagID { get; set; }
         public int FlaggerID { get; set; }
-        public int ImageID { get; set; }
+        public Nullable<int> ImageID { get; set; }
         public System.DateTime TimeOfFlag { get; set; }
         public string Description { get; set; }
-    
-        public virtual Image Image { get; set; }
     }
 }

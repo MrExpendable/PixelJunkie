@@ -21,8 +21,7 @@ namespace PRO260_Team2Project
         public System.DateTime TimeStamp { get; set; }
         public Nullable<long> Price { get; set; }
         public int Likes { get; set; }
-    
-        public virtual Comment Comment { get; set; }
+
         public virtual Image Image { get; set; }
         public virtual Member Member { get; set; }
     }

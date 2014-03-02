@@ -38,7 +38,7 @@ namespace PRO260_Team2Project.Controllers
         #region UserManipulation
         private void UpdateUsers()
         {
-            using (ImageHolderContext ie = new ImageHolderContext())
+            using (MembershipContext ie = new MembershipContext())
             {
                 users = ie.Users.ToList();
             }
@@ -172,6 +172,11 @@ namespace PRO260_Team2Project.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+                    using(ImageHolderContext con = new ImageHolderContext())
+                    {
+                        con.Members.Add(new Member{MemberID =WebSecurity.CurrentUserId, UserName=WebSecurity.CurrentUserName, AccountBalance=500});
+                        con.SaveChanges();
+                    }                    
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

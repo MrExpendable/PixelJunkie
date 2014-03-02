@@ -35,3 +35,37 @@ C:\Users\cgregory\Documents\GitHub\PixelJunkie\PRO260_Team2Project\PRO260_Team2P
 C:\Users\cgregory\Documents\GitHub\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\WebMatrix.Data.xml
 C:\Users\cgregory\Documents\GitHub\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\WebMatrix.WebData.xml
 C:\Users\cgregory\Documents\GitHub\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\obj\Debug\PRO260_Team2Project.csprojResolveAssemblyReference.cache
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\PRO260_Team2Project.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\PRO260_Team2Project.pdb
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Net.Http.Formatting.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Helpers.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Http.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Http.WebHost.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Mvc.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Razor.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.WebPages.Deployment.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.WebPages.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.WebPages.Razor.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\Newtonsoft.Json.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Net.Http.Formatting.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Helpers.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Http.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Http.WebHost.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Mvc.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.Razor.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.WebPages.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.WebPages.Deployment.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\System.Web.WebPages.Razor.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\obj\Debug\PRO260_Team2Project.csprojResolveAssemblyReference.cache
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\obj\Debug\PRO260_Team2Project.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\obj\Debug\PRO260_Team2Project.pdb
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\EntityFramework.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\EntityFramework.SqlServer.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\EntityFramework.SqlServerCompact.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\WebMatrix.Data.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\WebMatrix.WebData.dll
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\EntityFramework.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\EntityFramework.SqlServer.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\EntityFramework.SqlServerCompact.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\WebMatrix.Data.xml
+C:\Users\dlemmons\Documents\Programs and Save Files\Visual Studio 2012\Projects\FinalReboot\PixelJunkie\PRO260_Team2Project\PRO260_Team2Project\bin\WebMatrix.WebData.xml
