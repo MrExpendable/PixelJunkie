@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ImageHolderModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ImageHolderModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ImageHolderModelStoreContainer">
           <EntitySet Name="Comment" EntityType="ImageHolderModel.Store.Comment" store:Type="Tables" />
           <EntitySet Name="Flag" EntityType="ImageHolderModel.Store.Flag" store:Type="Tables" />
@@ -12,6 +12,22 @@
           <EntitySet Name="ImageOwners" EntityType="ImageHolderModel.Store.ImageOwners" store:Type="Tables" />
           <EntitySet Name="ImageTags" EntityType="ImageHolderModel.Store.ImageTags" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="ImageHolderModel.Store.Member" store:Type="Tables" />
+          <AssociationSet Name="FK_CommentToImageOwners" Association="ImageHolderModel.Store.FK_CommentToImageOwners">
+            <End Role="ImageOwners" EntitySet="ImageOwners" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlagToImage" Association="ImageHolderModel.Store.FK_FlagToImage">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Flag" EntitySet="Flag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlagToMember" Association="ImageHolderModel.Store.FK_FlagToMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Flag" EntitySet="Flag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageTagToImage" Association="ImageHolderModel.Store.FK_ImageTagToImage">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="ImageTags" EntitySet="ImageTags" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Comment">
           <Key>
@@ -72,8 +88,57 @@
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="30" />
           <Property Name="AccountBalance" Type="bigint" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_CommentToImageOwners">
+          <End Role="ImageOwners" Type="ImageHolderModel.Store.ImageOwners" Multiplicity="1" />
+          <End Role="Comment" Type="ImageHolderModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageOwners">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="OwnerID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlagToImage">
+          <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="0..1" />
+          <End Role="Flag" Type="ImageHolderModel.Store.Flag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Flag">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlagToMember">
+          <End Role="Member" Type="ImageHolderModel.Store.Member" Multiplicity="1" />
+          <End Role="Flag" Type="ImageHolderModel.Store.Flag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Flag">
+              <PropertyRef Name="FlaggerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageTagToImage">
+          <End Role="Image" Type="ImageHolderModel.Store.Image" Multiplicity="1" />
+          <End Role="ImageTags" Type="ImageHolderModel.Store.ImageTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="ImageTags">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ImageHolderModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -84,6 +149,22 @@
           <EntitySet Name="ImageOwners" EntityType="ImageHolderModel.ImageOwner" />
           <EntitySet Name="ImageTags" EntityType="ImageHolderModel.ImageTag" />
           <EntitySet Name="Members" EntityType="ImageHolderModel.Member" />
+          <AssociationSet Name="FK_CommentToImageOwners" Association="ImageHolderModel.FK_CommentToImageOwners">
+            <End Role="ImageOwner" EntitySet="ImageOwners" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlagToImage" Association="ImageHolderModel.FK_FlagToImage">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Flag" EntitySet="Flags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlagToMember" Association="ImageHolderModel.FK_FlagToMember">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Flag" EntitySet="Flags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageTagToImage" Association="ImageHolderModel.FK_ImageTagToImage">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="ImageTag" EntitySet="ImageTags" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Comment">
           <Key>
@@ -95,6 +176,7 @@
           <Property Name="PosterID" Type="Int32" Nullable="false" />
           <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Content" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ImageOwner" Relationship="ImageHolderModel.FK_CommentToImageOwners" FromRole="Comment" ToRole="ImageOwner" />
         </EntityType>
         <EntityType Name="Flag">
           <Key>
@@ -105,6 +187,8 @@
           <Property Name="ImageID" Type="Int32" />
           <Property Name="TimeOfFlag" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Image" Relationship="ImageHolderModel.FK_FlagToImage" FromRole="Flag" ToRole="Image" />
+          <NavigationProperty Name="Member" Relationship="ImageHolderModel.FK_FlagToMember" FromRole="Flag" ToRole="Member" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -114,6 +198,8 @@
           <Property Name="DateOfUpload" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OriginalPosterID" Type="Int32" Nullable="false" />
           <Property Name="Image1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Flags" Relationship="ImageHolderModel.FK_FlagToImage" FromRole="Image" ToRole="Flag" />
+          <NavigationProperty Name="ImageTags" Relationship="ImageHolderModel.FK_ImageTagToImage" FromRole="Image" ToRole="ImageTag" />
         </EntityType>
         <EntityType Name="ImageOwner">
           <Key>
@@ -127,6 +213,7 @@
           <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Int64" />
           <Property Name="Likes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="ImageHolderModel.FK_CommentToImageOwners" FromRole="ImageOwner" ToRole="Comment" />
         </EntityType>
         <EntityType Name="ImageTag">
           <Key>
@@ -135,6 +222,7 @@
           </Key>
           <Property Name="ImageID" Type="Int32" Nullable="false" />
           <Property Name="Tag" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Image" Relationship="ImageHolderModel.FK_ImageTagToImage" FromRole="ImageTag" ToRole="Image" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -143,7 +231,58 @@
           <Property Name="MemberID" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="AccountBalance" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Flags" Relationship="ImageHolderModel.FK_FlagToMember" FromRole="Member" ToRole="Flag" />
         </EntityType>
+        <Association Name="FK_CommentToImageOwners">
+          <End Type="ImageHolderModel.ImageOwner" Role="ImageOwner" Multiplicity="1" />
+          <End Type="ImageHolderModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageOwner">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="OwnerID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlagToImage">
+          <End Type="ImageHolderModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="ImageHolderModel.Flag" Role="Flag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Flag">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlagToMember">
+          <End Type="ImageHolderModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="ImageHolderModel.Flag" Role="Flag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Flag">
+              <PropertyRef Name="FlaggerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageTagToImage">
+          <End Type="ImageHolderModel.Image" Role="Image" Multiplicity="1" />
+          <End Type="ImageHolderModel.ImageTag" Role="ImageTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="ImageTag">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
