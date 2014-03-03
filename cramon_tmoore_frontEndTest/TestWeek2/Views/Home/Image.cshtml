@@ -1,28 +1,14 @@
-﻿@{
+﻿@model TestWeek2.Models.Image
+
+@{
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "Home Page";
 }
 <div class="imageSection">
-    <div class="image">
-        <img src="/Assets/Images/PlaceholderImage.jpg" />
-    </div>
-    <ul>
-        <li>Title</li>
-        <li>UserName</li>
-        <li>Likes:</li>
-        <li>Dislikes:</li>
-    </ul>
-    <!--<div class="imageInfo">
-        <h3>
-            <p>
-                Picture by Author <br/>
-                Likes/Dislikes: <br/>
-                Tags: <br/>
-            </p>
-        </h3>
-    </div>-->
+    @Html.Partial("GetImagePartial")
 </div>
 <div class="commentSection">
+    <!--Should I split the comment section into a partial view as well?-->
     <div class="comment">
         <h6>Username</h6><br />
         <p>I really like this picture.</p>

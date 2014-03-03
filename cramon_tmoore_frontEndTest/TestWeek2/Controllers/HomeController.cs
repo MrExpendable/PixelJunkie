@@ -28,7 +28,7 @@ namespace TestWeek2.Controllers
 
         public ActionResult Image()
         {
-            return View();
+            return View(image);
         }
 
         public ActionResult Login()

@@ -1,13 +1,13 @@
 ﻿<div>
     <img class="images">
     <ul>
-        <li>@Model.Title</li>
-        <li>@Model.Owner</li>
-        <li>@Model.Likes</li>
-        <li>@Model.Price</li>
-        <li>@foreach (String t in Model.Tags)
+        <li>Title: @Model.Title</li>
+        <li>Owner: @Model.Owner</li>
+        <li>Likes: @Model.Likes</li>
+        <li>Price(in points): @Model.Price</li>
+        <li>Tags: @foreach (String t in Model.Tags)
             {
-                @t
+                @t@:,
             }
         </li>
     </ul>

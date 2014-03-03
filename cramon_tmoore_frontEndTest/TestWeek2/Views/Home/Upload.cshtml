@@ -3,15 +3,4 @@
     ViewBag.Title = "Upload";
 }
 <h1>Upload Image</h1>
-<form class="upload">
-    Image:<input type="image" name="image" />
-    Title:<input type="text" name="title" />
-    Tag:<select name="tagSelect">
-        <option value="tag1">Tag1</option>
-        <option value="tag2">Tag2</option>
-        <option value="tag3">Tag3</option>
-        <option value="tag4">Tag4</option>
-        <option value="tag5">Tag5</option>
-    </select>
-    <input type="submit" value="Upload">
-</form>
+@Html.Partial("UploadPartial")
