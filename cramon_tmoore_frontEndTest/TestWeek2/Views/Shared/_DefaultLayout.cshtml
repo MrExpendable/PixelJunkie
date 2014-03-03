@@ -7,7 +7,6 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <img id="background-image"/>
     <div class="content">
         <nav>
             <img class="logo" src="/Assets/Images/logo.png">
@@ -20,29 +19,32 @@
                     <div class="icon">
                         <img src="~/Assets/Images/Icons/home32.png" />
                     </div>
-                    @Html.ActionLink("Home", "Index")</li>
+                    <div class="navLink">@Html.ActionLink("Home", "Index")</div>
+                </li>
                 <li>
                     <div class="icon">
                         <img src="~/Assets/Images/Icons/contactcard32.png" />
                     </div>
-                    @Html.ActionLink("Profile", "Profile")</li>
+                    <div class="navLink">@Html.ActionLink("Profile", "Profile")</div>
+                </li>
                 <li>
                     <div class="icon">
                         <img src="~/Assets/Images/Icons/moneyreceipt32.png" />
                     </div>
-                    @Html.ActionLink("Auctions", "Featured")</li>
+                    <div class="navLink">@Html.ActionLink("Auctions", "Featured")</div>
+                </li>
                 <li>
                     <div class="icon">
                         <img src="~/Assets/Images/Icons/upload32.png" />
                     </div>
-                    @Html.ActionLink("Upload", "Upload")</li>
+                    <div class="navLink">@Html.ActionLink("Upload", "Upload")</div>
+                </li>
                 <li>
                     <div class="icon">
                         <img src="~/Assets/Images/Icons/article32.png" />
                     </div>
-                    @Html.ActionLink("Login/Register", "Login")</li>
-
-                <li>@Html.ActionLink("Single Image", "Image")</li>
+                    <div class="navLink">@Html.ActionLink("Login/Register", "Login")</div>
+                </li>
             </ul>
         </nav>
         <div class="mainContent" id="container">
