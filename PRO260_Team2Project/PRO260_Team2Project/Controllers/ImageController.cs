@@ -14,6 +14,7 @@ namespace PRO260_Team2Project.Controllers
         //
         // GET: /Image/
 
+        #region ImageManagement
         [Authorize]
         [HttpPost]
         public ActionResult StoreImage(HttpPostedFileBase file, int? price, string title, string caption)
@@ -97,7 +98,9 @@ namespace PRO260_Team2Project.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        #endregion
 
+        #region TagManagement
         [Authorize]
         public ActionResult AddTag(ImageOwner imgOwn, string tag)
         {
@@ -112,6 +115,22 @@ namespace PRO260_Team2Project.Controllers
             }
             return View("DisplayImagePage", imgOwn);
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult DeleteTag(ImageOwner imgOwn, string tag)
+        {
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                ImageTag foundTag = ihc.ImageTags.Where(x => x.ImageID == imgOwn.ImageID && x.Tag.Equals(tag)).FirstOrDefault();
+                if (foundTag != null)
+                    ihc.ImageTags.Remove(foundTag);
+                ViewBag.message = "Tag successfully deleted";
+                ihc.SaveChanges();
+            }
+            return View("DisplayImagePage", imgOwn);
+        }
+        #endregion
 
         public ActionResult DisplayImagePage(ImageOwner imgOwn)
         {

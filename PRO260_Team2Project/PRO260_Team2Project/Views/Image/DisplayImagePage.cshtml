@@ -33,7 +33,7 @@
                  {
                     @:#t
                  }
-                @Html.Partial("_AddNewTag.cshthml", @Model)
+                @Html.Partial("_ManageTags.cshthml", @Model)
             </div>
         </div>
         <div class="like">
@@ -46,7 +46,7 @@
         </div>
 
         <div class="commentSection">
-            @foreach(Team2Project.Comment c in ViewBag.Comments)
+            @foreach(PRO260_Team2Project.Comment c in ViewBag.Comments)
             {
                 @Html.Partial("~/shared/_Comment.cshtml",c)
             }
