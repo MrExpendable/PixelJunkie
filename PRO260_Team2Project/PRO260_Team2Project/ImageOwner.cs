@@ -43,6 +43,8 @@ public partial class ImageOwner
 
 
     public virtual ICollection<Comment> Comments { get; set; }
+    public virtual Member Member { get; set; }
+    public virtual Image Image { get; set; }
 
 }
 
