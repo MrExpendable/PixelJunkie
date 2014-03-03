@@ -16,9 +16,9 @@
         <h1>Home</h1>
     </div>
     <div>
-        @Html.BeginForm("SearchTags", "Home")
+        @using (Html.BeginForm("SearchTags", "Home"))
         {
-            Search tags: 
+            @: Search tags: 
             <input type="text" name="tag" />
             <input type="submit" value="Search" />
         }
@@ -27,7 +27,7 @@
         @Html.ActionLink("Upload an image", "UploadImage")
     </div>
     <div>
-        @if(Model != null)
+        @if(Model != null && Model.Count() > 0)
         {
             foreach (ImageOwner io in Model)
             {
@@ -36,7 +36,7 @@
                     <ul>
                         <li>Title: @io.Title</li>
                         <li>Likes: @io.Likes</li>
-                       <!-- <li>@*Html.ActionLink("View Page","DisplayImagePage","Image",io)*@</li>-->
+                       <li>@Html.ActionLink("View Page", "DisplayImagePage", "Image", io)</li>
                     </ul>
                 </div>
             }

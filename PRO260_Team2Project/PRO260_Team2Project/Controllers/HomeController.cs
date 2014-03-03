@@ -18,6 +18,17 @@ namespace PRO260_Team2Project.Controllers
             List<ImageOwner> imageList = null;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
+                Member test = ihc.Members.Where(x => x.MemberID == 11).FirstOrDefault();
+                if (test == null)
+                {
+                    Member newMember = new Member();
+                    newMember.MemberID = 11;
+                    newMember.UserName = "useruser";
+                    newMember.AccountBalance = 0;
+                    ihc.Members.Add(newMember);
+                    ihc.SaveChanges();
+                }
+
                 if (ihc.ImageOwners.ToList().Count > 0)
                 {
                     var images = ihc.ImageOwners.ToList();

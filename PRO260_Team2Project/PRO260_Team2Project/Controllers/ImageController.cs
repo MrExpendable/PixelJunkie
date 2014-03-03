@@ -15,7 +15,7 @@ namespace PRO260_Team2Project.Controllers
         // GET: /Image/
 
         #region ImageManagement
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         public ActionResult StoreImage(HttpPostedFileBase file, int? price, string title, string caption)
         {
@@ -32,8 +32,9 @@ namespace PRO260_Team2Project.Controllers
                             Image newImage = new Image();
                             newImage.Image1 = imageArray;
                             newImage.DateOfUpload = DateTime.Now;
-                            //we're entering 1 for testing purposes, we would normally use the current user's imageID
-                            newImage.OriginalPosterID = WebSecurity.CurrentUserId;
+                            //this is using the test user created in the Index action in home
+                            newImage.OriginalPosterID = 11;
+                            //newImage.OriginalPosterID = WebSecurity.CurrentUserId;
                             ihc.Images.Add(newImage);
                             ImageOwner imgOwn = new ImageOwner();
                             if (price != null)
