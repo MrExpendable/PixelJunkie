@@ -14,12 +14,17 @@
 </head>
 <body>
     <div>
-        @foreach (Comment c in Model)
+        @if (Model.Count() == 0)
+        {
+            <div>No News</div>
+        }else{
+        foreach (Comment c in Model)
         {
             <div class="Message">
             Posted on @c.ImageID
                 @Html.Partial("~/shared/_Comment.cshtml",c)
                 </Div>
+        }
         }
     </div>
 </body>

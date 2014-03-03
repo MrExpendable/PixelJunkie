@@ -15,7 +15,7 @@ namespace PRO260_Team2Project.Models.AccountModels
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string UserName { get; set; }
-        public int Points { get; set; }
+       // public int Points { get; set; }
     }
 
 }

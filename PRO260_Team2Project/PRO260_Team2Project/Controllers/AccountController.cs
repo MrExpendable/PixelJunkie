@@ -174,7 +174,21 @@ namespace PRO260_Team2Project.Controllers
                     WebSecurity.Login(model.UserName, model.Password);
                     using(ImageHolderContext con = new ImageHolderContext())
                     {
-                        con.Members.Add(new Member{MemberID =WebSecurity.CurrentUserId, UserName=WebSecurity.CurrentUserName, AccountBalance=500});
+                        Member neoMember = new Member();
+                        neoMember.UserName = model.UserName;
+                        using(MembershipContext con2 = new MembershipContext())
+                        {
+                            try
+                            {
+                                neoMember.MemberID = con2.Users.Where(x => x.UserName == neoMember.UserName).First().Id;
+                            }
+                            catch (Exception e)
+                            {
+                                var m = e.Message;
+                            }
+                        }
+                        neoMember.AccountBalance = 500;
+                        con.Members.Add(neoMember);
                         con.SaveChanges();
                     }                    
                     return RedirectToAction("Index", "Home");

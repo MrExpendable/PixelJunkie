@@ -24,10 +24,11 @@
             foreach (ImageOwner io in Model)
             {
                 <div class="portfolio">
-                    <img src="@io.Image" alt="image">
+                    <img src="@io.Image.Image1" alt="image">
                     <ul>
                         <li>Title: @io.Title</li>
                         <li>Likes: @io.Likes</li>
+                       <!-- <li>@*Html.ActionLink("View Page","DisplayImagePage","Image",io)*@</li>-->
                     </ul>
                 </div>
             }
