@@ -35,6 +35,34 @@ namespace PRO260_Team2Project.Controllers
         }
         #endregion
 
+        #region Search
+        public ActionResult Search(String searchQuery = "", int page = 1, int resultsPerPage = 20)
+        {
+            List<User> searchedUsers = new List<User>();
+            List<User> tempUsers = new List<User>();
+            UpdateUsers();
+            foreach (User user in users)
+            {
+                if (user.UserName.Contains(searchQuery))
+                {
+                    searchedUsers.Add(user);
+                }
+            }
+            if (users.Count > resultsPerPage * page)
+            {
+                tempUsers = searchedUsers.GetRange((page - 1) * resultsPerPage, resultsPerPage); //if you want 10 results per page, page 1 will have 0-9, page 2 will have 10-19.
+            }
+            else
+            {
+                tempUsers = searchedUsers.GetRange((page - 1) * resultsPerPage, searchedUsers.Count % resultsPerPage);
+            }
+            ViewBag.Page = page;
+            ViewBag.ResultsPerPage = resultsPerPage;
+            ViewBag.TotalResults = searchedUsers.Count;
+            return View(tempUsers);
+        }
+        #endregion
+
         #region UserManipulation
         private void UpdateUsers()
         {
