@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Assets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/styles.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <img id="background-image"/>
+    <div class="content">
+        <nav>
+            <img class="logo" src="/Assets/Images/logo.png">
+            <form class="search">
+                <input type="text" name="username" />
+                <input type="submit" value="Search">
+            </form>
+            <ul>
+                <li>
+                    <div class="icon">
+                        <img src="~/Assets/Images/Icons/home32.png" />
+                    </div>
+                    @Html.ActionLink("Home", "Index")</li>
+                <li>
+                    <div class="icon">
+                        <img src="~/Assets/Images/Icons/contactcard32.png" />
+                    </div>
+                    @Html.ActionLink("Profile", "Profile")</li>
+                <li>
+                    <div class="icon">
+                        <img src="~/Assets/Images/Icons/moneyreceipt32.png" />
+                    </div>
+                    @Html.ActionLink("Auctions", "Featured")</li>
+                <li>
+                    <div class="icon">
+                        <img src="~/Assets/Images/Icons/upload32.png" />
+                    </div>
+                    @Html.ActionLink("Upload", "Upload")</li>
+                <li>
+                    <div class="icon">
+                        <img src="~/Assets/Images/Icons/article32.png" />
+                    </div>
+                    @Html.ActionLink("Login/Register", "Login")</li>
+
+                <li>@Html.ActionLink("Single Image", "Image")</li>
+            </ul>
+        </nav>
+        <div class="mainContent" id="container">
+            @RenderBody()
+            <footer>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Profile", "Profile")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Auctions", "Featured")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Upload", "Upload")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Login/Register", "Login")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Single Image", "Image")</li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+    <script src="Assets/scripts.js"></script>
+    <script src="Assets/bootstrap/js/bootstrap.js"></script>
+    <script src="Assets/jquery-2.1.0.min.js"></script>
+</body>
+</html>
