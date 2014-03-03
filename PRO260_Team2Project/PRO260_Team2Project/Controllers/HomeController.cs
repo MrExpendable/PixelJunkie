@@ -27,6 +27,20 @@ namespace PRO260_Team2Project.Controllers
             return View(imageList);
         }
 
+        public ActionResult SearchTags(string tag)
+        {
+            List<ImageOwner> imageList = null;
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                var imgTags = ihc.ImageTags.Where(x => x.Tag == tag).ToList();
+                foreach (ImageTag it in imgTags)
+                {
+                    imageList.Add(ihc.ImageOwners.Where(x => x.ImageID == it.ImageID).First());
+                }
+            }
+            return View("Index", imageList);
+        }
+
         public ActionResult UploadImage()
         {
             return View();
