@@ -1,0 +1,14 @@
+﻿<div>
+    <img class="images">
+    <ul>
+        <li>@Model.Title</li>
+        <li>@Model.Owner</li>
+        <li>@Model.Likes</li>
+        <li>@Model.Price</li>
+        <li>@foreach (String t in Model.Tags)
+            {
+                @t
+            }
+        </li>
+    </ul>
+</div>

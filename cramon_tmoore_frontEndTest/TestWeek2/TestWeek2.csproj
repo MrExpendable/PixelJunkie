@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{906617ED-EFCE-48A4-BF89-44A0B352938E}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestWeek2</RootNamespace>
+    <AssemblyName>TestWeek2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\Images\backdrop.jpg" />
+    <Content Include="Assets\Images\backdrop2.jpg" />
+    <Content Include="Assets\Images\Icons\arrow32.png" />
+    <Content Include="Assets\Images\Icons\arrowright32.png" />
+    <Content Include="Assets\Images\Icons\article32.png" />
+    <Content Include="Assets\Images\Icons\bag32.png" />
+    <Content Include="Assets\Images\Icons\bargraph32.png" />
+    <Content Include="Assets\Images\Icons\block32.png" />
+    <Content Include="Assets\Images\Icons\box32.png" />
+    <Content Include="Assets\Images\Icons\boxdownload32.png" />
+    <Content Include="Assets\Images\Icons\boxupload32.png" />
+    <Content Include="Assets\Images\Icons\camera32.png" />
+    <Content Include="Assets\Images\Icons\cameraminus32.png" />
+    <Content Include="Assets\Images\Icons\cameraplus32.png" />
+    <Content Include="Assets\Images\Icons\camerastar32.png" />
+    <Content Include="Assets\Images\Icons\cardgame32.png" />
+    <Content Include="Assets\Images\Icons\check32.png" />
+    <Content Include="Assets\Images\Icons\circleleft32.png" />
+    <Content Include="Assets\Images\Icons\circleright32.png" />
+    <Content Include="Assets\Images\Icons\clock32.png" />
+    <Content Include="Assets\Images\Icons\comment32.png" />
+    <Content Include="Assets\Images\Icons\commentblack32.png" />
+    <Content Include="Assets\Images\Icons\contactbook32.png" />
+    <Content Include="Assets\Images\Icons\contactcard32.png" />
+    <Content Include="Assets\Images\Icons\cup32.png" />
+    <Content Include="Assets\Images\Icons\download32.png" />
+    <Content Include="Assets\Images\Icons\exchange32.png" />
+    <Content Include="Assets\Images\Icons\folder32.png" />
+    <Content Include="Assets\Images\Icons\folderblock32.png" />
+    <Content Include="Assets\Images\Icons\folderminus32.png" />
+    <Content Include="Assets\Images\Icons\folderplus32.png" />
+    <Content Include="Assets\Images\Icons\gear32.png" />
+    <Content Include="Assets\Images\Icons\glitter32.png" />
+    <Content Include="Assets\Images\Icons\heart32.png" />
+    <Content Include="Assets\Images\Icons\home32.png" />
+    <Content Include="Assets\Images\Icons\leftarrow32.png" />
+    <Content Include="Assets\Images\Icons\leftturnarrow32.png" />
+    <Content Include="Assets\Images\Icons\lightbulb32.png" />
+    <Content Include="Assets\Images\Icons\linedpaper32.png" />
+    <Content Include="Assets\Images\Icons\linedpapercheck32.png" />
+    <Content Include="Assets\Images\Icons\linedpaperlock32.png" />
+    <Content Include="Assets\Images\Icons\linedpaperminus32.png" />
+    <Content Include="Assets\Images\Icons\linedpaperpencil32.png" />
+    <Content Include="Assets\Images\Icons\linedpaperplus32.png" />
+    <Content Include="Assets\Images\Icons\lock32.png" />
+    <Content Include="Assets\Images\Icons\mail32.png" />
+    <Content Include="Assets\Images\Icons\mailblock32.png" />
+    <Content Include="Assets\Images\Icons\mailminus32.png" />
+    <Content Include="Assets\Images\Icons\mailopened32.png" />
+    <Content Include="Assets\Images\Icons\mailplus32.png" />
+    <Content Include="Assets\Images\Icons\mailstar32.png" />
+    <Content Include="Assets\Images\Icons\mapleleaf32.png" />
+    <Content Include="Assets\Images\Icons\melody32.png" />
+    <Content Include="Assets\Images\Icons\minus32.png" />
+    <Content Include="Assets\Images\Icons\moneyreceipt32.png" />
+    <Content Include="Assets\Images\Icons\monitor32.png" />
+    <Content Include="Assets\Images\Icons\mouse32.png" />
+    <Content Include="Assets\Images\Icons\note32.png" />
+    <Content Include="Assets\Images\Icons\notecheck32.png" />
+    <Content Include="Assets\Images\Icons\notepencil32.png" />
+    <Content Include="Assets\Images\Icons\paper32.png" />
+    <Content Include="Assets\Images\Icons\papercheck32.png" />
+    <Content Include="Assets\Images\Icons\paperheart32.png" />
+    <Content Include="Assets\Images\Icons\paperlock32.png" />
+    <Content Include="Assets\Images\Icons\paperminus32.png" />
+    <Content Include="Assets\Images\Icons\papermusic32.png" />
+    <Content Include="Assets\Images\Icons\paperpencil32.png" />
+    <Content Include="Assets\Images\Icons\paperphoto32.png" />
+    <Content Include="Assets\Images\Icons\paperplus32.png" />
+    <Content Include="Assets\Images\Icons\paperstar32.png" />
+    <Content Include="Assets\Images\Icons\pencil32.png" />
+    <Content Include="Assets\Images\Icons\pencilplus32.png" />
+    <Content Include="Assets\Images\Icons\phone32.png" />
+    <Content Include="Assets\Images\Icons\phonebook32.png" />
+    <Content Include="Assets\Images\Icons\plug32.png" />
+    <Content Include="Assets\Images\Icons\plus32.png" />
+    <Content Include="Assets\Images\Icons\printer32.png" />
+    <Content Include="Assets\Images\Icons\questionbook32.png" />
+    <Content Include="Assets\Images\Icons\radio32.png" />
+    <Content Include="Assets\Images\Icons\recycle32.png" />
+    <Content Include="Assets\Images\Icons\risegraph32.png" />
+    <Content Include="Assets\Images\Icons\rss32.png" />
+    <Content Include="Assets\Images\Icons\scissors32.png" />
+    <Content Include="Assets\Images\Icons\search32.png" />
+    <Content Include="Assets\Images\Icons\shield32.png" />
+    <Content Include="Assets\Images\Icons\shieldcross32.png" />
+    <Content Include="Assets\Images\Icons\shoppingcart32.png" />
+    <Content Include="Assets\Images\Icons\sleep32.png" />
+    <Content Include="Assets\Images\Icons\slide32.png" />
+    <Content Include="Assets\Images\Icons\smile32.png" />
+    <Content Include="Assets\Images\Icons\spanner32.png" />
+    <Content Include="Assets\Images\Icons\speaker32.png" />
+    <Content Include="Assets\Images\Icons\speakermute32.png" />
+    <Content Include="Assets\Images\Icons\star32.png" />
+    <Content Include="Assets\Images\Icons\stop32.png" />
+    <Content Include="Assets\Images\Icons\turnright32.png" />
+    <Content Include="Assets\Images\Icons\unlock32.png" />
+    <Content Include="Assets\Images\Icons\upload32.png" />
+    <Content Include="Assets\Images\Icons\user32.png" />
+    <Content Include="Assets\Images\Icons\userblock32.png" />
+    <Content Include="Assets\Images\Icons\userminus32.png" />
+    <Content Include="Assets\Images\Icons\userplus32.png" />
+    <Content Include="Assets\Images\Icons\users32.png" />
+    <Content Include="Assets\Images\Icons\usersblock32.png" />
+    <Content Include="Assets\Images\Icons\usersminus32.png" />
+    <Content Include="Assets\Images\Icons\usersplus32.png" />
+    <Content Include="Assets\Images\Icons\wand32.png" />
+    <Content Include="Assets\Images\Icons\warning32.png" />
+    <Content Include="Assets\Images\Icons\wordpress32.png" />
+    <Content Include="Assets\Images\Icons\wrench32.png" />
+    <Content Include="Assets\Images\joker.jpg" />
+    <Content Include="Assets\Images\logo.png" />
+    <Content Include="Assets\Images\PlaceholderImage.jpg" />
+    <Content Include="Assets\jquery-2.1.0.min.js" />
+    <Content Include="Assets\reset.css" />
+    <Content Include="Assets\scripts.js" />
+    <Content Include="Assets\sidr-package-1.2.1\jquery.sidr.min.js" />
+    <Content Include="Assets\sidr-package-1.2.1\stylesheets\jquery.sidr.dark.css" />
+    <Content Include="Assets\sidr-package-1.2.1\stylesheets\jquery.sidr.light.css" />
+    <Content Include="Assets\styles.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\sidr-package-1.2.1\component.json" />
+    <Content Include="Assets\sidr-package-1.2.1\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Featured.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Image.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Upload.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_DefaultLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Images\Icons\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EnterUserInfoPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\GetAllImagesPartial.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5907/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
