@@ -29,13 +29,17 @@ namespace PRO260_Team2Project.Controllers
                     {
                         using (ImageHolderContext ihc = new ImageHolderContext())
                         {
+                            DateTime time = DateTime.Now;
+                            //this is using the test user created in the Index action in home
+                            int ID = 11;
+                            //int ID = WebSecurity.CurrentUserId;
                             Image newImage = new Image();
                             newImage.Image1 = imageArray;
-                            newImage.DateOfUpload = DateTime.Now;
-                            //this is using the test user created in the Index action in home
-                            newImage.OriginalPosterID = 11;
-                            //newImage.OriginalPosterID = WebSecurity.CurrentUserId;
+                            newImage.DateOfUpload = time;
+                            newImage.OriginalPosterID = ID;
                             ihc.Images.Add(newImage);
+                            ihc.SaveChanges();
+
                             ImageOwner imgOwn = new ImageOwner();
                             if (price != null)
                             {
@@ -49,10 +53,12 @@ namespace PRO260_Team2Project.Controllers
                             {
                                 imgOwn.Caption = caption;
                             }
-                            imgOwn.Image = newImage;
-                            imgOwn.ImageID = newImage.ImageID;
-                            imgOwn.Member = ihc.Members.Where(x => x.MemberID == newImage.OriginalPosterID).First();
-                            imgOwn.TimeStamp = newImage.DateOfUpload;
+                            Image img = ihc.Images.Where(x => x.OriginalPosterID == ID && x.DateOfUpload == time).First();
+                            imgOwn.Image = img;
+                            imgOwn.ImageID = img.ImageID;
+                            imgOwn.Member = ihc.Members.Where(x => x.MemberID == ID).First();
+                            imgOwn.OwnerID = ID;
+                            imgOwn.TimeStamp = time;
                             ihc.ImageOwners.Add(imgOwn);
                             ihc.SaveChanges();
                         }

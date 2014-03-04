@@ -18,15 +18,25 @@ namespace PRO260_Team2Project.Controllers
             List<ImageOwner> imageList = null;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
+                //testing models
                 Member test = ihc.Members.Where(x => x.MemberID == 11).FirstOrDefault();
                 if (test == null)
                 {
-                    Member newMember = new Member();
-                    newMember.MemberID = 11;
-                    newMember.UserName = "useruser";
-                    newMember.AccountBalance = 0;
-                    ihc.Members.Add(newMember);
-                    ihc.SaveChanges();
+                    test.MemberID = 11;
+                    test.UserName = "useruser";
+                    test.AccountBalance = 0;
+                    ihc.Members.Add(test);
+
+                    //ImageOwner imgTest = ihc.ImageOwners.Where(x => x.ImageID == 2 && x.Member.Equals(test)).FirstOrDefault();
+                    //if (imgTest == null)
+                    //{
+                    //    imgTest.Image = new Image();
+                    //    imgTest.ImageID = 2;
+                    //    imgTest.Member = test;
+                    //    imgTest.TimeStamp = DateTime.Now;
+                    //    ihc.ImageOwners.Add(imgTest);
+                    //}
+                    //ihc.SaveChanges();
                 }
 
                 if (ihc.ImageOwners.ToList().Count > 0)
