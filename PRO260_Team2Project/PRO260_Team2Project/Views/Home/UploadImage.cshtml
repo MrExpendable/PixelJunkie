@@ -1,38 +1,6 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Upload";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UploadImage</title>
-</head>
-<body>
-    <div>
-        @using (Html.BeginForm("StoreImage", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @:Choose a file to upload:
-            <input type="file" name="file" /> 
-            <input type="submit" value="Upload"/>
-            <br />
-            @:Optional fields:
-            @:Price: <input type="number" name="price" /> 
-            <br />
-            @:Title: <input type="text" name="title" />
-            <br />
-            @:Caption: <input type="text" name="caption" />
-        }
-    </div>
-    <br />
-    <div>
-        @using (Html.BeginForm("DeleteImageID", "Image", FormMethod.Post))
-        {
-            @:Delete an image:
-            <input type="number" name="imageID" />
-            <input type="submit" value="Delete"/>
-        }
-    </div>
-</body>
-</html>
+<h1>Upload Image</h1>
+@Html.Partial("UploadPartial")

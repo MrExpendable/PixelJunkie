@@ -1,0 +1,14 @@
+﻿<div class="image">
+    <img src="/Assets/Images/PlaceholderImage.jpg" />
+</div>
+<ul>
+    <li>Title: @Model.Title</li>
+    <li>Owner: @Model.Owner</li>
+    <li>Likes: @Model.Likes</li>
+    <li>Price(in points): @Model.Price</li>
+    <li>Tags: @foreach (String t in Model.Tags)
+        {
+            @t@:,
+        }
+    </li>
+</ul>

@@ -1,59 +1,10 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="Assets/reset.css"/>
-    <link rel="stylesheet" href="Assets/sidr-package-1.2.1/stylesheets/jquery.sidr.dark.css"/>
-    <link rel="stylesheet" type="text/css" href="Assets/styles.css"/>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Varela+Round|Istok+Web|Montserrat"/>
-    <script src="Assets/jquery-2.1.0.min.js"></script>
-	<title>Login</title>
-</head>
-	<body>
-        <nav>
-            <a href="index.html"><img class="logo" src="Assets/Images/joker.jpg"></a>
-            <ul>
-                <a href="index.html"><li>Home</li></a>
-                <a href="profile.html"><li>Profile</li></a>
-                <a href="featured.html"><li>Featured</li></a>
-                <a href="upload.html"><li>Upload</li></a>
-                <a href="login.html"><li>Login/Register</li></a>
-            </ul>
-        </nav>
-        <div class="mainContent" id="container">
-            <h1>Login</h1>
-            <form class="login">
-                Username:<input type="text" name="username"/>
-                Password:<input type="password" name="password"/>
-                <input type="submit" value="Login">
-            </form>
-            
-            <h1>Sign Up</h1>
-            <form class="signUp">
-                Username:<input type="text" name="username"/>
-                Password:<input type="password" name="password"/>
-                <input type="submit" value="Sign Up">
-            </form>
-            
-            <footer>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li>|</li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li>|</li>
-                    <li><a href="featured.html">Featured</a></li>
-                    <li>|</li>
-                    <li><a href="#">Upload</a></li>
-                    <li>|</li>
-                    <li><a href="#">Tags</a></li>
-                    <li>|</li>
-                    <li><a href="#">Sign In/Register</a></li>
-                </ul>
-            </footer>
-        </div>
-        <script src="Assets/scripts.js"></script>
-	</body>
-</html>
+<h1>Login</h1>
+@Html.Partial("EnterUserInfoPartial")
+
+<h1>Sign Up</h1>
+@Html.Partial("EnterUserInfoPartial")

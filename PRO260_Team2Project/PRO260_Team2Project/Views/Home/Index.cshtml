@@ -1,52 +1,119 @@
-﻿@using PRO260_Team2Project
-@model IEnumerable<ImageOwner>
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Home Page";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+<h1>Home/Index</h1>
+<div class="welcome">
+    <img alt="welcome">
+</div>
+<div class="bodyImages">
     <div>
-        <h1>Home</h1>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
     </div>
     <div>
-        @using (Html.BeginForm("SearchTags", "Home"))
-        {
-            @: Search tags: 
-            <input type="text" name="tag" />
-            <input type="submit" value="Search" />
-        }
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
     </div>
     <div>
-        @Html.ActionLink("Upload an image", "UploadImage")
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
     </div>
     <div>
-        @if(Model != null && Model.Count() > 0)
-        {
-            foreach (ImageOwner io in Model)
-            {
-                <div class="portfolio">
-                    @*<img src="@io.Image.Image1" alt="image">*@
-                    <ul>
-                        <li>Title: @io.Title</li>
-                        <li>Likes: @io.Likes</li>
-                       @*<li>@Html.ActionLink("View Page", "DisplayImagePage", "Image", io)</li>*@
-                    </ul>
-                </div>
-            }
-        }
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
     </div>
     <div>
-        <b>Account Crap</b><br />
-        <a href="~/Account/Register">Register</a><br />
-        <a href="~/Account/Register">Log In</a>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
     </div>
-
-</body>
-</html>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <div>
+        <img class="images">
+        <ul>
+            <li>Title:</li>
+            <li>Owner:</li>
+            <li>Likes:</li>
+            <li>Dislikes:</li>
+        </ul>
+    </div>
+    <span class="stretch"></span>
+</div>
