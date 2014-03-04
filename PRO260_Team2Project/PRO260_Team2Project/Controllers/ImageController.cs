@@ -143,7 +143,9 @@ namespace PRO260_Team2Project.Controllers
         {
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                byte[] img = ihc.Images.Where(x => x.ImageID == imgOwn.ImageID).FirstOrDefault().Image1;
+               // byte[] img = ihc.Images.Where(x => x.ImageID == imgOwn.ImageID).FirstOrDefault().Image1;
+                var base64 = Convert.ToBase64String(ihc.Images.Where(x => x.ImageID == imgOwn.ImageID).FirstOrDefault().Image1);
+                var img = String.Format("data:image/gif;base64,{0}", base64);
                 ViewBag.Image = img;
                 List<string> tagList = ihc.ImageTags.Where(x => x.ImageID == imgOwn.ImageID).Select(x => x.Tag).ToList();
                 ViewBag.Tags = tagList;
