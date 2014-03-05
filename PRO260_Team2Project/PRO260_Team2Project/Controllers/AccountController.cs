@@ -15,12 +15,15 @@ namespace PRO260_Team2Project.Controllers
     {
         List<User> users = new List<User>();
 
+
         #region index
-        public ActionResult Index(int page = 1, int resultsPerPage = 20)
+        public ActionResult Index(int page = 1, int resultsPerPage = 3, int sortingMethod = 0)
         {
             List<User> tempUsers = new List<User>();
             UpdateUsers();
-            if (users.Count > resultsPerPage * page)
+
+            int totalPages = users.Count % resultsPerPage == 0 ? users.Count / resultsPerPage : users.Count / resultsPerPage + 1;
+            if (users.Count >= resultsPerPage * page)
             {
                 tempUsers = users.GetRange((page - 1) * resultsPerPage, resultsPerPage); //if you want 10 results per page, page 1 will have 0-9, page 2 will have 10-19.
             }
@@ -28,7 +31,17 @@ namespace PRO260_Team2Project.Controllers
             {
                 tempUsers = users.GetRange((page - 1) * resultsPerPage, users.Count % resultsPerPage);
             }
+            if (sortingMethod == 0)
+            {
+                //tempUsers = tempUsers.OrderBy(x => x.Score).ToList();
+                tempUsers = tempUsers.OrderBy(x => x.UserName).ToList();
+            }
+            else
+            {
+                tempUsers = tempUsers.OrderBy(x => x.UserName).ToList();
+            }
             ViewBag.Page = page;
+            ViewBag.TotalPages = totalPages;
             ViewBag.ResultsPerPage = resultsPerPage;
             ViewBag.TotalResults = users.Count;
             return View(tempUsers);
@@ -36,26 +49,39 @@ namespace PRO260_Team2Project.Controllers
         #endregion
 
         #region Search
-        public ActionResult Search(String searchQuery = "", int page = 1, int resultsPerPage = 20)
+        public ActionResult Search(String searchString = "", int page = 1, int resultsPerPage = 3, int sortingMethod = 0)
         {
             List<User> searchedUsers = new List<User>();
             List<User> tempUsers = new List<User>();
             UpdateUsers();
+            int totalPages = searchedUsers.Count % resultsPerPage == 0 ? searchedUsers.Count / resultsPerPage : (searchedUsers.Count / resultsPerPage) + 1;
             foreach (User user in users)
             {
-                if (user.UserName.Contains(searchQuery))
+                if (user.UserName.Contains(searchString))
                 {
                     searchedUsers.Add(user);
                 }
             }
-            if (users.Count > resultsPerPage * page)
+            if (users.Count >= resultsPerPage * page)
             {
                 tempUsers = searchedUsers.GetRange((page - 1) * resultsPerPage, resultsPerPage); //if you want 10 results per page, page 1 will have 0-9, page 2 will have 10-19.
+
             }
             else
             {
                 tempUsers = searchedUsers.GetRange((page - 1) * resultsPerPage, searchedUsers.Count % resultsPerPage);
             }
+            if (sortingMethod == 0)
+            {
+                //tempUsers = tempUsers.OrderBy(x => x.Score).ToList();
+                tempUsers = tempUsers.OrderBy(x => x.UserName).ToList();
+            }
+            else
+            {
+                tempUsers = tempUsers.OrderBy(x => x.UserName).ToList();
+            }
+            ViewBag.TotalPages = totalPages;
+            ViewBag.SearchString = searchString;
             ViewBag.Page = page;
             ViewBag.ResultsPerPage = resultsPerPage;
             ViewBag.TotalResults = searchedUsers.Count;
@@ -200,25 +226,6 @@ namespace PRO260_Team2Project.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    using(ImageHolderContext con = new ImageHolderContext())
-                    {
-                        Member neoMember = new Member();
-                        neoMember.UserName = model.UserName;
-                        using(MembershipContext con2 = new MembershipContext())
-                        {
-                            try
-                            {
-                                neoMember.MemberID = con2.Users.Where(x => x.UserName == neoMember.UserName).First().Id;
-                            }
-                            catch (Exception e)
-                            {
-                                var m = e.Message;
-                            }
-                        }
-                        neoMember.AccountBalance = 500;
-                        con.Members.Add(neoMember);
-                        con.SaveChanges();
-                    }                    
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
