@@ -9,14 +9,28 @@
 <a href="~/">Home</a><br />        
 <a href="~/Account/">Members Directory</a><br />
 <br />
+     @using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <p>@Html.TextBox("SearchString") <br />  
+         <input type="submit" value="Search" /></p> 
+        } 
+<br />
 
 <div>
-    Searching users with name containing "@ViewBag.SearchQuery". @ViewBag.TotalResults results found.
+    Searching users with name containing "@ViewBag.SearchString". @ViewBag.TotalResults results found.
     <br />
-    
-    <br /><b>Page: @ViewBag.Page. <br />Results Per Page: @ViewBag.ResultsPerPage.</b><br /><br />
+    <br /><b>Page: @ViewBag.Page.</b><br /><br />
 
 </div>
+@using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <input type="hidden" name="SortingMethod" value="0" />
+    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/> 
+         <input type="submit" value="SortByScore" />
+        } 
+@using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <input type="hidden" name="SortingMethod" value="1" /> 
+    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
+         <input type="submit" value="SortByName" />
+        } 
 
 @foreach (User t in Model)
 {
@@ -25,4 +39,21 @@
 }
 
 
-<br /><b>Page: @ViewBag.Page. <br />Results Per Page: @ViewBag.ResultsPerPage.</b><br /><br />
+<br /><b>Page: @ViewBag.Page.</b><br /><br />
+
+@if(ViewBag.Page > 1)
+{
+using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <input type="hidden" name="Page" value="@ViewBag.Page - 1" />
+         <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
+         <input type="submit" value="Previous Page" />
+        } 
+}
+@if(ViewBag.Page < ViewBag.TotalPages)
+{
+using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <input type="hidden" name="Page" value="@ViewBag.Page + 1" />
+         <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
+         <input type="submit" value="Next Page" />
+        } 
+}
