@@ -6,12 +6,21 @@
     <edmx:StorageModels>
     <Schema Namespace="ImageHolderModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ImageHolderModelStoreContainer">
+          <EntitySet Name="Auction " EntityType="ImageHolderModel.Store.Auction " store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="ImageHolderModel.Store.Comment" store:Type="Tables" />
           <EntitySet Name="Flag" EntityType="ImageHolderModel.Store.Flag" store:Type="Tables" />
           <EntitySet Name="Image" EntityType="ImageHolderModel.Store.Image" store:Type="Tables" />
           <EntitySet Name="ImageOwners" EntityType="ImageHolderModel.Store.ImageOwners" store:Type="Tables" />
           <EntitySet Name="ImageTags" EntityType="ImageHolderModel.Store.ImageTags" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="ImageHolderModel.Store.Member" store:Type="Tables" />
+          <AssociationSet Name="FK_Auction_To_ImageOwner" Association="ImageHolderModel.Store.FK_Auction_To_ImageOwner">
+            <End Role="ImageOwners" EntitySet="ImageOwners" />
+            <End Role="Auction " EntitySet="Auction " />
+          </AssociationSet>
+          <AssociationSet Name="FK_Auction_To_Member" Association="ImageHolderModel.Store.FK_Auction_To_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Auction " EntitySet="Auction " />
+          </AssociationSet>
           <AssociationSet Name="FK_CommentToImageOwners" Association="ImageHolderModel.Store.FK_CommentToImageOwners">
             <End Role="ImageOwners" EntitySet="ImageOwners" />
             <End Role="Comment" EntitySet="Comment" />
@@ -29,6 +38,17 @@
             <End Role="ImageTags" EntitySet="ImageTags" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Auction ">
+          <Key>
+            <PropertyRef Name="ImageID" />
+            <PropertyRef Name="PosterID" />
+          </Key>
+          <Property Name="ImageID" Type="int" Nullable="false" />
+          <Property Name="PosterID" Type="int" Nullable="false" />
+          <Property Name="HighestBidderID" Type="int" Nullable="false" />
+          <Property Name="CurrentBid" Type="bigint" Nullable="false" />
+          <Property Name="ExpirationDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -69,7 +89,7 @@
           <Property Name="Caption" Type="nvarchar" MaxLength="250" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="TimeStamp" Type="datetime" Nullable="false" />
-          <Property Name="Price" Type="bigint" />
+          <Property Name="Price" Type="bigint" Nullable="false" />
           <Property Name="Likes" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ImageTags">
@@ -88,6 +108,32 @@
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="30" />
           <Property Name="AccountBalance" Type="bigint" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Auction_To_ImageOwner">
+          <End Role="ImageOwners" Type="ImageHolderModel.Store.ImageOwners" Multiplicity="1" />
+          <End Role="Auction " Type="ImageHolderModel.Store.Auction " Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ImageOwners">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="OwnerID" />
+            </Principal>
+            <Dependent Role="Auction ">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="PosterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Auction_To_Member">
+          <End Role="Member" Type="ImageHolderModel.Store.Member" Multiplicity="1" />
+          <End Role="Auction " Type="ImageHolderModel.Store.Auction " Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Auction ">
+              <PropertyRef Name="HighestBidderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CommentToImageOwners">
           <End Role="ImageOwners" Type="ImageHolderModel.Store.ImageOwners" Multiplicity="1" />
           <End Role="Comment" Type="ImageHolderModel.Store.Comment" Multiplicity="*" />
@@ -165,6 +211,15 @@
             <End Role="Image" EntitySet="Images" />
             <End Role="ImageTag" EntitySet="ImageTags" />
           </AssociationSet>
+          <EntitySet Name="Auction_" EntityType="ImageHolderModel.Auction_" />
+          <AssociationSet Name="FK_Auction_To_ImageOwner" Association="ImageHolderModel.FK_Auction_To_ImageOwner">
+            <End Role="ImageOwner" EntitySet="ImageOwners" />
+            <End Role="Auction_" EntitySet="Auction_" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Auction_To_Member" Association="ImageHolderModel.FK_Auction_To_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Auction_" EntitySet="Auction_" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Comment">
           <Key>
@@ -211,9 +266,10 @@
           <Property Name="Caption" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
           <Property Name="Title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Price" Type="Int64" />
+          <Property Name="Price" Type="Int64" Nullable="false" />
           <Property Name="Likes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="ImageHolderModel.FK_CommentToImageOwners" FromRole="ImageOwner" ToRole="Comment" />
+          <NavigationProperty Name="Auction_" Relationship="ImageHolderModel.FK_Auction_To_ImageOwner" FromRole="ImageOwner" ToRole="Auction_" />
         </EntityType>
         <EntityType Name="ImageTag">
           <Key>
@@ -232,6 +288,7 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="AccountBalance" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Flags" Relationship="ImageHolderModel.FK_FlagToMember" FromRole="Member" ToRole="Flag" />
+          <NavigationProperty Name="Auction_" Relationship="ImageHolderModel.FK_Auction_To_Member" FromRole="Member" ToRole="Auction_" />
         </EntityType>
         <Association Name="FK_CommentToImageOwners">
           <End Type="ImageHolderModel.ImageOwner" Role="ImageOwner" Multiplicity="1" />
@@ -280,6 +337,45 @@
             </Principal>
             <Dependent Role="ImageTag">
               <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Auction_">
+          <Key>
+            <PropertyRef Name="ImageID" />
+            <PropertyRef Name="PosterID" />
+          </Key>
+          <Property Type="Int32" Name="ImageID" Nullable="false" />
+          <Property Type="Int32" Name="PosterID" Nullable="false" />
+          <Property Type="Int32" Name="HighestBidderID" Nullable="false" />
+          <Property Type="Int64" Name="CurrentBid" Nullable="false" />
+          <Property Type="DateTime" Name="ExpirationDate" Precision="3" />
+          <NavigationProperty Name="ImageOwner" Relationship="ImageHolderModel.FK_Auction_To_ImageOwner" FromRole="Auction_" ToRole="ImageOwner" />
+          <NavigationProperty Name="Member" Relationship="ImageHolderModel.FK_Auction_To_Member" FromRole="Auction_" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Auction_To_ImageOwner">
+          <End Type="ImageHolderModel.ImageOwner" Role="ImageOwner" Multiplicity="1" />
+          <End Type="ImageHolderModel.Auction_" Role="Auction_" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ImageOwner">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="OwnerID" />
+            </Principal>
+            <Dependent Role="Auction_">
+              <PropertyRef Name="ImageID" />
+              <PropertyRef Name="PosterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Auction_To_Member">
+          <End Type="ImageHolderModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="ImageHolderModel.Auction_" Role="Auction_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Auction_">
+              <PropertyRef Name="HighestBidderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -349,6 +445,17 @@
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auction_">
+            <EntityTypeMapping TypeName="ImageHolderModel.Auction_">
+              <MappingFragment StoreEntitySet="Auction ">
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CurrentBid" ColumnName="CurrentBid" />
+                <ScalarProperty Name="HighestBidderID" ColumnName="HighestBidderID" />
+                <ScalarProperty Name="PosterID" ColumnName="PosterID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

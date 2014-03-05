@@ -15,30 +15,24 @@ namespace PRO260_Team2Project
 using System;
     using System.Collections.Generic;
     
-public partial class Member
+public partial class Auction_
 {
 
-    public Member()
-    {
+    public int ImageID { get; set; }
 
-        this.Flags = new HashSet<Flag>();
+    public int PosterID { get; set; }
 
-        this.Auction_ = new HashSet<Auction_>();
+    public int HighestBidderID { get; set; }
 
-    }
+    public long CurrentBid { get; set; }
 
-
-    public int MemberID { get; set; }
-
-    public string UserName { get; set; }
-
-    public long AccountBalance { get; set; }
+    public Nullable<System.DateTime> ExpirationDate { get; set; }
 
 
 
-    public virtual ICollection<Flag> Flags { get; set; }
+    public virtual ImageOwner ImageOwner { get; set; }
 
-    public virtual ICollection<Auction_> Auction_ { get; set; }
+    public virtual Member Member { get; set; }
 
 }
 

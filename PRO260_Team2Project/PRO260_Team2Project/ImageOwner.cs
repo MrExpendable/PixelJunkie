@@ -36,15 +36,16 @@ public partial class ImageOwner
 
     public System.DateTime TimeStamp { get; set; }
 
-    public Nullable<long> Price { get; set; }
+    public long Price { get; set; }
 
     public int Likes { get; set; }
 
 
 
     public virtual ICollection<Comment> Comments { get; set; }
-    public virtual Member Member { get; set; }
     public virtual Image Image { get; set; }
+    public virtual Member Member { get; set; }
+    public virtual Auction_ Auction_ { get; set; }
 
 }
 

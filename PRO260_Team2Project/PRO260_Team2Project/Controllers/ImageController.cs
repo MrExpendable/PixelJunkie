@@ -194,7 +194,7 @@ namespace PRO260_Team2Project.Controllers
             {
                 if (todaysDate < expirationDate)
                 {
-                    Auction auctionToAdd = new Auction { CurrentBid = startingBid, ExpirationDate = expirationDate, PosterID = poster.OwnerID, ImageID = image.ImageID };
+                    Auction_ auctionToAdd = new Auction_ { CurrentBid = startingBid, ExpirationDate = expirationDate, PosterID = poster.OwnerID, ImageID = image.ImageID };
                     ihc.Auction_.Add(auctionToAdd);
                 }
             }
@@ -206,7 +206,7 @@ namespace PRO260_Team2Project.Controllers
             DateTime todaysDate = DateTime.Now;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                Auction auction = ihc.Auction_.Where(x => x.ImageID == image.ImageID).FirstOrDefault();
+                Auction_ auction = ihc.Auction_.Where(x => x.ImageID == image.ImageID).FirstOrDefault();
                 DateTime? expirationDate = auction.ExpirationDate;
                 Member bidder = ihc.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId && x.MemberID != image.OwnerID).FirstOrDefault();
 
