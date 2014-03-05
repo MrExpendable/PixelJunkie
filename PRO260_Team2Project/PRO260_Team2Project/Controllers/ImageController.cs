@@ -17,7 +17,7 @@ namespace PRO260_Team2Project.Controllers
         #region ImageManagement
         //[Authorize]
         [HttpPost]
-        public ActionResult StoreImage(HttpPostedFileBase file, int? price, string title, string caption)
+        public ActionResult StoreImage(HttpPostedFileBase file, long price, string title, string caption)
         {
             if (file != null)
             {
@@ -167,6 +167,59 @@ namespace PRO260_Team2Project.Controllers
                 }
             }
             return View("DisplayImagePage", imgOwn);
+        }
+
+        public ActionResult BuyImage(ImageOwner image)
+        {
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                Member oldOwner = ihc.Members.Where(x => x.MemberID == image.OwnerID).FirstOrDefault();
+                Member newOwner = ihc.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId).FirstOrDefault();
+
+                oldOwner.AccountBalance += image.Price;
+                newOwner.AccountBalance -= image.Price;
+
+                image.OwnerID = newOwner.MemberID;
+
+                ihc.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult AddAuction(long startingBid, DateTime? expirationDate, ImageOwner poster, ImageOwner image)
+        {
+            DateTime todaysDate = DateTime.Now;
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                if (todaysDate < expirationDate)
+                {
+                    Auction auctionToAdd = new Auction { CurrentBid = startingBid, ExpirationDate = expirationDate, PosterID = poster.OwnerID, ImageID = image.ImageID };
+                    ihc.Auction_.Add(auctionToAdd);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult UpdateBid(ImageOwner image, Member bidderParam, long bid)
+        {
+            DateTime todaysDate = DateTime.Now;
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                Auction auction = ihc.Auction_.Where(x => x.ImageID == image.ImageID).FirstOrDefault();
+                DateTime? expirationDate = auction.ExpirationDate;
+                Member bidder = ihc.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId && x.MemberID != image.OwnerID).FirstOrDefault();
+
+                if (todaysDate < expirationDate)
+                {
+                    if (bidder.AccountBalance >= image.Price && bidder.AccountBalance >= bid)
+                    {
+                        auction.CurrentBid = bid;
+                        bidder.AccountBalance -= bid;
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
