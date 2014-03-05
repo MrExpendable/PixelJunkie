@@ -12,23 +12,11 @@
 
 <div>
     Welcome to the Directory. @ViewBag.TotalResults users are registered.
-    <br /> <br />
-         @using (Html.BeginForm("Search","Account", FormMethod.Get)){    
-         <p>@Html.TextBox("SearchString") <br />  
-         <input type="submit" value="Search" /></p> 
-        } 
-    <br /><b>Page: @ViewBag.Page.</b><br /><br />
+    <br />
+    
+    <br /><b>Page: @ViewBag.Page. <br />Results Per Page: @ViewBag.ResultsPerPage.</b><br /><br />
 
 </div>
-
-@using (Html.BeginForm("Index","Account", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="0" /> 
-         <input type="submit" value="SortByScore" />
-        } 
-@using (Html.BeginForm("Index","Account", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="1" /> 
-         <input type="submit" value="SortByName" />
-        } 
 
 @foreach (User t in Model)
 {
@@ -37,21 +25,4 @@
 }
 
 
-<br /><b>Page: @ViewBag.Page.</b><br /><br />
-
-@if(ViewBag.Page > 1)
-{
-
-using (Html.BeginForm("Index","Account", FormMethod.Get)){    
-         <input type="hidden" name="Page" value="@(ViewBag.Page - 1)" /> 
-         <input type="submit" value="Previous Page" />
-        } 
-}
-@if(ViewBag.Page < ViewBag.TotalPages)
-{
-  
-using (Html.BeginForm("Index","Account", FormMethod.Get)){    
-         <input type="hidden" name="Page" value="@(ViewBag.Page + 1)" /> 
-         <input type="submit" value="Next Page" />
-        } 
-}
+<br /><b>Page: @ViewBag.Page. <br />Results Per Page: @ViewBag.ResultsPerPage.</b><br /><br />
