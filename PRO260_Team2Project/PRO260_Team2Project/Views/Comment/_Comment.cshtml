@@ -1,0 +1,10 @@
+﻿@model PRO260_Team2Project.Comment
+
+<div class="comment">
+    <div>@Model.TimeStamp</div>
+    @using(PRO260_Team2Project.ImageHolderContext con = new PRO260_Team2Project.ImageHolderContext())
+    {
+        <div>@con.Members.Where(x => x.MemberID == Model.PosterID).FirstOrDefault().UserName</div>
+    }
+    <div>@Model.Content</div>
+</div>

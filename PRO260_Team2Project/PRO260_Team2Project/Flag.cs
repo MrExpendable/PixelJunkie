@@ -14,6 +14,7 @@ namespace PRO260_Team2Project
 
 using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     
 public partial class Flag
 {
