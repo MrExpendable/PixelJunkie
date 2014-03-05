@@ -12,10 +12,23 @@ namespace PRO260_Team2Project.Controllers
     {
         //
         // GET: /Home/
+        List<Image> testImageList = new List<Image>
+        {
+            new Image(),
+            new Image(),
+            new Image(),
+            new Image(),
+            new Image(),
+            new Image(),
+            new Image(),
+            new Image()
+        };
+
         [AllowAnonymous]
         public ActionResult Index()
         {
             List<ImageOwner> imageList = null;
+            
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
                 //testing models
@@ -34,6 +47,11 @@ namespace PRO260_Team2Project.Controllers
                 }
             }
             return View(imageList);
+        }
+
+        public ActionResult Featured()
+        {
+            return View("Featured", testImageList);
         }
 
         public ActionResult SearchTags(string tag)

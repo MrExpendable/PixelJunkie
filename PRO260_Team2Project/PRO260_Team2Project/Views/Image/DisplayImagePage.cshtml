@@ -6,65 +6,62 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="~/Content/Assets/styles.css" />
-    <title>Display Image Page</title>
-</head>
-<body>
-    <!--When in doubt, uncomment id="container"-->
-    <div class="mainContent" id="container">
-        <div class="imageSection">
-            <div class="image">   
-                <img src="@ViewBag.Image" alt="Missing"/>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" type="text/css" href="~/Content/Assets/styles.css" />
+        <title>Display Image Page</title>
+    </head>
+    <body>
+        <!--When in doubt, uncomment id="container"-->
+        <div class="mainContent" id="container">
+            <div class="imageSection">
+                <div class="image">   
+                    <img src="@ViewBag.Image" alt="Missing"/>
+                </div>
+                <div class="imageInfo">
+                    <ul>
+                        <li><b>@Model.Title</b></li>
+                        <li>Time uploaded: @Model.TimeStamp</li>
+                        @if(Model.Price != null)
+                        {
+                            <li>@Model.Price</li>
+                        }
+                        <li>Caption: @Model.Caption</li>
+                        <li>Tags:</li>
+                    </ul>
+                     @foreach (string t in ViewBag.Tags)
+                     {
+                        @:#t
+                     }
+                    @Html.Partial("_ManageTags.cshthml", @Model)
+                </div>
             </div>
-            <div class="imageInfo">
-                <ul>
-                    <li><b>@Model.Title</b></li>
-                    <li>Time uploaded: @Model.TimeStamp</li>
-                    @if(Model.Price != null)
-                    {
-                        <li>@Model.Price</li>
-                    }
-                    <li>Caption: @Model.Caption</li>
-                    <li>Tags:</li>
-                </ul>
-                 @foreach (string t in ViewBag.Tags)
-                 {
-                    @:#t
-                 }
-                @Html.Partial("_ManageTags.cshthml", @Model)
+            <div class="like">
+                Likes on this picture: @Model.Likes
+                @Html.BeginForm("LikeImage", "Images")
+                {
+                    <input type="hidden" name="imgOwn" value="@Model" />
+                    <input type="submit" value="Like"/>
+                }
             </div>
-        </div>
-        <div class="like">
-            Likes on this picture: @Model.Likes
-            @Html.BeginForm("LikeImage", "Images")
-            {
-                <input type="hidden" name="imgOwn" value="@Model" />
-                <input type="submit" value="Like"/>
-            }
-        </div>
 
-        <div class="commentSection">
-            @foreach(PRO260_Team2Project.Comment c in ViewBag.Comments)
-            {
-                @Html.Partial("~/shared/_Comment.cshtml",c)
-            }
-            <div class="comment">
-                <img src="~/Content/Assets/Images/PlaceholderImage.jpg"/>
-                <h6>Username</h6>
-                <p>I really like this picture.</p>
+            <div class="commentSection">
+                @foreach(PRO260_Team2Project.Comment c in ViewBag.Comments)
+                {
+                    @Html.Partial("~/shared/_Comment.cshtml",c)
+                }
+                <div class="comment">
+                    <img src="~/Content/Assets/Images/PlaceholderImage.jpg"/>
+                    <h6>Username</h6>
+                    <p>I really like this picture.</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="Add Comment">
-        @Html.ActionLink("Add Comment","Comment/AddComment",Model)
-    </div>
-    <div class="Flag Link">
-        @Html.ActionLink("Flag Image","Flag/AddFlag/"+Model.ImageID)
-    </div>
-        
-    <script src="~/Content/Assets/bootstrap/js/bootstrap.js"></script>
-    <script src="~/Content/Assets/jquery-2.1.0.min.js"></script>
-</body>
+        <div class="Add Comment">
+            @Html.ActionLink("Add Comment","Comment/AddComment",Model)
+        </div>
+        <div class="Flag Link">
+            @Html.ActionLink("Flag Image","Flag/AddFlag/"+Model.ImageID)
+        </div>
+    </body>
 </html>
