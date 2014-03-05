@@ -1,14 +1,20 @@
-﻿<div>
-    <img class="images">
-    <ul>
-        <li>Title: @Model.Title</li>
-        <li>Owner: @Model.Owner</li>
-        <li>Likes: @Model.Likes</li>
-        <li>Price(in points): @Model.Price</li>
-        <li>Tags: @foreach (String t in Model.Tags)
-            {
-                @t@:,
-            }
-        </li>
-    </ul>
-</div>
+﻿@using PRO260_Team2Project;
+@foreach(Image i in Model)
+{
+    <div>
+        <img class="images">
+        <ul>
+            <li>Image ID: @i.ImageID</li>
+            <li>OP ID: @i.OriginalPosterID</li>
+            <li>Tags:
+                @if (i.ImageTags != null)
+                {
+                    foreach (Image image in Model)
+                    {
+                        image.ToString();
+                    }
+                }
+            </li>
+        </ul>
+    </div>
+}

@@ -1,7 +1,19 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Upload";
 }
 
+<h1>Upload Image</h1>
+
+<form class="upload">
+    Image:<input type="image" name="image" />
+    Title:<input type="text" name="title" />
+    Tags(separate by commas): <input type="text" name="tags" />
+    <input type="submit" value="Upload">
+</form>
+
+
+<!--
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -61,3 +73,4 @@
         <script src="~/Content/Assets/sidr-package-1.2.1/jquery.sidr.min.js"></script>
 	</body>
 </html>
+-->

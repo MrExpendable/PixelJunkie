@@ -1,4 +1,7 @@
-﻿@{
+﻿@using PRO260_Team2Project
+@model IEnumerable<Image>
+
+@{
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "Home Page";
 }
@@ -11,6 +14,6 @@
 </div>
 
 <div class="bodyImages">
-    @Html.Partial("GetAllImagesPartial")
+    @Html.Partial("GetAllImagesPartial", Model)
     <span class="stretch"></span>
 </div>

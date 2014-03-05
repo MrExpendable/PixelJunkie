@@ -2,5 +2,11 @@
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "Upload";
 }
+
 <h1>Upload Image</h1>
-@Html.Partial("UploadPartial")
+<form class="upload">
+    Image:<input type="image" name="image" />
+    Title:<input type="text" name="title" />
+    Tags(separate by commas): <input type="text" name="tags" />
+    <input type="submit" value="Upload">
+</form>
