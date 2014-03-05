@@ -26,23 +26,11 @@ namespace PRO260_Team2Project.Controllers
                     test.UserName = "useruser";
                     test.AccountBalance = 0;
                     ihc.Members.Add(test);
-
-                    //ImageOwner imgTest = ihc.ImageOwners.Where(x => x.ImageID == 2 && x.Member.Equals(test)).FirstOrDefault();
-                    //if (imgTest == null)
-                    //{
-                    //    imgTest.Image = new Image();
-                    //    imgTest.ImageID = 2;
-                    //    imgTest.Member = test;
-                    //    imgTest.TimeStamp = DateTime.Now;
-                    //    ihc.ImageOwners.Add(imgTest);
-                    //}
-                    //ihc.SaveChanges();
                 }
 
                 if (ihc.ImageOwners.ToList().Count > 0)
                 {
-                    var images = ihc.ImageOwners.ToList();
-                    imageList = images;
+                    imageList = ihc.ImageOwners.ToList();
                 }
             }
             return View(imageList);

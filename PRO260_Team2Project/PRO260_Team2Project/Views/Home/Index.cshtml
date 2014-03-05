@@ -1,4 +1,6 @@
-﻿@{
+﻿@using PRO260_Team2Project
+@model IEnumerable<ImageOwner>
+@{
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "Home Page";
 }
@@ -8,112 +10,22 @@
 </div>
 <div class="bodyImages">
     <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img class="images">
-        <ul>
-            <li>Title:</li>
-            <li>Owner:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
+        @if(Model != null && Model.Count() > 0)
+        {
+            foreach (ImageOwner io in Model)
+            {
+                <div>
+                    @*string imageBase64 = Convert.ToBase64String(io.Image.Image1);
+                    string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                    <img src="imgSrc" class="images">*@
+                    <ul>
+                        <li>Title: @io.Title</li>
+                        <li>Likes: @io.Likes</li>
+                    </ul>
+                    @*<li>@Html.ActionLink("View Page", "DisplayImagePage", "Image", io)</li>*@
+                </div>
+            }
+        }
     </div>
     <span class="stretch"></span>
 </div>

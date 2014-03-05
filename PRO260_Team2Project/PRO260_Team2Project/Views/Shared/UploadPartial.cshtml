@@ -1,6 +1,14 @@
-﻿<form class="upload">
-    Image:<input type="image" name="image" />
-    Title:<input type="text" name="title" />
-    Tags(separate by commas): <input type="text" name="tags" />
-    <input type="submit" value="Upload">
-</form>
+﻿@using (Html.BeginForm("StoreImage", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @:Choose a file to upload:
+    <input type="file" name="file" /> 
+    <br />
+    @:Optional fields:
+    @:Price: <input type="number" name="price" />
+    <br />
+    @:Title: <input type="text" name="title" />
+    <br />
+    @:Caption: <input type="text" name="caption" />
+    <br />
+    <input type="submit" value="Upload" />    
+}
