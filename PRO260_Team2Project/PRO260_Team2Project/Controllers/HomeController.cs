@@ -44,6 +44,11 @@ namespace PRO260_Team2Project.Controllers
                 if (ihc.ImageOwners.ToList().Count > 0)
                 {
                     imageList = ihc.ImageOwners.ToList();
+                    foreach (ImageOwner io in imageList)
+                    {
+                        Image img = ihc.Images.Where(x => x.ImageID == io.ImageID).First();
+                        io.Image = img;
+                    }
                 }
             }
             return View(imageList);
