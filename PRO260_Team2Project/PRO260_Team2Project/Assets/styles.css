@@ -271,33 +271,79 @@ select{
 }
 
 /*Image Page*/
-.imageSection{
+.auction ul{
+    width:250px;
     margin:0 auto;
+    margin-top:100px;
+    margin-bottom:auto;
 }
 
-.imageSection ul{
-    list-style:none;
+.imageSection{
+    position:relative;
+    width:100%;
+    min-height:400px;
+    height:700px;
+}
+
+.imageTitle{
     text-align:center;
+    padding-bottom:15px;
 }
 
-.comment {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    border: 2px solid #333;
+.imageContainer{
+    float:left;
+    padding:20px;
 }
 
 .image{
-    margin: 0 auto;
+    margin:0 auto;
+    border:1px solid black;
+}
+
+.image img{
+    max-width:600px;
+    max-height:800px;
+}
+
+.saleInfo{
+    float:right;
+    padding:20px;
     text-align:center;
 }
 
-.imageSection img{
+.auction h1{
+    width:250px;
     margin:0 auto;
-    padding-top:20px;
-    width:600px;
-    max-height:700px;
+    margin-top:100px;
+    margin-bottom:auto;
+}
+
+.regPrice{
+    padding-top:200px;
+}
+
+.imageInfo{
+    background-color:gray;
+    width:560px;
+    margin:0 auto;
+    text-align:center;
+    padding:20px;
+    border:1px solid black;
+    margin-left:20px;
+    line-height:2;
+}
+
+.imageInfo li{
+    margin-left:50px;
+    margin-right:50px;
+    display:inline;
+}
+
+.commentSection{
+    width:918px;
+    margin:0 auto;
+    padding:20px;
+    border:1px solid black;
 }
 
 /*Footer*/

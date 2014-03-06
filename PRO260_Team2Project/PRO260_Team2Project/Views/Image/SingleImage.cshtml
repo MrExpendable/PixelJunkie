@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Image Title";
+    string s = "s";
+}
+<div class="imageSection">
+    <div class="imageContainer">
+        <h3 class="imageTitle">Title</h3>
+        <div class="image">
+            <img src="/Assets/Images/PlaceholderImage.jpg" />
+        </div>
+    </div>
+    <div class="saleInfo">
+        <div class="auction">
+            @if (s == "")
+            {
+                <h1>Sorry, This Image is Not On Auction</h1>
+            }
+            else
+            {
+                <ul>
+                    <li>Highest Bid:</li>
+                    <li>Would you like to bid?</li>
+                    <li><input type="number"/></li>
+                    <li><input type="submit" value="Place Bid"/></li>
+                </ul>  
+            }
+        </div>
+        <div class="regPrice">
+            <h5>Price: TOO MUCH FOR YOU</h5>
+            <input type="submit" value="Purchase" />
+        </div>
+    </div>
+</div>
+
+<div class="imageInfo">
+    <ul>
+        <li>UserName:</li>
+        <li>Likes:</li>
+        <li>Dislikes:</li>
+    </ul>
+</div>
+
+<div class="commentSection">
+    <div class="comment">
+        <h3>Comments</h3>
+        <h6>Username:</h6>
+        <p>I really like this picture.</p>
+    </div>
+</div>
