@@ -9,21 +9,18 @@
     <img alt="welcome">
 </div>
 <div class="bodyImages">
-    <div>
         @if(Model != null && Model.Count() > 0)
         {
             foreach (ImageOwner io in Model)
             {
-                <div>
+                <div class="indexImage">
                     <img src="data:image;base64,@System.Convert.ToBase64String(io.Image.Image1)" class="images"/>
                     <ul>
-                        <li>Title: @io.Title</li>
+                        <li>@Html.ActionLink(@io.Title, "SingleImage", "Image", @io, null)</li>
                         <li>Likes: @io.Likes</li>
-                        @*<li>@Html.ActionLink("View Page", "DisplayImagePage", "Image", io)</li>*@
                     </ul>
                 </div>
             }
         }
-    </div>
     <span class="stretch"></span>
 </div>

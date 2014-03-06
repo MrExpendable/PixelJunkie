@@ -139,7 +139,7 @@ namespace PRO260_Team2Project.Controllers
         }
         #endregion
 
-        public ActionResult DisplayImagePage(ImageOwner imgOwn)
+        public ActionResult SingleImage(ImageOwner imgOwn)
         {
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
@@ -166,7 +166,7 @@ namespace PRO260_Team2Project.Controllers
                     ihc.SaveChanges();
                 }
             }
-            return View("DisplayImagePage", imgOwn);
+            return RedirectToAction("SingleImage", imgOwn);
         }
 
         public ActionResult BuyImage(ImageOwner image)

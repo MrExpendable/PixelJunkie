@@ -5,6 +5,12 @@ html{
     font-size:62.4%;
 }
 
+.bodyImages {
+    display:inline-block;
+    margin:0 auto;
+    text-align:center;
+}
+
 body, html, .content, nav
 {
     height:100%;
