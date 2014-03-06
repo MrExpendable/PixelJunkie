@@ -32,18 +32,12 @@ namespace PRO260_Team2Project.Controllers
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
                 //testing models
-                Member test = ihc.Members.Where(x => x.MemberID == 11).FirstOrDefault();
-                if (test == null)
-                {
-                    test.MemberID = 11;
-                    test.UserName = "useruser";
-                    test.AccountBalance = 0;
-                    ihc.Members.Add(test);
-                }
+              
 
                 if (ihc.ImageOwners.ToList().Count > 0)
                 {
-                    imageList = ihc.ImageOwners.ToList();
+                    var imgs = from imgown in ihc.ImageOwners.Include("Comments").Include("Auction_") select imgown;
+                    imageList = imgs.ToList();
                     foreach (ImageOwner io in imageList)
                     {
                         Image img = ihc.Images.Where(x => x.ImageID == io.ImageID).First();
