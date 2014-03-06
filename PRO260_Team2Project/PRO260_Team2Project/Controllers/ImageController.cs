@@ -176,11 +176,17 @@ namespace PRO260_Team2Project.Controllers
                 Member oldOwner = ihc.Members.Where(x => x.MemberID == image.OwnerID).FirstOrDefault();
                 Member newOwner = ihc.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId).FirstOrDefault();
 
-                oldOwner.AccountBalance += image.Price;
-                newOwner.AccountBalance -= image.Price;
+                if (image.Price != 0)
+                {
+                    oldOwner.AccountBalance += image.Price;
+                    newOwner.AccountBalance -= image.Price;
 
-                image.OwnerID = newOwner.MemberID;
+                    image.OwnerID = newOwner.MemberID;
 
+                    Purchase purchase = new Purchase { ImageID = image.ImageID, PurchasePrice = image.Price, PurchaserID = newOwner.MemberID, SellerID = oldOwner.MemberID, TimeOfPurchase = DateTime.Now };
+                }
+               
+                image.Price = 0;
                 ihc.SaveChanges();
             }
 
