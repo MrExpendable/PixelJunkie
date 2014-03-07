@@ -4,7 +4,7 @@
 @{
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "Image Title";
-    //string s = "";
+            //string s = "";
 }
 <div class="imageSection">
     <div class="imageContainer">
@@ -52,15 +52,15 @@
         @:#t
     }
     @* @Html.Partial("~/Views/Shared/_ManageTags.cshthml", @Model)*@
-</div>
-<div class="like">
-    Likes on this picture: @Model.Likes
-    @Html.ActionLink("Like Image", "LikeImage", "Image", @Model, null)
+    <div class="like">
+        Likes on this picture: @Model.Likes
+        @Html.ActionLink("Like Image", "LikeImage", "Image", @Model, null)
+    </div>
+    <div class="Add Comment">
+        @Html.ActionLink("Add Comment", "AddComment", "Comment", Model, null)
+    </div>
+    <div class="Flag Link">
+        @Html.ActionLink("Flag Image", "Flag/AddFlag/" + Model.ImageID)
+    </div>
 </div>
 
-<div class="Add Comment">
-    @Html.ActionLink("Add Comment", "AddComment", "Comment", Model, null)
-</div>
-<div class="Flag Link">
-    @Html.ActionLink("Flag Image", "Flag/AddFlag/" + Model.ImageID)
-</div>
