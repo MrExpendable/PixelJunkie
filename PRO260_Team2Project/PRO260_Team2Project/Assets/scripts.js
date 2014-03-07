@@ -1,11 +1,20 @@
 $(document).ready(function() 
 {
-    $('#simple-menu').sidr();
+    var isChecked;
+    $('.priceSection').hide();
     
-    $('#simple-menu').focus();
-    
-    $('.imageFilter').click(function()
+    $('#isForSale').click(function()
     {
-        $('.filter').slideToggle('fast');
-    });
+        isChecked = $(this).is(':checked') ? true : false;
+        console.log(isChecked);
+
+        if (isChecked)
+        {
+            $('.priceSection').show();
+        }
+        else
+        {
+            $('.priceSection').hide();
+        }
+    });    
 });
