@@ -44,6 +44,8 @@ public partial class ImageHolderContext : DbContext
 
     public DbSet<Member> Members { get; set; }
 
+    public DbSet<Auction_> Auction_ { get; set; }
+
 }
 
 }

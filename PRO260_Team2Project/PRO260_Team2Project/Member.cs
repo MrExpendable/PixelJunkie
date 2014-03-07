@@ -23,6 +23,8 @@ public partial class Member
 
         this.Flags = new HashSet<Flag>();
 
+        this.Auction_ = new HashSet<Auction_>();
+
     }
 
 
@@ -35,6 +37,8 @@ public partial class Member
 
 
     public virtual ICollection<Flag> Flags { get; set; }
+
+    public virtual ICollection<Auction_> Auction_ { get; set; }
 
 }
 

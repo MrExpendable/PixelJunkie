@@ -14,24 +14,23 @@ namespace PRO260_Team2Project
 
 using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
     
-public partial class Flag
+public partial class Auction_
 {
 
-    public int FlagID { get; set; }
+    public int ImageID { get; set; }
 
-    public int FlaggerID { get; set; }
+    public int PosterID { get; set; }
 
-    public Nullable<int> ImageID { get; set; }
+    public int HighestBidderID { get; set; }
 
-    public System.DateTime TimeOfFlag { get; set; }
+    public long CurrentBid { get; set; }
 
-    public string Description { get; set; }
+    public Nullable<System.DateTime> ExpirationDate { get; set; }
 
 
 
-    public virtual Image Image { get; set; }
+    public virtual ImageOwner ImageOwner { get; set; }
 
     public virtual Member Member { get; set; }
 

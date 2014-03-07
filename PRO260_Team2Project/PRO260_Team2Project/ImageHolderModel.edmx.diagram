@@ -10,11 +10,14 @@
         <EntityTypeShape EntityType="ImageHolderModel.Image" Width="1.5" PointX="2.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ImageHolderModel.ImageOwner" Width="1.5" PointX="4.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ImageHolderModel.ImageTag" Width="1.5" PointX="0.5" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ImageHolderModel.Member" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImageHolderModel.Member" Width="1.5" PointX="6.875" PointY="2" IsExpanded="true" />
         <AssociationConnector Association="ImageHolderModel.FK_CommentToImageOwners" />
         <AssociationConnector Association="ImageHolderModel.FK_FlagToImage" />
         <AssociationConnector Association="ImageHolderModel.FK_FlagToMember" />
         <AssociationConnector Association="ImageHolderModel.FK_ImageTagToImage" />
+        <EntityTypeShape EntityType="ImageHolderModel.Auction_" Width="1.5" PointX="6.875" PointY="4.375" />
+        <AssociationConnector Association="ImageHolderModel.FK_Auction_To_ImageOwner" />
+        <AssociationConnector Association="ImageHolderModel.FK_Auction_To_Member" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

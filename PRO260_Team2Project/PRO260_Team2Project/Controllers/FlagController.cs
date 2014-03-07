@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace PRO260_Team2Project.Controllers
 {
@@ -25,13 +26,22 @@ namespace PRO260_Team2Project.Controllers
         {
             using (ImageHolderContext con = new ImageHolderContext())
             {
-                f.FlaggerID = 1; //1 used for testing purposes, will take ID of user logged in for the session later
+                f.FlaggerID = WebSecurity.CurrentUserId; //1 used for testing purposes, will take ID of user logged in for the session later
                 f.TimeOfFlag = DateTime.Now;
                 int seekID = 0;
                 int.TryParse((String)Url.RequestContext.RouteData.Values["id"], out seekID);
                 f.ImageID = seekID;
+                f.Member = con.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId).FirstOrDefault();
+                f.Image = con.Images.Where(x => x.ImageID == f.ImageID).FirstOrDefault();
                 con.Flags.Add(f);
-                con.SaveChanges();
+                try
+                {
+                    con.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message;
+                }
             }
             return RedirectToAction("Index", "Home");
         }

@@ -1,0 +1,66 @@
+﻿@using PRO260_Team2Project
+@model ImageOwner
+
+@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Image Title";
+    //string s = "";
+}
+<div class="imageSection">
+    <div class="imageContainer">
+        <h3 class="imageTitle">@Model.Title</h3>
+        <div class="image">
+            <img src="ViewBag.img" class="images"/>
+        </div>
+    </div>
+    <div class="saleInfo">
+       @* <div class="auction">
+            @if (s == "")
+            {
+                <h1>Sorry, This Image is Not On Auction</h1>
+            }
+            else
+            {
+                <ul>
+                    <li>Highest Bid:</li>
+                    <li>Would you like to bid?</li>
+                    <li><input type="number"/></li>
+                    <li><input type="submit" value="Place Bid"/></li>
+                </ul>  
+            }
+        </div>*@
+        <div class="regPrice">
+            <h5>Price: TOO MUCH FOR YOU</h5>
+            <input type="submit" value="Purchase" />
+        </div>
+    </div>
+</div>
+
+<div class="imageInfo">
+    <ul>
+        <li><b>@Model.Title</b></li>
+        <li>Time uploaded: @Model.TimeStamp</li>
+        @if (Model.Price != null)
+        {
+            <li>@Model.Price</li>
+        }
+        <li>Caption: @Model.Caption</li>
+        <li>Tags:</li>
+    </ul>
+    @foreach (string t in ViewBag.Tags)
+    {
+        @:#t
+    }
+    @* @Html.Partial("~/Views/Shared/_ManageTags.cshthml", @Model)*@
+</div>
+<div class="like">
+    Likes on this picture: @Model.Likes
+    @Html.ActionLink("Like Image", "LikeImage", "Image", @Model, null)
+</div>
+
+<div class="Add Comment">
+    @Html.ActionLink("Add Comment", "AddComment", "Comment", Model, null)
+</div>
+<div class="Flag Link">
+    @Html.ActionLink("Flag Image", "Flag/AddFlag/" + Model.ImageID)
+</div>
