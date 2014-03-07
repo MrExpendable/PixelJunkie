@@ -42,5 +42,16 @@ namespace PRO260_Team2Project.Models
             }
         }
 
+        public Notification(ImageOwner own)
+        {
+            ImageID = own.ImageID;
+            type = "LikeNote";
+            timeStamp = DateTime.Now;
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                imageTitle = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
+            }
+        }
+
     }
 }

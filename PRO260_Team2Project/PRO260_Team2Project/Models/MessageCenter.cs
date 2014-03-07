@@ -41,6 +41,23 @@ namespace PRO260_Team2Project.Models
             return notes;
         }
 
+        public IEnumerable<Notification> allLikes(int userID)
+        {
+            List<Notification> notes = new List<Notification>();
+            using (ImageHolderContext con = new ImageHolderContext())
+            {
+                foreach (ImageOwner own in con.ImageOwners.Where(x => x.OwnerID == userID).ToList())
+                {
+                    for (int i = 0; i < own.Likes; i++)
+                    {
+                        notes.Add(new Notification(own));
+                    }
+                }
+
+            }
+            return notes;
+        }
+
 
     }
 }

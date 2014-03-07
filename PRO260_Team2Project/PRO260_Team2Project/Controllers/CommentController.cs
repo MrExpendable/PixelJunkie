@@ -40,7 +40,7 @@ namespace PRO260_Team2Project.Controllers
                     var m = e.Message;
                 }
             
-                return RedirectToAction("DisplayImagePage", "Image", com.ImageOwner);
+                return RedirectToAction("SingleImage", "Image", com.ImageOwner);
             }
         }
 

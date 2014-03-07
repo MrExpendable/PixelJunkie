@@ -15,6 +15,9 @@
         <div>User @Model.PosterID, @Model.userName submitted a flag for image ID @Model.ImageID</div>
         <div>Complaint:</div>
         <div>@Model.Content</div>
+    }else if(Model.type.Equals("LikeNote"))
+    {
+       <div>Someone has liked "@Model.imageTitle"!</div>
     }
     else
     {
