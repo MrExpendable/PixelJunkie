@@ -31,8 +31,8 @@ namespace PRO260_Team2Project.Controllers
                         {
                             DateTime time = DateTime.Now;
                             //this is using the test user created in the Index action in home
-                            int ID = 11;
-                            //int ID = WebSecurity.CurrentUserId;
+                            //int ID = 11;
+                            int ID = WebSecurity.CurrentUserId;
                             Image newImage = new Image();
                             newImage.Image1 = imageArray;
                             newImage.DateOfUpload = time;

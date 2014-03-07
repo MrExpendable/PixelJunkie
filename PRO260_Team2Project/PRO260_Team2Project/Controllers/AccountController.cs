@@ -225,6 +225,17 @@ namespace PRO260_Team2Project.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+                    using (ImageHolderContext ihc = new ImageHolderContext())
+                    {
+                        Member m = new Member();
+                        using(MembershipContext mc = new MembershipContext())
+                        {
+                            m.MemberID = mc.Users.Where(x=> x.UserName == model.UserName).First().Id;
+                        }
+                        m.UserName = model.UserName;
+                        ihc.Members.Add(m);
+                        ihc.SaveChanges();
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

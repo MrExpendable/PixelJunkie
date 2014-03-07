@@ -1,0 +1,29 @@
+﻿@model PRO260_Team2Project.Models.Notification
+
+<div class="@Model.type">
+    @if (Model.type.Equals("CommentNote"))
+    {
+        <div>@Model.timeStamp</div>
+        <div>
+        @Model.userName has commented on your image "@Model.imageTitle" saying:
+            </div>
+        <div>@Model.Content</div>
+    }
+    else if (Model.type.Equals("flagNote"))
+    {
+        <div>@Model.timeStamp</div>
+        <div>User @Model.PosterID, @Model.userName submitted a flag for image ID @Model.ImageID</div>
+        <div>Complaint:</div>
+        <div>@Model.Content</div>
+    }
+    else
+    {
+            <div>@Model.timeStamp</div>
+    <div>@Model.PosterID on @Model.ImageID</div>
+    <div>@Model.Content</div>
+    }
+
+
+</div>
+
+
