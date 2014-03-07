@@ -13,7 +13,7 @@ namespace PRO260_Team2Project.Models
         public DateTime timeStamp;
         public string Content;
         public int ImageID;
-        public string imageTitle;
+        public string title;
         public string type;
 
         public Notification(Flag flag)
@@ -22,7 +22,7 @@ namespace PRO260_Team2Project.Models
             timeStamp = flag.TimeOfFlag;
             Content = flag.Description;
             ImageID = (int)flag.ImageID;
-            using(ImageHolderContext ihc = new ImageHolderContext())
+            using (ImageHolderContext ihc = new ImageHolderContext())
             {
                 userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
             }
@@ -35,13 +35,14 @@ namespace PRO260_Team2Project.Models
             Content = com.Content;
             ImageID = com.ImageID;
             type = "CommentNote";
-            using(ImageHolderContext ihc = new ImageHolderContext())
+            using (ImageHolderContext ihc = new ImageHolderContext())
             {
                 userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
-                imageTitle = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
+                title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
             }
         }
 
+        //Like
         public Notification(ImageOwner own)
         {
             ImageID = own.ImageID;
@@ -49,9 +50,35 @@ namespace PRO260_Team2Project.Models
             timeStamp = DateTime.Now;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                imageTitle = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
+                title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
             }
         }
 
+        public Notification(Message message)
+        {
+            PosterID = WebSecurity.CurrentUserId;
+            timeStamp = DateTime.Now;
+            type = "MessageNote";
+            Content = message.Content;
+            title = message.Title;
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+            }
+        }
+
+        public Notification(Purchase purch)
+        {
+            PosterID = purch.PurchaserID;
+            ImageID = purch.ImageID;
+            timeStamp = purch.TimeOfPurchase;
+            Content = "" + purch.PurchasePrice;
+            type = "PurchaseNote";
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
+            }
+        }
     }
 }

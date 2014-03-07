@@ -58,6 +58,34 @@ namespace PRO260_Team2Project.Models
             return notes;
         }
 
+        public IEnumerable<Notification> allMessages(int userID)
+        {
+            List<Notification> notes = new List<Notification>();
+            using (ImageHolderContext con = new ImageHolderContext())
+            {
+                foreach (Message own in con.Messages.Where(x => x.ReceiverID == userID).ToList())
+                {
+                    notes.Add(new Notification(own));
+                }
+
+            }
+            return notes;
+        }
+
+        public IEnumerable<Notification> allPurchases(int userID)
+        {
+            List<Notification> notes = new List<Notification>();
+            using (ImageHolderContext con = new ImageHolderContext())
+            {
+                foreach (Purchase own in con.Purchases.Where(x => x.SellerID == userID).ToList())
+                {
+                    notes.Add(new Notification(own));
+                }
+
+            }
+            return notes;
+        }
+
 
     }
 }

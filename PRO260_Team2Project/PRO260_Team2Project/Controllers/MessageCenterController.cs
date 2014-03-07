@@ -19,6 +19,8 @@ namespace PRO260_Team2Project.Controllers
             notes.AddRange(mc.allComments(WebSecurity.CurrentUserId));
             notes.AddRange(mc.allFlags());
             notes.AddRange(mc.allLikes(WebSecurity.CurrentUserId));
+            notes.AddRange(mc.allMessages(WebSecurity.CurrentUserId));
+            notes.AddRange(mc.allPurchases(WebSecurity.CurrentUserId));
             return View(notes.OrderBy(x => x.timeStamp));
         }
 

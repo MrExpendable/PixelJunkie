@@ -5,7 +5,7 @@
     {
         <div>@Model.timeStamp</div>
         <div>
-        @Model.userName has commented on your image "@Model.imageTitle" saying:
+        @Model.userName has commented on your image "@Model.title" saying:
             </div>
         <div>@Model.Content</div>
     }
@@ -17,7 +17,16 @@
         <div>@Model.Content</div>
     }else if(Model.type.Equals("LikeNote"))
     {
-       <div>Someone has liked "@Model.imageTitle"!</div>
+       <div>Someone has liked "@Model.title"!</div>
+    }else if(Model.type.Equals("MessageNote"))
+    {
+       <div>@Model.timeStamp</div>
+       <div>New Message From "@Model.userName"!</div>
+       <div>Subject: @Model.title</div>
+       <div>@Model.Content</div>
+    }else if(Model.type.Equals("PurchaseNote"))
+    {
+       <div>@Model.userName has purchased "@Model.title" for @Model.Content!</div>
     }
     else
     {
