@@ -16,9 +16,33 @@ namespace PRO260_Team2Project.Controllers
         List<User> users = new List<User>();
 
 
-        #region index
-        public ActionResult Index(int page = 1, int resultsPerPage = 3, int sortingMethod = 0)
+        public void Setup()
         {
+            if (!Roles.RoleExists("Admin"))
+                Roles.CreateRole("Admin");
+
+            UpdateUsers();
+            Boolean adminExists = false;
+            foreach (User u in users)
+            {
+                if (u.UserName == "Admin")
+                {
+                    adminExists = true;
+                }
+            }
+            if (!adminExists)
+            {
+                Register(new RegisterModel() { UserName = "Admin", Password = "administrator", ConfirmPassword = "administrator" });
+            }
+
+            if (!Roles.GetRolesForUser("Admin").Contains("Admin"))
+                Roles.AddUsersToRole(new[] { "Admin" }, "Admin");
+        }
+
+        #region index
+        public ActionResult Index(int page = 1, int resultsPerPage = 25, int sortingMethod = 0)
+        {
+            Setup();
             List<User> tempUsers = new List<User>();
             UpdateUsers();
 
@@ -49,7 +73,7 @@ namespace PRO260_Team2Project.Controllers
         #endregion
 
         #region Search
-        public ActionResult Search(String searchString = "", int page = 1, int resultsPerPage = 3, int sortingMethod = 0)
+        public ActionResult Search(String searchString = "", int page = 1, int resultsPerPage = 25, int sortingMethod = 0)
         {
             List<User> searchedUsers = new List<User>();
             List<User> tempUsers = new List<User>();
@@ -87,6 +111,107 @@ namespace PRO260_Team2Project.Controllers
             ViewBag.TotalResults = searchedUsers.Count;
             return View(tempUsers);
         }
+        #endregion
+
+        #region roles
+        [Authorize(Roles = "Admin")]
+        public ActionResult RoleIndex()
+        {
+            var roles = Roles.GetAllRoles();
+            return View(roles);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult RoleCreate()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RoleCreate(string RoleName)
+        {
+            Roles.CreateRole(Request.Form["RoleName"]);
+            ViewBag.ResultMessage = "Role created successfully !";
+            return RedirectToAction("RoleIndex", "Account");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult RoleDelete(string RoleName)
+        {
+            Roles.DeleteRole(RoleName);
+            ViewBag.ResultMessage = "Role deleted succesfully !";
+            return RedirectToAction("RoleIndex", "Account");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult RoleAddToUser()
+        {
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RoleAddToUser(string RoleName, string UserName)
+        {
+
+            if (Roles.IsUserInRole(UserName, RoleName))
+            {
+                ViewBag.ResultMessage = "This user already has the role specified !";
+            }
+            else
+            {
+                Roles.AddUserToRole(UserName, RoleName);
+                ViewBag.ResultMessage = "Username added to the role succesfully !";
+            }
+
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetRoles(string UserName)
+        {
+            if (!string.IsNullOrWhiteSpace(UserName))
+            {
+                ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
+                SelectList list = new SelectList(Roles.GetAllRoles());
+                ViewBag.Roles = list;
+            }
+            return View("RoleAddToUser");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRoleForUser(string UserName, string RoleName)
+        {
+
+            if (Roles.IsUserInRole(UserName, RoleName))
+            {
+                Roles.RemoveUserFromRole(UserName, RoleName);
+                ViewBag.ResultMessage = "Role removed from this user successfully !";
+            }
+            else
+            {
+                ViewBag.ResultMessage = "This user doesn't belong to selected role.";
+            }
+            ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+
+
+            return View("RoleAddToUser");
+        }
+
         #endregion
 
         #region UserManipulation
@@ -177,7 +302,7 @@ namespace PRO260_Team2Project.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+                return View();
         }
 
         [HttpPost]
