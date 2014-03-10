@@ -31,7 +31,12 @@
         </div>*@
         <div class="regPrice">
             <h5>Price: TOO MUCH FOR YOU</h5>
-            <input type="submit" value="Purchase" />
+            @using(Html.BeginForm("BuyImage", "Image"))
+            {
+                @Html.HiddenFor(model => model.Price)
+                 <input type="submit" value="Purchase" />
+            }
+           
         </div>
     </div>
 </div>
