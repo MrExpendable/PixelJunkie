@@ -33,8 +33,7 @@
 
 @foreach (Image t in Model)
 {
-    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Views/Home/Index">@t.UserName</a></b><br /> @* <- This is a temporary URL. It should eventually link to the user's profile. *@
-    <b>Points:</b> @:0 <br /><br />
+    <b>@t.ImageID:</b> @Html.ActionLink("Image", "SingleImage", "Image"); @* I need this thing to show the image and link to the right place. *@
 }
 
 
@@ -42,7 +41,7 @@
 
 @if(ViewBag.Page > 1)
 {
-using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+using (Html.BeginForm("Search","Image", FormMethod.Get)){    
          <input type="hidden" name="Page" value="@ViewBag.Page - 1" />
          <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
          <input type="submit" value="Previous Page" />
@@ -50,7 +49,7 @@ using (Html.BeginForm("Search","Account", FormMethod.Get)){
 }
 @if(ViewBag.Page < ViewBag.TotalPages)
 {
-using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+using (Html.BeginForm("Search","Image", FormMethod.Get)){    
          <input type="hidden" name="Page" value="@ViewBag.Page + 1" />
          <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
          <input type="submit" value="Next Page" />

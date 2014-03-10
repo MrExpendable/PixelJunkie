@@ -139,6 +139,47 @@ namespace PRO260_Team2Project.Controllers
         }
         #endregion
 
+        #region Search
+        public ActionResult Search(String searchString = "", int page = 1, int resultsPerPage = 25, int sortingMethod = 0)
+        {
+            List<Image> allImages = new List<Image>();
+            List<Image> searchedImages = new List<Image>();
+            List<Image> tempImages = new List<Image>();
+            int totalPages = searchedImages.Count % resultsPerPage == 0 ? searchedImages.Count / resultsPerPage : (searchedImages.Count / resultsPerPage) + 1;
+            foreach (Image image in allImages)
+            {
+                if (image.ImageName.Contains(searchString))
+                {
+                    searchedImages.Add(image);
+                }
+            }
+            if (allImages.Count >= resultsPerPage * page)
+            {
+                tempImages = searchedImages.GetRange((page - 1) * resultsPerPage, resultsPerPage); //if you want 10 results per page, page 1 will have 0-9, page 2 will have 10-19.
+
+            }
+            else
+            {
+                tempImages = searchedImages.GetRange((page - 1) * resultsPerPage, searchedImages.Count % resultsPerPage);
+            }
+            if (sortingMethod == 0)
+            {
+                //tempImages = tempImages.OrderBy(x => x.Score).ToList();
+                tempImages = tempImages.OrderBy(x => x.ImageName).ToList();
+            }
+            else
+            {
+                tempImages = tempImages.OrderBy(x => x.ImageName).ToList();
+            }
+            ViewBag.TotalPages = totalPages;
+            ViewBag.SearchString = searchString;
+            ViewBag.Page = page;
+            ViewBag.ResultsPerPage = resultsPerPage;
+            ViewBag.TotalResults = searchedImages.Count;
+            return View(tempImages);
+        }
+        #endregion
+
         public ActionResult SingleImage(ImageOwner imgOwn)
         {
             using (ImageHolderContext ihc = new ImageHolderContext())
