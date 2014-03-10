@@ -12,17 +12,6 @@ namespace PRO260_Team2Project.Controllers
     {
         //
         // GET: /Home/
-        List<Image> testImageList = new List<Image>
-        {
-            new Image(),
-            new Image(),
-            new Image(),
-            new Image(),
-            new Image(),
-            new Image(),
-            new Image(),
-            new Image()
-        };
 
         [AllowAnonymous]
         public ActionResult Index()
@@ -45,9 +34,25 @@ namespace PRO260_Team2Project.Controllers
             return View(imageList);
         }
 
+        [AllowAnonymous]
         public ActionResult Featured()
         {
-            return View("Featured", testImageList);
+            List<ImageOwner> imageList = null;
+
+            using (ImageHolderContext ihc = new ImageHolderContext())
+            {
+                if (ihc.ImageOwners.ToList().Count > 0)
+                {
+                    var imgs = from imgown in ihc.ImageOwners.Include("Comments").Include("Auction_") select imgown;
+                    imageList = imgs.ToList();
+                    foreach (ImageOwner io in imageList)
+                    {
+                        Image img = ihc.Images.Where(x => x.ImageID == io.ImageID).First();
+                        io.Image = img;
+                    }
+                }
+            }
+            return View("Featured", imageList);
         }
 
         public ActionResult SearchTags(string tag)

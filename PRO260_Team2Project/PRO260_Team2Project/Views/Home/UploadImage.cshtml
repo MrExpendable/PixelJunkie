@@ -9,15 +9,16 @@
     @:Choose a file to upload:
     <input type="file" name="file" /> 
     <br />
-    @:Optional fields:
     <br />
     @:Title: <input type="text" name="title" />
     <br />
     @:Caption: <input type="text" name="caption" />
     <br />
-    @:Is this for sale?<input type="checkbox" id="isForSale" />
-    <div class="priceSection">
-        @Html.Partial("EnterImagePricePartial")
+    @:Price: <input type="number" pattern="\d*" name="price" class="imagePrice"/>
+    <br />
+    @:Will this be up for auction?<input type="checkbox" id="isForAuction" />
+    <div class="auctionInfoSection">
+        @Html.Partial("EnterAuctionInfoPartial")
     </div>
     <input type="submit" value="Upload" />    
 }
