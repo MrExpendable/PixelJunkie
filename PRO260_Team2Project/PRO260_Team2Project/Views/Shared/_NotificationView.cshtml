@@ -17,7 +17,8 @@
         <div>@Model.Content</div>
     }else if(Model.type.Equals("LikeNote"))
     {
-       <div>Someone has liked "@Model.title"!</div>
+        <div>@Model.timeStamp</div>
+       <div>@Model.userName has liked "@Model.title"!</div>
     }else if(Model.type.Equals("MessageNote"))
     {
        <div>@Model.timeStamp</div>

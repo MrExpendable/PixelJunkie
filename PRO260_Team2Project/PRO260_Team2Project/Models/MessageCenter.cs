@@ -46,12 +46,9 @@ namespace PRO260_Team2Project.Models
             List<Notification> notes = new List<Notification>();
             using (ImageHolderContext con = new ImageHolderContext())
             {
-                foreach (ImageOwner own in con.ImageOwners.Where(x => x.OwnerID == userID).ToList())
+                foreach (Like like in con.Likes.Where(x => x.OwnerID == userID).ToList())
                 {
-                    for (int i = 0; i < own.Likes; i++)
-                    {
-                        notes.Add(new Notification(own));
-                    }
+                    notes.Add(new Notification(like));
                 }
 
             }

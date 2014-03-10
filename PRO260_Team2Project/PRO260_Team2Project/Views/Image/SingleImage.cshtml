@@ -53,7 +53,7 @@
     }
     @* @Html.Partial("~/Views/Shared/_ManageTags.cshthml", @Model)*@
     <div class="like">
-        Likes on this picture: @Model.Likes
+        Likes on this picture: @ViewBag.LikeCount
         @Html.ActionLink("Like Image", "LikeImage", "Image", @Model, null)
     </div>
     <div class="Add Comment">

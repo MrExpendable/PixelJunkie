@@ -41,10 +41,9 @@ namespace PRO260_Team2Project.Controllers
                             ihc.SaveChanges();
 
                             ImageOwner imgOwn = new ImageOwner();
-                            if (price != null)
-                            {
+
                                 imgOwn.Price = price;
-                            }
+
                             if (title != null)
                             {
                                 imgOwn.Title = title;
@@ -185,6 +184,7 @@ namespace PRO260_Team2Project.Controllers
                 List<string> tagList = ihc.ImageTags.Where(x => x.ImageID == imgOwn.ImageID).Select(x => x.Tag).ToList();
                 ViewBag.Tags = tagList;
                 List<Comment> Comments = ihc.Comments.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID).Select(x => x).ToList();
+                @ViewBag.LikeCount = ihc.Likes.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID).Select(x => x).Count();
                 ViewBag.Comments = Comments;
             }
             return View(imgOwn);
@@ -194,12 +194,22 @@ namespace PRO260_Team2Project.Controllers
         {
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                ImageOwner image = ihc.ImageOwners.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID).FirstOrDefault();
+                if (ihc.Likes.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID && x.LikerID == WebSecurity.CurrentUserId).Select(x => x).Count() == 0)
+                {
+                    Like neolike = new Like();
+                    neolike.ImageID = imgOwn.ImageID;
+                    neolike.OwnerID = imgOwn.OwnerID;
+                    neolike.LikerID = WebSecurity.CurrentUserId;
+                    neolike.Timestamp = DateTime.Now;
+                    ihc.Likes.Add(neolike);
+                    ihc.SaveChanges();
+                }
+               /* ImageOwner image = ihc.ImageOwners.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID).FirstOrDefault();
                 if (image != null)
                 {
                     image.Likes = image.Likes + 1;
                     ihc.SaveChanges();
-                }
+                }*/
             }
             return RedirectToAction("SingleImage", imgOwn);
         }

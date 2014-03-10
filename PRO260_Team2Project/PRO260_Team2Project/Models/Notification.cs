@@ -37,20 +37,27 @@ namespace PRO260_Team2Project.Models
             type = "CommentNote";
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                try
+                {
+                    userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                }catch(NullReferenceException nre)
+                {
+                    userName = "Anonymous";
+                }
                 title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
             }
         }
 
-        //Like
-        public Notification(ImageOwner own)
+        public Notification(Like like)
         {
-            ImageID = own.ImageID;
+            ImageID = like.ImageID;
+            PosterID = like.LikerID;
             type = "LikeNote";
-            timeStamp = DateTime.Now;
+            timeStamp = like.Timestamp;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
                 title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
+                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
             }
         }
 
