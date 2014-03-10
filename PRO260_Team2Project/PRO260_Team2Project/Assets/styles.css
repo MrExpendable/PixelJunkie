@@ -9,6 +9,12 @@ a{
     text-decoration:none;
 }
 
+textArea{
+    text-wrap:none;
+    height:350px;
+    width:450px;
+}
+
 .bodyImages {
     display:inline-block;
     margin:0 auto;
@@ -46,9 +52,6 @@ nav{
     width: 300px;
     text-align:center;
     background: #333;
-    -webkit-box-shadow: inset 0 0 5px 5px #222;
-    -moz-box-shadow: inset 0 0 5px 5px #222;
-    box-shadow: inset 0 0 5px 5px #222;
 }
 
 .logo{
@@ -132,11 +135,6 @@ nav ul li:hover
     background: -ms-linear-gradient(45deg, #5e5e5e 0%,#9aff85 100%); /* IE10+ */
     background: linear-gradient(45deg, #5e5e5e 0%,#9aff85 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', endColorstr='#9aff85',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    /*Box/Border*/
-    border:8px solid #333;
-    -webkit-box-shadow: inset 0 0 5px 5px #222;
-    -moz-box-shadow: inset 0 0 5px 5px #222;
-    box-shadow: inset 0 0 5px 5px #222;
 }
 
 
@@ -353,6 +351,22 @@ select{
     margin:0 auto;
     padding:20px;
     border:1px solid black;
+}
+
+/*Message Center*/
+.message{
+    padding-bottom:20px;
+    border-bottom:1px solid black;
+}
+
+.messages{
+    width:900px;
+    margin:0 auto;
+    border-bottom:1px solid black;
+}
+
+.messages h1{
+    padding-bottom:20px;
 }
 
 /*Footer*/

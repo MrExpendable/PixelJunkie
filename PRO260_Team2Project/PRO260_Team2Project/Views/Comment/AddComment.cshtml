@@ -1,19 +1,21 @@
 ﻿@model PRO260_Team2Project.Comment
 
 @{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "AddComment";
 }
 
 @using (Html.BeginForm())
 {
     <fieldset>
-        <legend>Comment</legend>
+        <h1>Comment</h1>
+        <br />
         <div class="Flag Description">
             @Html.TextAreaFor(x => x.Content)
             @Html.HiddenFor(x => x.OwnerID, Model.OwnerID)
             @Html.HiddenFor(x => x.ImageID, Model.ImageID)
         </div>
-        <input type="submit" value="Comment" />
+        <input type="submit" value="Add Comment" />
     </fieldset>
 
 }
