@@ -70,6 +70,13 @@ namespace PRO260_Team2Project.Controllers
             ViewBag.TotalResults = users.Count;
             return View(tempUsers);
         }
+
+        public ActionResult Profile(int id)
+        {
+            UpdateUsers();
+            User user = users.Where(u => u.Id == id).First();
+            return View(user);
+        }
         #endregion
 
         #region Search

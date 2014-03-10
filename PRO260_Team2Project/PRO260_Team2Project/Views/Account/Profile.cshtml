@@ -1,8 +1,16 @@
-﻿@model PRO260_Team2Project.Models.AccountModels.User;
+﻿@using PRO260_Team2Project.Models.AccountModels
+@model User
+
+
 @{
-    ViewBag.Title = "Profile";
+    ViewBag.Title = "Profile";    
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
-<h2>Profile</h2>
+<h2>@Model.UserName's Profile</h2>
 
-WORKING ON IT.
+<br />
+Points: 0
+<br />
+
+<b>Images:</b>

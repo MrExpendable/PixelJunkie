@@ -31,8 +31,7 @@
 
 @foreach (User t in Model)
 {
-    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Views/Home/Index">@t.UserName</a></b><br /> @* <- This is a temporary URL. It should eventually link to the user's profile. *@
-    <b>Points:</b> @:0 <br /><br />
+    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Account/Profile/@t.Id">@t.UserName</a></b><br />
 }
 
 
