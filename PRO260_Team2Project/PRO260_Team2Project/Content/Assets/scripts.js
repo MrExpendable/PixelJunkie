@@ -1,17 +1,16 @@
-$(document).ready(function() 
-{
+$(document).ready(function () {
     var isChecked;
-    $('.priceSection').hide();
+    $('.auctionInfoSection').hide();
 
-    $('#isForSale').click(function () {
+    $('#isForAuction').click(function () {
         isChecked = $(this).is(':checked') ? true : false;
         console.log(isChecked);
 
         if (isChecked) {
-            $('.priceSection').show();
+            $('.auctionInfoSection').show();
         }
         else {
-            $('.priceSection').hide();
+            $('.auctionInfoSection').hide();
         }
     });
 });
