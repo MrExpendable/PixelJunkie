@@ -1,11 +1,11 @@
 ﻿@model PRO260_Team2Project.Models.AccountModels.RegisterModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
 </hgroup>
 
 @using (Html.BeginForm()) {
@@ -13,7 +13,7 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Registration Form</legend>
+        <legend></legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -30,4 +30,8 @@
         </ol>
         <input type="submit" value="Register" />
     </fieldset>
+    <p>
+        Already have an account? @Html.ActionLink("Login", "Login").  
+    </p>
+    <br />
 }

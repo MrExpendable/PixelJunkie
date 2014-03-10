@@ -5,16 +5,24 @@
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewBag.Title</h1>
 </hgroup>
 
 <section id="loginForm">
-    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
-    {
+@if (Request.IsAuthenticated)
+{
+    <span> You are already logged in.</span>
+    <br />
+    @Html.ActionLink("Logout?", "Logout");
+}
+else
+{
+    using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
         <fieldset>
+            <legend></legend>
             <ol>
                 <li>
                     @Html.LabelFor(m => m.UserName)
@@ -33,9 +41,11 @@
             </ol>
             <input type="submit" value="Log in" />
         </fieldset>
-        @Html.ActionLink("Register", "Register") @:if you don't have an account.
-        <br />
+        <p>
+            @Html.ActionLink("Register", "Register") if you don't have an account.
+        </p>
         <br />
     }
+}
 </section>
 
