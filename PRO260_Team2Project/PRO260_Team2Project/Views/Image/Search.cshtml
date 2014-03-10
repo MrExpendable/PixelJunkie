@@ -18,18 +18,7 @@
     Searching images with name containing "@ViewBag.SearchString". @ViewBag.TotalResults results found.
     <br />
     <br /><b>Page: @ViewBag.Page.</b><br /><br />
-
 </div>
-@using (Html.BeginForm("Search","Image", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="0" />
-    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/> 
-         <input type="submit" value="SortByScore" />
-        } 
-@using (Html.BeginForm("Search","Image", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="1" /> 
-    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
-         <input type="submit" value="SortByName" />
-        } 
 
 @foreach (Image t in Model)
 {

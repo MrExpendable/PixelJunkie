@@ -148,9 +148,12 @@ namespace PRO260_Team2Project.Controllers
             int totalPages = searchedImages.Count % resultsPerPage == 0 ? searchedImages.Count / resultsPerPage : (searchedImages.Count / resultsPerPage) + 1;
             foreach (Image image in allImages)
             {
-                if (image.ImageName.Contains(searchString))
+                foreach (ImageTag tag in image.ImageTags)
                 {
-                    searchedImages.Add(image);
+                    if (tag.Tag == searchString)
+                    {
+                        searchedImages.Add(image);
+                    }
                 }
             }
             if (allImages.Count >= resultsPerPage * page)
@@ -161,15 +164,6 @@ namespace PRO260_Team2Project.Controllers
             else
             {
                 tempImages = searchedImages.GetRange((page - 1) * resultsPerPage, searchedImages.Count % resultsPerPage);
-            }
-            if (sortingMethod == 0)
-            {
-                //tempImages = tempImages.OrderBy(x => x.Score).ToList();
-                tempImages = tempImages.OrderBy(x => x.ImageName).ToList();
-            }
-            else
-            {
-                tempImages = tempImages.OrderBy(x => x.ImageName).ToList();
             }
             ViewBag.TotalPages = totalPages;
             ViewBag.SearchString = searchString;
