@@ -21,25 +21,31 @@
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/home32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Home", "Index")</div>
+                        <div class="navLink">@Html.ActionLink("Home", "Index", "Home")</div>
                     </li>
                     <li>
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/contactcard32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Profile", "Profile")</div>
+                        <div class="navLink">@Html.ActionLink("Profile", "DisplayProfile", "MembersDirectory")</div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="~/Assets/Images/Icons/mail32.png" />
+                        </div>
+                        <div class="navLink">@Html.ActionLink("Messages", "MessageCenter", "MessageCenter")</div>
                     </li>
                     <li>
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/moneyreceipt32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Auctions", "Featured")</div>
+                        <div class="navLink">@Html.ActionLink("Auctions", "Featured", "Home")</div>
                     </li>
                     <li>
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/upload32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Upload", "UploadImage")</div>
+                        <div class="navLink">@Html.ActionLink("Upload", "UploadImage", "Home")</div>
                     </li>
                     <li>
                         <div class="icon">
@@ -63,7 +69,7 @@
                         <li>|</li>
                         <li>@Html.ActionLink("Login/Register", "Login")</li>
                         <li>|</li>
-                        <li>@Html.ActionLink("Single Image", "Image")</li>
+                        <li>@Html.ActionLink("Single Image", "SingleImage", "Image")</li>
                     </ul>
                 </footer>
             </div>

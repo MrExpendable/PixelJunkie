@@ -5,6 +5,10 @@ html{
     font-size:62.4%;
 }
 
+a{
+    text-decoration:none;
+}
+
 .bodyImages {
     display:inline-block;
     margin:0 auto;
@@ -139,7 +143,7 @@ nav ul li:hover
 /*Index and constant elements*/
 header{
     width:900px;
-    height:300px;
+    height:380px;
     margin:0 auto;
 }
 
@@ -156,9 +160,9 @@ header{
 }
 
 .bodyImages, .portfolio{
-    width:900px;
+    width:950px;
     margin:0 auto;
-    margin-top:20px;
+    margin-top:40px;
 }
 
 .bodyImages div, .portfolio div{
@@ -219,8 +223,8 @@ header{
     line-height:1.75;
 }
 .avatar{
-    width:300px;
-    height:250px;
+    width:350px;
+    height:350px;
     float:right;
     margin-right:20px;
     padding-top:30px;
@@ -335,7 +339,7 @@ select{
     text-align:center;
     padding:20px;
     border:1px solid black;
-    margin-left:20px;
+    margin-left:0 auto;
     line-height:2;
 }
 
