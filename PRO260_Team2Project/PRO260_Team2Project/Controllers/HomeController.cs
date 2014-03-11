@@ -22,7 +22,7 @@ namespace PRO260_Team2Project.Controllers
             {
                 if (ihc.ImageOwners.ToList().Count > 0)
                 {
-                    var imgs = from imgown in ihc.ImageOwners.Include("Comments").Include("Auction_") select imgown;
+                    var imgs = from imgown in ihc.ImageOwners.Include("Comments").Include("Auction_").Include("Likes1") select imgown;
                     imageList = imgs.ToList();
                     foreach (ImageOwner io in imageList)
                     {
