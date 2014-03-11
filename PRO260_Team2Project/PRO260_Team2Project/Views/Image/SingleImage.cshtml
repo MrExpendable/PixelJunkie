@@ -30,12 +30,8 @@
             }
         </div>*@
         <div class="regPrice">
-            <h5>Price: TOO MUCH FOR YOU</h5>
-            @using(Html.BeginForm("BuyImage", "Image"))
-            {
-                @Html.HiddenFor(model => model.Price)
-                 <input type="submit" value="Purchase" />
-            }
+            <h5>Price: @Model.Price</h5>
+            @Html.ActionLink("Purchase", "BuyImage", "Image", Model, null)
            
         </div>
     </div>
