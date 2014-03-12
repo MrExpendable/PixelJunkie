@@ -7,6 +7,7 @@ html{
 
 a{
     text-decoration:none;
+    color:#1EB33B;
 }
 
 textArea{
@@ -15,13 +16,30 @@ textArea{
     width:450px;
 }
 
+#contentText{
+    border:1px solid black;
+    color:#FFF;
+    padding:20px;
+    background-color:#333;
+    text-align:center;
+    line-height:2;
+}
+
+#container {
+    background-color:#9AFF85;
+    border:8px solid #333;
+    -webkit-box-shadow: inset 0 0 5px 5px #222;
+    -moz-box-shadow: inset 0 0 5px 5px #222;
+    box-shadow: inset 0 0 5px 5px #222;
+}
+
 .bodyImages {
     display:inline-block;
     margin:0 auto;
     text-align:center;
 }
 
-body, html, .content, nav
+body, html, .content
 {
     height:100%;
 }
@@ -61,35 +79,60 @@ nav{
     border:solid 2px black;
 }
 
-.search
-{
+.search{
     width:300px;
     border-top: 2px solid #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
     display:inline-block;
 }
 
-.search input[type=text]
-{
+.search input[type=text]{
     font-size:16px;
     width:225px;
 }
 
-.search input[type=submit]
-{
+.search input[type=submit]{
     width:150px;
     height:35px;
     font-size:16px;
 }
 
-.icon
-{
+.memberOptions{
+    font-size:16px;
+}
+
+.memberOptions ul{
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.memberOptions a{
+    color:#1EB33B;
+}
+
+.memberOptions li{
+    border:none;
+    height:50px;
+    text-align:center;
+    margin-right:25px;
+    border-top:none;
+    border-bottom:none;
+    margin:0 auto;
+}
+
+.memberOptions li:hover{
+    border:2px solid #1EB33B;
+    background-color:#9A2020;
+}
+
+.icon{
     float:left;
     margin-left:25px;
     margin-top:30px;
 }
 
-.navLink
-{
+.navLink{
+    font-weight:700;
+    color:#1EB33B;
     text-align:end;
     text-decoration:none;
     margin-right:25px;
@@ -97,32 +140,24 @@ nav{
     font-size:20px;
 }
 
-nav ul
-{
+nav ul{
     list-style:none;
     border-top: 1px solid #1a1a1a;
     border-bottom: 1px solid #4d4d4d;
 }
 
-nav ul li
-{
+nav ul li{
     line-height: 3.5;
     border-top: 1px solid #4d4d4d;
     border-bottom: 1px solid #1a1a1a;
 }
 
-nav ul li a
-{
-    color:#1EB33B;
-}
-
-nav ul li:hover
-{
-    border:1px solid black;
+nav ul li:hover{
+    border:2px solid #1EB33B;
+    background-color:#9A2020;
 }
 
 .mainContent{
-    
     float:right;
     width:1000px;
     font-size:1.8em;
@@ -139,6 +174,10 @@ nav ul li:hover
 
 
 /*Index and constant elements*/
+.indexImage a{
+    color:#1EB33B;
+}
+
 header{
     width:900px;
     height:380px;
@@ -185,14 +224,6 @@ header{
     list-style:none;
 }
 
-#container {
-    background-color:#9AFF85;
-    border:8px solid #333;
-    -webkit-box-shadow: inset 0 0 5px 5px #222;
-    -moz-box-shadow: inset 0 0 5px 5px #222;
-    box-shadow: inset 0 0 5px 5px #222;
-}
-
 /*Styles thumbnail images found on any page*/
 .images {
     border: 1px solid #333;
@@ -201,7 +232,6 @@ header{
 .stretch{
     width:100%;
     display:inline-block;
-    border-bottom:1px solid black;
 }
 
 
@@ -240,7 +270,6 @@ form{
     padding-top: 20px;
     text-align: center;
     margin:0 auto;
-    border-bottom:solid 1px black;
 }
 
 form input{
@@ -287,34 +316,33 @@ select{
 }
 
 .imageSection{
-    position:relative;
+    display:inline-block;
     width:100%;
-    min-height:400px;
-    height:700px;
 }
 
 .imageTitle{
     text-align:center;
+    padding-top:0px;
     padding-bottom:15px;
+    margin-top:0px;
 }
 
 .imageContainer{
-    float:left;
+    margin:0 auto;
     padding:20px;
 }
 
 .image{
-    margin:0 auto;
-    border:1px solid black;
+    text-align:center;
 }
 
 .image img{
-    max-width:600px;
-    max-height:800px;
+    max-width:592px;
+    max-height:592px;
+    border:4px solid black;
 }
 
 .saleInfo{
-    float:right;
     padding:20px;
     text-align:center;
 }
@@ -327,18 +355,13 @@ select{
 }
 
 .regPrice{
-    padding-top:200px;
+    width:200px;
+    margin:0 auto;
 }
 
 .imageInfo{
-    background-color:gray;
     width:560px;
     margin:0 auto;
-    text-align:center;
-    padding:20px;
-    border:1px solid black;
-    margin-left:0 auto;
-    line-height:2;
 }
 
 .imageInfo li{
@@ -362,7 +385,6 @@ select{
 .messages{
     width:900px;
     margin:0 auto;
-    border-bottom:1px solid black;
 }
 
 .messages h1{
@@ -376,7 +398,9 @@ footer{
     padding-top:25px;
     padding-bottom:40px;
     margin:0 auto;
-    
+    text-align:center;
+    margin-top:30px;
+    border-top:1px solid black;
 }
 
 footer li{
@@ -384,4 +408,15 @@ footer li{
     text-align:center;
     margin-left:15px;
     margin-right:15px;
+}
+
+footer li a{
+    padding:10px;
+    border-radius:2px;
+    background-color:#333;
+}
+
+footer li a:hover{
+    border: 2px solid #333;
+    background-color:#9A2020;
 }

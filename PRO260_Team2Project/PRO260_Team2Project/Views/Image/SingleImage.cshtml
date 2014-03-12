@@ -8,10 +8,14 @@
 }
 <div class="imageSection">
     <div class="imageContainer">
-        <h3 class="imageTitle">@Model.Title</h3>
+        <h1 class="imageTitle">@Model.Title</h1>
         <div class="image">
             <img src="@ViewBag.Image" class="images" />
         </div>
+    </div>
+    <div class="regPrice" id="contentText">
+        <h5>Price: @Model.Price</h5>
+        @Html.ActionLink("Purchase", "BuyImage", "Image", Model, null)
     </div>
     <div class="saleInfo">
         @* <div class="auction">
@@ -29,15 +33,10 @@
                 </ul>  
             }
         </div>*@
-        <div class="regPrice">
-            <h5>Price: @Model.Price</h5>
-            @Html.ActionLink("Purchase", "BuyImage", "Image", Model, null)
-           
-        </div>
     </div>
 </div>
 
-<div class="imageInfo">
+<div class="imageInfo" id="contentText">
     <ul>
         <li><b>@Model.Title</b></li>
         <li>Time uploaded: @Model.TimeStamp</li>
