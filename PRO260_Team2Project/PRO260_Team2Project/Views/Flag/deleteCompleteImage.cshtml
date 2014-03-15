@@ -1,0 +1,25 @@
+﻿@model PRO260_Team2Project.Image
+
+@{
+    ViewBag.Title = "deleteCompleteImage";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<div>
+    @if(!ViewBag.submitted)
+    {
+        using (Html.BeginForm())
+        {
+            <fieldset>
+                <Legend>Are you sure?</Legend>
+                <div>@Html.Label("If you are sure you'd like to delete all reference to this image, Fill out the form below.")</div>
+                @Html.Hidden("IDOrig", Model.ImageID);
+                <div>ImageID: @Html.TextBox("IDNum")</div>
+                <div>Final Check: @Html.CheckBox("sure")</div>
+            
+            </fieldset>
+        }
+    }else{
+     @ViewBag.Message;   
+    }
+</div>

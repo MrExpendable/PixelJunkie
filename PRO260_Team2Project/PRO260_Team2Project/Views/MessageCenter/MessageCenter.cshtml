@@ -5,6 +5,7 @@
     ViewBag.Title = "Your Message Center";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
+        <link rel="stylesheet" type="text/css" href="~/Assets/MCNotificationStyles.css" />
 
 <!DOCTYPE html>
 
@@ -15,13 +16,18 @@
 </head>
 <body>
     <div class="messages">
-        <form class="message">
-            <p>To:</p><input type="text" />
-            <textarea class="messageText">Enter Message</textarea>
+        @using(Html.BeginForm("SendMessage","MessageCenter",FormMethod.Post))
+        {
+          <fieldset>  
+              <legend>Send Message</legend>
+            <p>To:</p>@Html.TextBox("username")
+            @Html.TextBox("title")
+              @Html.TextArea("messageText")
             <input type="submit" class="send" />
-        </form>
+              </fieldset>
+        }
         <div>
-            @if (Model.Count() == 0)
+            @if (Model == null || Model.Count() == 0)
             {
                 <h1>No Messages to Display</h1>
             }
@@ -30,7 +36,7 @@
                 foreach (PRO260_Team2Project.Models.Notification c in Model)
                 {
                 @Html.Partial("~/Views/shared/_NotificationView.cshtml", c)
-                }
+            }                
             }
         </div>
     </div>

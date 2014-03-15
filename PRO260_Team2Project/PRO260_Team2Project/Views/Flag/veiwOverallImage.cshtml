@@ -1,0 +1,14 @@
+﻿@model PRO260_Team2Project.Image
+
+@{
+    ViewBag.Title = "veiwOverallmage";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<img src="data:image;base64,@System.Convert.ToBase64String(Model.Image1)" class="images"/>
+
+@foreach (PRO260_Team2Project.ImageOwner imgOwn in ViewBag.owners)
+{
+    <div>@Html.ActionLink(""+imgOwn.OwnerID, "SingleImage", "Image", imgOwn, null)</div>
+}
+<div>@Html.ActionLink("Remove Image From Site?","deleteCompleteImage/"+Model.ImageID)</div>

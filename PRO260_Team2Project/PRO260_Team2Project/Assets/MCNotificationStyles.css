@@ -1,0 +1,51 @@
+﻿
+.timestamp
+{
+    color:lightgray;
+    font-size:x-small;
+    font-style:italic;
+}
+.flagNote
+{
+    outline-width: 1px;
+    outline-style:solid;
+    outline-color:red;
+    background-color:#440000;
+    color:red;
+    margin: 5px;
+    margin-bottom:10px;
+    padding:5px;
+    width:500px;
+
+}
+.Notecontent
+{
+    margin-left:25px;
+    background-color:gray;
+    font-style:italic;
+    width:300px;
+    padding:5px;
+
+}
+.CommentNote
+{
+        margin: 5px;
+    margin-bottom:10px;
+    padding:5px;
+    width:500px;
+}
+.LikeNote
+{
+            margin: 5px;
+    margin-bottom:10px;
+    padding:5px;
+    width:500px;
+}
+
+.PurchaseNote
+{
+            margin: 5px;
+    margin-bottom:10px;
+    padding:5px;
+    width:500px;
+}

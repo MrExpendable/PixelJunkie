@@ -1,39 +1,35 @@
 ﻿@model PRO260_Team2Project.Models.Notification
 
 <div class="@Model.type">
+    <div class="timestamp">@Model.timeStamp</div>
     @if (Model.type.Equals("CommentNote"))
     {
-        <div>@Model.timeStamp</div>
         <div>
-        @Model.userName has commented on your image "@Model.title" saying:
+        @Model.userName has commented on your image "@Html.ActionLink(Model.title, "SingleImage", "Image", Model.imgown, null)" saying:
             </div>
-        <div>@Model.Content</div>
+        <div class="Notecontent">@Model.Content</div>
     }
     else if (Model.type.Equals("flagNote"))
     {
-        <div>@Model.timeStamp</div>
-        <div>User @Model.PosterID, @Model.userName submitted a flag for image ID @Model.ImageID</div>
+        <div>User @Model.PosterID, @Model.userName submitted a flag for @Html.ActionLink("image ID "+Model.ImageID,"veiwOverallImage/"+Model.ImageID,"Flag")</div>
         <div>Complaint:</div>
-        <div>@Model.Content</div>
+        <div class="Notecontent">@Model.Content</div>
     }else if(Model.type.Equals("LikeNote"))
     {
-        <div>@Model.timeStamp</div>
-       <div>@Model.userName has liked "@Model.title"!</div>
+       <div>@Model.userName has liked "@Html.ActionLink(Model.title, "SingleImage", "Image", Model.imgown, null)"!</div>
     }else if(Model.type.Equals("MessageNote"))
     {
-       <div>@Model.timeStamp</div>
-       <div>New Message From "@Model.userName"!</div>
+       <div>New Message From @Model.userName!</div>
        <div>Subject: @Model.title</div>
-       <div>@Model.Content</div>
+       <div class="Notecontent">@Model.Content</div>
     }else if(Model.type.Equals("PurchaseNote"))
     {
        <div>@Model.userName has purchased "@Model.title" for @Model.Content!</div>
     }
     else
     {
-            <div>@Model.timeStamp</div>
     <div>@Model.PosterID on @Model.ImageID</div>
-    <div>@Model.Content</div>
+    <div class="Notecontent">@Model.Content</div>
     }
 
 

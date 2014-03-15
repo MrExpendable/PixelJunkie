@@ -15,6 +15,7 @@ namespace PRO260_Team2Project.Models
         public int ImageID;
         public string title;
         public string type;
+        public ImageOwner imgown;
 
         public Notification(Flag flag)
         {
@@ -37,8 +38,10 @@ namespace PRO260_Team2Project.Models
             type = "CommentNote";
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
+                imgown = ihc.ImageOwners.Include("Likes1").Include("Auction_").Include("Comments").Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault();
                 try
                 {
+
                     userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
                 }catch(NullReferenceException nre)
                 {
@@ -56,6 +59,7 @@ namespace PRO260_Team2Project.Models
             timeStamp = like.Timestamp;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
+                imgown = ihc.ImageOwners.Include("Likes1").Include("Auction_").Include("Comments").Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault();
                 title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
                 userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
             }
@@ -63,7 +67,7 @@ namespace PRO260_Team2Project.Models
 
         public Notification(Message message)
         {
-            PosterID = WebSecurity.CurrentUserId;
+            PosterID = message.SenderID;
             timeStamp = DateTime.Now;
             type = "MessageNote";
             Content = message.Content;
