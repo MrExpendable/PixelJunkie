@@ -19,7 +19,7 @@
         @Html.ActionLink("Purchase", "BuyImage", "Image", Model, null)
     </div>
     <div class="saleInfo">
-        @if (Model.isAuction)
+        @if (Model.isAuction == true)
         {
             @:Current Bid: @Model.Auction_.CurrentBid 
         }
@@ -29,7 +29,7 @@
 <div class="imageInfo" id="contentText">
     
         <h2>@Model.Title</h2>
-        Time uploaded: @Model.TimeStamp.GetDateTimeFormats('D')
+        Time uploaded: @Model.TimeStamp.ToString("MM/dd/yyyy");
     
         Caption: @Model.Caption
         Tags:
