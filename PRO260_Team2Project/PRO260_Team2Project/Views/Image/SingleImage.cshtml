@@ -49,4 +49,10 @@
         @Html.ActionLink("Flag Image", "AddFlag/" + Model.ImageID,"Flag")
     </div>
 </div>
+<div class="CommentsList">
+    @foreach (Comment c in Model.Comments)
+    {
+        @Html.Partial("~/Views/Comment/_Comment.cshtml", c)
+    }
+</div>
 

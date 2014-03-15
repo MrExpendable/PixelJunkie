@@ -207,6 +207,7 @@ namespace PRO260_Team2Project.Controllers
                 ViewBag.Tags = tagList;
                 List<Comment> Comments = ihc.Comments.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID).Select(x => x).ToList();
                 @ViewBag.LikeCount = ihc.Likes.Where(x => x.ImageID == imgOwn.ImageID && x.OwnerID == imgOwn.OwnerID).Select(x => x).Count();
+                imgOwn.Comments = Comments;
                 ViewBag.Comments = Comments;
             }
             return View(imgOwn);

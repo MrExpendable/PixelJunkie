@@ -27,12 +27,13 @@ namespace PRO260_Team2Project.Controllers
         {
             using (ImageHolderContext con = new ImageHolderContext())
             {
-                com.PosterID = WebSecurity.CurrentUserId;
-                com.TimeStamp = DateTime.Now;
-                com.ImageOwner = con.ImageOwners.Where(x=> (x.ImageID==com.ImageID) && (x.OwnerID==com.OwnerID)).FirstOrDefault();
-                con.Comments.Add(com);
                 try
-                {
+                {         
+                    com.PosterID = WebSecurity.CurrentUserId;
+                    com.TimeStamp = DateTime.Now;
+                    com.ImageOwner = con.ImageOwners.Where(x=> (x.ImageID==com.ImageID) && (x.OwnerID==com.OwnerID)).FirstOrDefault();
+                    com.ImageOwner.Comments.Add(com);
+                    con.Comments.Add(com);
                     con.SaveChanges();
                 }
                 catch (Exception e)
