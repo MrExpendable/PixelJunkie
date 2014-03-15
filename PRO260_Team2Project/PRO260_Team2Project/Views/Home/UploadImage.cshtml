@@ -6,19 +6,23 @@
 <h1>Upload Image</h1>
 @using (Html.BeginForm("StoreImage", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @:Choose a file to upload:
-    <input type="file" name="file" /> 
-    <br />
-    <br />
+    <input type="file" name="file" value="Choose File"/> 
+    
+    <p>Listing Type: <select id="listSelection" name="listSelection">
+        <option value="Buy Only">Buy Only</option>
+        <option value="BidandBuy">Bid and Buy</option>
+                    </select>
+    </p>
     @:Title: <input type="text" name="title" />
     <br />
     @:Caption: <input type="text" name="caption" />
     <br />
-    @:Price: <input type="number" pattern="\d*" name="price" min="1" class="imagePrice"/>
+    @:Price: <input type="number" pattern="\d*" name="price" min="1" class="imagePrice" id="imagePrice"/>
     <br />
-    @:Will this be up for auction?<input type="checkbox" id="isForAuction" />
-    <div class="auctionInfoSection">
-        @Html.Partial("EnterAuctionInfoPartial")
-    </div>
+    <p id="bidInfo">
+        Starting Bid: <input type="number" name="startingBid" pattern="\d" min="1" id="startingBid" value="0" />
+        
+        Duration: <input type="number" name="daysOfAuction" pattern="\d" min="1" max="14" id="dayDuration" value="0"/> Days
+    </p>
     <input type="submit" value="Upload" />    
 }

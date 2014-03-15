@@ -9,9 +9,11 @@
     <img alt="welcome">
 </div>
 <div class="bodyImages">
-        @if(Model != null && Model.Count() > 0)
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (ImageOwner io in Model)
         {
-            foreach (ImageOwner io in Model)
+            if (io.isForSale || io.isAuction)
             {
                 <div class="indexImage">
                     <a href="@Url.Action("SingleImage", "Image", @io, null)">
@@ -23,5 +25,6 @@
                 </div>
             }
         }
+    }
     <span class="stretch"></span>
 </div>
