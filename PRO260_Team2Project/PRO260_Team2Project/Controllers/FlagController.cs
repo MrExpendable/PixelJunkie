@@ -117,18 +117,26 @@ namespace PRO260_Team2Project.Controllers
                             List<Purchase> PToDelete = new List<Purchase>();
                             PToDelete = ihc.Purchases.Where(x => x.ImageID == IDOrig).ToList();
                             ihc.Purchases.RemoveRange(PToDelete);
+                            List<Like> LToDelete = new List<Like>();
+                            LToDelete = ihc.Likes.Where(x => x.ImageID == IDOrig).ToList();
+                            ihc.Likes.RemoveRange(LToDelete);
+                            List<ImageTag> TToDelete = new List<ImageTag>();
+                            TToDelete = ihc.ImageTags.Where(x => x.ImageID == IDOrig).ToList();
+                            ihc.ImageTags.RemoveRange(TToDelete);
+                            ihc.SaveChanges();
                             List<ImageOwner> IOToDelete = new List<ImageOwner>();
                             IOToDelete = ihc.ImageOwners.Where(x => x.ImageID == IDOrig).ToList();
-                            ihc.Purchases.RemoveRange(PToDelete);
-                           /* List<Image> IToDelete = new List<Image>();
+                            ihc.ImageOwners.RemoveRange(IOToDelete);
+                            ihc.SaveChanges();
+                            List<Image> IToDelete = new List<Image>();
                             IToDelete = ihc.Images.Where(x => x.ImageID == IDOrig).ToList();
-                            ihc.Images.RemoveRange(IToDelete);*/
+                            ihc.Images.RemoveRange(IToDelete);
                             ihc.SaveChanges();
                             ViewBag.Message = "Success! Image " + IDOrig + " has been deleted!";
                         }
                         catch (Exception e)
                         {
-                            ViewBag.Message = "Something went wrong with the deletion: " + e.Message;
+                            ViewBag.Message = "Something went wrong with the deletion: " + e.Message+"\n"+e.InnerException;
                         }
                     }else
                     {

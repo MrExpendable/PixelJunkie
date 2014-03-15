@@ -2,6 +2,7 @@
 @model Flag
 
 @{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
     ViewBag.Title = "AddFlag";
 }
 
@@ -9,7 +10,9 @@
 {
     <fieldset>
         <legend>Flag image</legend>
+        <div>Please state your complaint about this image:</div>
         <div class="Flag Description">
+
             @Html.TextAreaFor(Model => Model.Description)
         </div>
         <input type="submit" value="Flag Image" />
