@@ -32,7 +32,7 @@ namespace PRO260_Team2Project.Controllers
             }
             if (!adminExists)
             {
-                Register(new RegisterModel() { UserName = "Admin", Password = "administrator", ConfirmPassword = "administrator" });
+                Register(new RegisterModel() { UserName = "Admin", Password = "administrator", ConfirmPassword = "administrator", Points = 0, Bio = "Hello. I'm the Administrator." });
             }
 
             if (!Roles.GetRolesForUser("Admin").Contains("Admin"))
@@ -356,7 +356,7 @@ namespace PRO260_Team2Project.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new{Points = 0, Bio = model.Bio});
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

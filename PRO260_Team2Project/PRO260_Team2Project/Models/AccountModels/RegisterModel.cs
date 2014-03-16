@@ -22,5 +22,12 @@ namespace PRO260_Team2Project.Models.AccountModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public int Points { get; set; }
+
+        [Required]
+        [Display(Name = "User Bio")]
+        public string Bio { get; set; }
     }
 }
