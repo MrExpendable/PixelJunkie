@@ -10,5 +10,4 @@ namespace PRO260_Team2Project.Models.AccountModels
     {
         public DbSet<User> Users { get; set; }
     }
-
 }
