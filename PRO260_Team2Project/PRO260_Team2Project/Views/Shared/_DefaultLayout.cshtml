@@ -1,82 +1,85 @@
 ﻿<!DOCTYPE html>
 
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="~/Assets/reset.css" />
-        <link rel="stylesheet" type="text/css" href="~/Assets/styles.css" />
-        <script src="~/Assets/jquery-2.1.0.min.js"></script>
-        <meta name="viewport" content="width=device-width" />
-        <title>@ViewBag.Title</title>
-    </head>
-    <body>
-        <div class="content">
-            <nav>
-                <img class="logo" src="/Assets/Images/logo.png">
-                <form class="search">
-                    <input type="text" name="username" />
-                    <input type="submit" value="Search">
-                </form>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Assets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/styles.css" />
+    <script src="~/Assets/jquery-2.1.0.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="content">
+        <nav>
+            <img class="logo" src="/Assets/Images/logo.png">
+            <form class="search">
+                <input type="text" name="username" />
+                <input type="submit" value="Search">
+            </form>
+            <div class="memberOptions">
                 <ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Profile", "Account", new { id = WebSecurity.CurrentUserId })">
+                            <li>Profile</li>
+                        </a>
+                        <a href="@Url.Action("MessageCenter", "MessageCenter")">
+                            <li>Messages</li>
+                        </a>
+                        <a href="@Url.Action("Logout", "Account")">
+                            <li>Logout</li>
+                        </a>
+                    }
+                    else{
+                        <a href="@Url.Action("Login", "Account")">
+                            <li>Login / Register</li>
+                        </a>
+                    }
+                </ul>
+            </div>
+            <ul>
+                <a href="@Url.Action("Index", "Home")">
                     <li>
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/home32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Home", "Index", "Home")</div>
+                        <div class="navLink">Home</div>
                     </li>
-                    <li>
-                        <div class="icon">
-                            <img src="~/Assets/Images/Icons/contactcard32.png" />
-                        </div>
-                        <div class="navLink">@Html.ActionLink("Profile", "Profile", "Account", WebSecurity.CurrentUserId)</div>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <img src="~/Assets/Images/Icons/mail32.png" />
-                        </div>
-                        <div class="navLink">@Html.ActionLink("Messages", "MessageCenter", "MessageCenter")</div>
-                    </li>
+                </a>
+                <a href="@Url.Action("Featured", "Home")">
                     <li>
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/moneyreceipt32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Auctions", "Featured", "Home")</div>
+                        <div class="navLink">Auctions</div>
                     </li>
+                </a>
+                <a href="@Url.Action("UploadImage", "Home")">
                     <li>
                         <div class="icon">
                             <img src="~/Assets/Images/Icons/upload32.png" />
                         </div>
-                        <div class="navLink">@Html.ActionLink("Upload", "UploadImage", "Home")</div>
+                        <div class="navLink">Upload Image</div>
                     </li>
-                    <li>
-                        <div class="icon">
-                            <img src="~/Assets/Images/Icons/article32.png" />
-                        </div>
-                        <div class="navLink">@Html.ActionLink("Login/Register", "Login", "Account")</div>
-                    </li>
+                </a>
+            </ul>
+        </nav>
+        <div class="mainContent" id="container">
+            @RenderBody()
+            <footer>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Auctions", "Featured")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Upload", "UploadImage")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("Login/Register", "Login")</li>
                 </ul>
-            </nav>
-            <div class="mainContent" id="container">
-                @RenderBody()
-                <footer>
-                    <ul>
-                        <li>@Html.ActionLink("Home", "Index")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Profile", "Profile", "Account", WebSecurity.CurrentUserId)</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Accounts", "Index", "Account")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Auctions", "Featured")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Upload", "UploadImage")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Login/Register", "Login")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Single Image", "SingleImage", "Image")</li>
-                    </ul>
-                </footer>
-            </div>
+            </footer>
         </div>
-    </body>
+    </div>
+</body>
 
-    <script src="~/Content/Assets/scripts.js"></script>
+<script src="~/Content/Assets/scripts.js"></script>
 </html>
