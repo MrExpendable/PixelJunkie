@@ -2,10 +2,13 @@
     ViewBag.Title = "RoleAddToUser";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
-<div class="spacerBody">
-    @Html.ActionLink("Create New Role", "RoleCreate") | @Html.ActionLink("Roles", "RoleIndex")      
-<h2>Role Add to User</h2>
 
+<div class="spacerBody">
+    
+<div class="welcome">
+    @Html.ActionLink("Create New Role", "RoleCreate") | @Html.ActionLink("Roles", "RoleIndex")
+    </div>
+    <h1>Assign Roles</h1>
 @using(Html.BeginForm("RoleAddToUser", "Account")){
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -21,7 +24,7 @@
 }
 
 
-
+<h1>Role Checker</h1>
 <div class="hr"></div>
 @using(Html.BeginForm("GetRoles", "Account")){
     @Html.AntiForgeryToken()
@@ -29,7 +32,7 @@
         <input type="submit" value="Get Roles for this User" />
     </p>
 }
-       
+<div class="welcome">
 @if(ViewBag.RolesForThisUser != null) {
     <text>
     <h3>Roles for this user </h3>
@@ -40,4 +43,4 @@
                 </ol>
     </text>
 }
-        </div>
+        </div></div>

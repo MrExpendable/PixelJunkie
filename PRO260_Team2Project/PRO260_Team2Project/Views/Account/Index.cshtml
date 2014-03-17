@@ -6,37 +6,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Members Directory</h2>
-<br />
+<h1>Members Directory</h1>
 
-<div>
+<div class="welcome">
     Welcome to the Directory. @ViewBag.TotalResults users are registered.
-    <br /> <br />
+    </div>
          @using (Html.BeginForm("Search","Account", FormMethod.Get)){    
          <p>@Html.TextBox("SearchString") <br />  
          <input type="submit" value="Search" /></p> 
         } 
+<div class="welcome">
     <br /><b>Page: @ViewBag.Page.</b><br /><br />
 
-</div>
 
-@using (Html.BeginForm("Index","Account", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="0" /> 
-         <input type="submit" value="SortByScore" />
-        } 
-@using (Html.BeginForm("Index","Account", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="1" /> 
-         <input type="submit" value="SortByName" />
-        } 
 
+
+
+<ul>
 @foreach (User t in Model)
 {
-    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Account/Profile/@t.Id">@t.UserName</a></b><br />
+    <li><a href="~/Account/Profile/@t.Id">@t.UserName</a> - @t.Points Points</li>
+    <br />
 }
-
+    </ul>
 
 <br /><b>Page: @ViewBag.Page.</b><br /><br />
-
+    </div>
 @if(ViewBag.Page > 1)
 {
 
@@ -53,3 +48,11 @@ using (Html.BeginForm("Index","Account", FormMethod.Get)){
          <input type="submit" value="Next Page" />
         } 
 }
+@using (Html.BeginForm("Index","Account", FormMethod.Get)){    
+         <input type="hidden" name="SortingMethod" value="0" /> 
+         <input type="submit" value="SortByScore" />
+        } 
+@using (Html.BeginForm("Index","Account", FormMethod.Get)){    
+         <input type="hidden" name="SortingMethod" value="1" /> 
+         <input type="submit" value="SortByName" />
+        } 

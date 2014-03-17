@@ -6,9 +6,7 @@
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
-<h2>Search Results</h2>
-<a href="~/">Home</a><br />        
-<a href="~/Account/">Members Directory</a><br />
+<h1>Search Results</h1>       
 <br />
      @using (Html.BeginForm("Search","Account", FormMethod.Get)){    
          <p>@Html.TextBox("SearchString") <br />  
@@ -16,32 +14,20 @@
         } 
 <br />
 
-<div>
+<div class="welcome">
     Searching users with name containing "@ViewBag.SearchString". @ViewBag.TotalResults results found.
-    <br />
-    <br /><b>Page: @ViewBag.Page.</b><br /><br />
+<br /><b>Page: @ViewBag.Page.</b><br /><br /></div>
 
-</div>
-@using (Html.BeginForm("Search","Account", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="0" />
-    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/> 
-         <input type="submit" value="SortByScore" />
-        } 
-@using (Html.BeginForm("Search","Account", FormMethod.Get)){    
-         <input type="hidden" name="SortingMethod" value="1" /> 
-    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
-         <input type="submit" value="SortByName" />
-        } 
-
+<div class="welcome">
 @foreach (User t in Model)
 {
-    <b>@t.Id: @*@if(t.IsAdmin){<text>[Admin] </text>}*@<a href="~/Account/Profile/@t.Id">@t.UserName</a></b><br />
+    <b><a href="~/Account/Profile/@t.Id">@t.UserName</a></b><br />
     <b>Points:</b> @:0 <br /><br />
 }
 
 
 <br /><b>Page: @ViewBag.Page.</b><br /><br />
-
+    </div>
 @if(ViewBag.Page > 1)
 {
 using (Html.BeginForm("Search","Account", FormMethod.Get)){    
@@ -57,4 +43,13 @@ using (Html.BeginForm("Search","Account", FormMethod.Get)){
          <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
          <input type="submit" value="Next Page" />
         } 
-}
+}@using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <input type="hidden" name="SortingMethod" value="0" />
+    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/> 
+         <input type="submit" value="SortByScore" />
+        } 
+@using (Html.BeginForm("Search","Account", FormMethod.Get)){    
+         <input type="hidden" name="SortingMethod" value="1" /> 
+    <input type="hidden" name="SearchString" value="@ViewBag.SearchString"/>
+         <input type="submit" value="SortByName" />
+        } 

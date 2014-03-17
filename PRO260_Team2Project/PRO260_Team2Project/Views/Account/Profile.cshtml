@@ -6,9 +6,13 @@
     ViewBag.Title = "Profile";    
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
-
+@if (HttpContext.Current.User.Identity.Name == Model.UserName)
+{
 <h1>@Model.UserName</h1>
-<header>
+} else {
+    <h1>@Model.UserName's Profile</h1>
+}
+    <header></br>
     <div class="bio">
         <h3>Points: @Model.Points</h3>
         <p>
@@ -21,108 +25,7 @@
     {
         @Html.ActionLink("Edit Profile", "Manage", "Account")
     }
-    else
-    {
-        @HttpContext.Current.User.Identity.Name @:!= @Model.UserName
-    }
 </header>
 <div class="portfolio">
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <a href="~/Image/DisplayImagePage">
-            <img src="~/Content/Assets/Images/joker.jpg"></a>
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <div>
-        <img alt="image">
-        <ul>
-            <li>Title:</li>
-            <li>Likes:</li>
-            <li>Dislikes:</li>
-        </ul>
-    </div>
-    <span class="stretch"></span>
+
 </div>
