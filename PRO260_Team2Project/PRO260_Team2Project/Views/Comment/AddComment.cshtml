@@ -8,8 +8,7 @@
 @using (Html.BeginForm())
 {
     <fieldset>
-        <h1>Comment</h1>
-        <br />
+        <legend>Comment</legend>
         <div class="Flag Description">
             @Html.TextAreaFor(x => x.Content)
             @Html.HiddenFor(x => x.OwnerID, Model.OwnerID)
