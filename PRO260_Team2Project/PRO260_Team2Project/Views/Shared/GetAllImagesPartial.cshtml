@@ -21,14 +21,18 @@
 
 @if(Model != null && Model.Count > 0)
 {
-    foreach (ImageOwner io in Model)
+   foreach (ImageOwner io in Model)
     {
+       using(ImageHolderContext ihc = new ImageHolderContext())
+       {
         <div class="indexImage">
             <img src="data:image;base64,@System.Convert.ToBase64String(io.Image.Image1)" class="images"/>
             <ul>
-                <li>@Html.ActionLink(@io.Title, "SingleImage", "Image", @io, null)</li>
-                <li>Likes: @io.Likes</li>
+                @ihc.ImageOwners.Attach(io);
+                <li>@Html.ActionLink(io.Title, "SingleImage", "Image", io, null)</li>
+                @*<li>@Html.ActionLink(io.Title, "SingleImage", "Image", io)</li>*@
             </ul>
         </div>
+       }
     }
 }
