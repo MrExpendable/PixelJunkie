@@ -86,11 +86,11 @@
             @RenderBody()
             <footer>
                 <ul>
-                    <li>@Html.ActionLink("Home", "Index")</li>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                     <li>|</li>
-                    <li>@Html.ActionLink("Auctions", "Featured")</li>
+                    <li><a href="@Url.Action("Featured", "Home")">Auctions</a></li>
                     <li>|</li>
-                    <li>@Html.ActionLink("Upload", "UploadImage")</li>
+                    <li><a href="@Url.Action("UploadImage", "Home")">Upload</a></li>
                     @if (User.Identity.IsAuthenticated)
                     {
                     <li>|</li>
