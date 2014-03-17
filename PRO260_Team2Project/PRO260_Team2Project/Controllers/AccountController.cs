@@ -17,11 +17,13 @@ namespace PRO260_Team2Project.Controllers
 
         public static string GetNameFromID(int id)
         {
+            UpdateUsers();
             string result = users.First(x => x.Id == id).UserName;
             return result;
         }
         public static User GetUserFromID(int id)
         {
+            UpdateUsers();
             User result = users.First(x => x.Id == id);
             return result;
         }
@@ -232,7 +234,7 @@ namespace PRO260_Team2Project.Controllers
         #endregion
 
         #region UserManipulation
-        private void UpdateUsers()
+        private static void UpdateUsers()
         {
             using (MembershipContext ie = new MembershipContext())
             {
