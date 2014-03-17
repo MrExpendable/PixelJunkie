@@ -6,14 +6,16 @@
 }
 <h1>Home/Index</h1>
 <div class="welcome">
-    <img alt="welcome">
+    Hi. Welcome to PixelJunkie. PixelJunkie is an image sharing website with it's own built in economy and currency system.
+    <br /><br />See what others are sharing:
 </div>
-<div class="bodyImages">
+
+<div class="bodyImages">    
     @if (Model != null && Model.Count() > 0)
     {
         foreach (ImageOwner io in Model)
         {
-            if (io.isForSale || io.isAuction)
+            if (io.isForSale == true || io.isAuction == true)
             {
                 <div class="indexImage">
                     <a href="@Url.Action("SingleImage", "Image", @io, null)">

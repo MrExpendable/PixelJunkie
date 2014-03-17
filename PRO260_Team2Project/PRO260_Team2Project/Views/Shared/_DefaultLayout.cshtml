@@ -35,9 +35,6 @@
                             <li>Login / Register</li>
                         </a>
                     }
-                    <a href="@Url.Action("Index", "Account")>
-                            <li>Accounts</li>
-                        </a>
                 </ul>
             </div>
             <ul>
@@ -55,6 +52,14 @@
                             <img src="~/Assets/Images/Icons/moneyreceipt32.png" />
                         </div>
                         <div class="navLink">Auctions</div>
+                    </li>
+                </a>
+                <a href="@Url.Action("Index", "Accounts")">
+                    <li>
+                        <div class="icon">
+                            <img src="~/Assets/Images/Icons/contactcard32.png" />
+                        </div>
+                        <div class="navLink">Accounts</div>
                     </li>
                 </a>
                 <a href="@Url.Action("UploadImage", "Home")">
