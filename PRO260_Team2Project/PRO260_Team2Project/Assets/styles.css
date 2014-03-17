@@ -1,7 +1,6 @@
 html{
-    background: url(Images/backdrop2.jpg);
-    background-repeat:repeat;
-    font-family:sans-serif;
+    background-color: #111111;
+    font-family: 'Ropa Sans', sans-serif;
     font-size:62.4%;
 }
 
@@ -16,6 +15,15 @@ textArea{
     width:450px;
 }
 
+#imageContent{
+    border:1px solid black;
+    color:#FFF;
+    padding:20px;
+    background-color:#333;
+    text-align:left;
+    line-height:2;
+}
+
 #contentText{
     border:1px solid black;
     color:#FFF;
@@ -26,11 +34,9 @@ textArea{
 }
 
 #container {
-    background-color:#9AFF85;
+    background-color:#697c66;
     border:8px solid #333;
-    -webkit-box-shadow: inset 0 0 5px 5px #222;
-    -moz-box-shadow: inset 0 0 5px 5px #222;
-    box-shadow: inset 0 0 5px 5px #222;
+
 }
 
 .bodyImages {
@@ -162,14 +168,7 @@ nav ul li:hover{
     width:1000px;
     font-size:1.8em;
     /*Gradient*/
-    background: #5e5e5e; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #5e5e5e 0%, #9aff85 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#5e5e5e), color-stop(100%,#9aff85)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #5e5e5e 0%,#9aff85 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #5e5e5e 0%,#9aff85 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #5e5e5e 0%,#9aff85 100%); /* IE10+ */
-    background: linear-gradient(45deg, #5e5e5e 0%,#9aff85 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', endColorstr='#9aff85',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #697c66; /* Old browsers */
 }
 
 
@@ -361,6 +360,7 @@ select{
 
 .imageInfo{
     width:560px;
+    text-align:left;
     margin:0 auto;
 }
 
