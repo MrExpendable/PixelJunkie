@@ -3,13 +3,14 @@
     ViewBag.Title = "Role Index";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
-
+<h1>Role Directory</h1>
+<div class="welcome">
 <div class="spacerBody">
     @Html.ActionLink("Create New Role", "RoleCreate") | @Html.ActionLink("Add Role to User", "RoleAddToUser")
-<h2>Role Index</h2>
+    <br /><br />
     <div class="table">
         
-    
+ 
 @foreach (string s in Model)
 {
     <div class="tr">
@@ -25,3 +26,5 @@
 }
         </div>
 </div>
+
+    </div>

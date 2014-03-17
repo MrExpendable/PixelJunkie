@@ -70,6 +70,16 @@
                         <div class="navLink">Upload Image</div>
                     </li>
                 </a>
+                @if(User.IsInRole("Admin")){
+                <a href="@Url.Action("Index", "Admin")">
+                    <li>
+                        <div class="icon">
+                            <img src="~/Assets/Images/Icons/article32.png" />
+                        </div>
+                        <div class="navLink">Admin</div>
+                    </li>
+                </a>
+                }
             </ul>
         </nav>
         <div class="mainContent" id="container">
@@ -81,8 +91,16 @@
                     <li>@Html.ActionLink("Auctions", "Featured")</li>
                     <li>|</li>
                     <li>@Html.ActionLink("Upload", "UploadImage")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
                     <li>|</li>
-                    <li>@Html.ActionLink("Login/Register", "Login")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                      <li>|</li>
+                    <li>@Html.ActionLink("Login/Register", "Login", "Account")</li>  
+                    }
                 </ul>
             </footer>
         </div>

@@ -1,11 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Admin Hub";
 }
 
 <h1>Admin Hub</h1>
-
-<h2>Respond to Flags</h2>DOSEN'T WORK
-
-<h2>@Html.ActionLink("Do Role Things","RoleIndex","Account"</h2> WORKS
-
-<h2>Ban Users</h2>DOESN'T WORK
+<div class="welcome">
+<p>
+Hello Administrator @User.Identity.Name. This is the Admin Hub. From here, you can respond to flagged posts, manage roles, and ban users.
+</p>
+<ul>
+    <li>@Html.ActionLink("Respond to Flags","Index","Admin")</li>
+    <li>@Html.ActionLink("Do Role Things","RoleIndex","Account")</li>
+    <li>@Html.ActionLink("Ban Users","Index","Admin")</li>
+</ul>
+    </div>
