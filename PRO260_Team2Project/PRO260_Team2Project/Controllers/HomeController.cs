@@ -26,7 +26,7 @@ namespace PRO260_Team2Project.Controllers
                     imageList = imgs.ToList();
                     foreach (ImageOwner io in imageList)
                     {
-                        Image img = ihc.Images.Where(x => x.ImageID == io.ImageID).First();
+                        Image img = ihc.Images.Where(x => x.ImageID == io.ImageID).FirstOrDefault();
                         io.Image = img;
                     }
                 }

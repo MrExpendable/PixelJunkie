@@ -25,7 +25,7 @@ namespace PRO260_Team2Project.Models
             ImageID = (int)flag.ImageID;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                userName = Controllers.AccountController.GetNameFromID(PosterID);
             }
             type = "flagNote";
         }
@@ -42,7 +42,7 @@ namespace PRO260_Team2Project.Models
                 try
                 {
 
-                    userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                    userName = Controllers.AccountController.GetNameFromID(PosterID);
                 }catch(NullReferenceException nre)
                 {
                     userName = "Anonymous";
@@ -61,7 +61,7 @@ namespace PRO260_Team2Project.Models
             {
                 imgown = ihc.ImageOwners.Include("Likes1").Include("Auction_").Include("Comments").Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault();
                 title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
-                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                userName = Controllers.AccountController.GetNameFromID(PosterID);
             }
         }
 
@@ -74,7 +74,7 @@ namespace PRO260_Team2Project.Models
             title = message.Title;
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                userName = Controllers.AccountController.GetNameFromID(PosterID);
             }
         }
 
@@ -87,7 +87,7 @@ namespace PRO260_Team2Project.Models
             type = "PurchaseNote";
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                userName = ihc.Members.Where(x => x.MemberID == PosterID).FirstOrDefault().UserName;
+                userName = Controllers.AccountController.GetNameFromID(PosterID);
                 title = ihc.ImageOwners.Where(x => x.OwnerID == WebSecurity.CurrentUserId && x.ImageID == ImageID).FirstOrDefault().Title;
             }
         }

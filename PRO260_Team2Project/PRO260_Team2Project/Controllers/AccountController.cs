@@ -13,11 +13,16 @@ namespace PRO260_Team2Project.Controllers
 {
     public class AccountController : Controller
     {
-        List<User> users = new List<User>();
+        static List<User> users = new List<User>();
 
-        public string GetNameFromID(int id)
+        public static string GetNameFromID(int id)
         {
             string result = users.First(x => x.Id == id).UserName;
+            return result;
+        }
+        public static User GetUserFromID(int id)
+        {
+            User result = users.First(x => x.Id == id);
             return result;
         }
 

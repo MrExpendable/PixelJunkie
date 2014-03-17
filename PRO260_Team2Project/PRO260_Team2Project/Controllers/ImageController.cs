@@ -55,7 +55,7 @@ namespace PRO260_Team2Project.Controllers
                             Image img = ihc.Images.Where(x => x.OriginalPosterID == ID && x.DateOfUpload == time).First();
                             imgOwn.Image = img;
                             imgOwn.ImageID = img.ImageID;
-                            imgOwn.Member = ihc.Members.Where(x => x.MemberID == ID).First();
+                            //imgOwn.Member = ihc.Members.Where(x => x.MemberID == ID).First();
                             imgOwn.OwnerID = ID;
                             imgOwn.TimeStamp = time;
                             if (price > 0)
@@ -67,7 +67,7 @@ namespace PRO260_Team2Project.Controllers
                                 imgOwn.isForSale = false;
                             }
 
-                            if (listSelection.Equals("BidandBuy"))
+                            if (startingBid>0)
                             {
                                 imgOwn.isAuction = true;
                                 AddAuction(startingBid, daysOfAuction, imgOwn);
@@ -87,7 +87,7 @@ namespace PRO260_Team2Project.Controllers
                     }
                 }
             }
-            return RedirectToAction("Profile", "Account");
+            return RedirectToAction("Profile/"+WebSecurity.CurrentUserId, "Account");
         }
 
         [Authorize]
@@ -241,15 +241,15 @@ namespace PRO260_Team2Project.Controllers
         {
             using (ImageHolderContext ihc = new ImageHolderContext())
             {
-                Member oldOwner = ihc.Members.Where(x => x.MemberID == image.OwnerID).FirstOrDefault();
-                Member newOwner = ihc.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId).FirstOrDefault();
+                Models.AccountModels.User oldOwner = AccountController.GetUserFromID(image.OwnerID);
+                Models.AccountModels.User newOwner = AccountController.GetUserFromID(WebSecurity.CurrentUserId);
 
                 if (image.Price > 0)
                 {
-                    if (image.OwnerID != newOwner.MemberID && newOwner.AccountBalance >= image.Price)
+                    if (image.OwnerID != newOwner.Id && newOwner.Id >= image.Price)
                     {
-                        oldOwner.AccountBalance += image.Price;
-                        newOwner.AccountBalance -= image.Price;
+                        oldOwner.Points += (int)image.Price;
+                        newOwner.Points -= (int)image.Price;
 
                         //Purchase purchase = new Purchase { ImageID = image.ImageID, PurchasePrice = image.Price, PurchaserID = newOwner.MemberID, SellerID = oldOwner.MemberID, TimeOfPurchase = DateTime.Now };
                         //ihc.Purchases.Add(purchase);
@@ -303,14 +303,14 @@ namespace PRO260_Team2Project.Controllers
             {
                 Auction_ auction = ihc.Auction_.Where(x => x.ImageID == image.ImageID).FirstOrDefault();
                 DateTime? expirationDate = auction.ExpirationDate;
-                Member bidder = ihc.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId && x.MemberID != image.OwnerID).FirstOrDefault();
+                Models.AccountModels.User bidder = AccountController.GetUserFromID(WebSecurity.CurrentUserId);
 
                 if (todaysDate < expirationDate)
                 {
-                    if (bidder.AccountBalance >= image.Price && bidder.AccountBalance >= bid)
+                    if (bidder.Points >= image.Price && bidder.Points >= bid)
                     {
                         auction.CurrentBid = bid;
-                        bidder.AccountBalance -= bid;
+                        bidder.Points -= (int)bid;
                     }
                 }
             }

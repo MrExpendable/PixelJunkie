@@ -28,7 +28,7 @@ namespace PRO260_Team2Project.Controllers
                 int seekID = 0;
                 int.TryParse((String)Url.RequestContext.RouteData.Values["id"], out seekID);
                 f.ImageID = seekID;
-                f.Member = con.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId).FirstOrDefault();
+            //    f.Member = con.Members.Where(x => x.MemberID == WebSecurity.CurrentUserId).FirstOrDefault();
                 f.Image = con.Images.Where(x => x.ImageID == f.ImageID).FirstOrDefault();
                 con.Flags.Add(f);
                 try
