@@ -15,6 +15,11 @@ namespace PRO260_Team2Project.Controllers
     {
         List<User> users = new List<User>();
 
+        public string GetNameFromID(int id)
+        {
+            string result = users.First(x => x.Id == id).UserName;
+            return result;
+        }
 
         public void Setup()
         {
